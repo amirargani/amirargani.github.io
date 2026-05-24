@@ -1,0 +1,1670 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amir Argani | Data Scientist & Software Engineer</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description"
+    content="Portfolio von Amir Argani - Software Engineer mit Fokus auf datengetriebene Systeme, Machine Learning, ERP-Integrationen und moderne Architekturen. Hamburg, Lübeck & Remote.">
+  <meta name="keywords"
+    content="Amir Argani, Data Scientist, Data Engineer, Software Developer, Business Central, AL Programming, Python, C#, ML, Lübeck, Hamburg">
+  <meta name="author" content="Amir Argani">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Amir Argani | Data Scientist & Software Engineer">
+  <meta property="og:description"
+    content="Ich verwandle Daten in intelligente, skalierbare Lösungen. Erfahren Sie mehr über meine Projekte wie CRObuzzer.">
+  <meta property="og:type" content="website">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- Navigation Bar -->
+  <header>
+    <div class="container navbar">
+      <a href="#about" class="logo">
+        <div class="logo-avatar-wrapper">
+          <img src="https://github.com/amirargani.png" alt="Amir Argani" class="logo-avatar" />
+        </div>
+        <!-- <span>Amir Argani</span> <span class="logo-dot"></span> -->
+      </a>
+
+      <nav>
+        <ul class="nav-menu" id="nav-links">
+          <li>
+            <a href="#about">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+              <span data-i18n="nav_about">Über Mich</span>
+            </a>
+          </li>
+          <li>
+            <a href="#approach">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+              </svg>
+              <span data-i18n="nav_problem_solution">Mein Ansatz</span>
+            </a>
+          </li>
+          <li>
+            <a href="#projects">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+              </svg>
+              <span data-i18n="nav_projects">Projekte</span>
+            </a>
+          </li>
+          <li>
+            <a href="#skills">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+                <rect x="9" y="9" width="6" height="6"></rect>
+                <line x1="9" y1="1" x2="9" y2="4"></line>
+                <line x1="15" y1="1" x2="15" y2="4"></line>
+                <line x1="9" y1="20" x2="9" y2="23"></line>
+                <line x1="15" y1="20" x2="15" y2="23"></line>
+                <line x1="20" y1="9" x2="23" y2="9"></line>
+                <line x1="20" y1="15" x2="23" y2="15"></line>
+                <line x1="1" y1="9" x2="4" y2="9"></line>
+                <line x1="1" y1="15" x2="4" y2="15"></line>
+              </svg>
+              <span data-i18n="nav_skills">Kenntnisse</span>
+            </a>
+          </li>
+          <li>
+            <a href="#contact">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              <span data-i18n="nav_contact">Kontakt</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="de">DE</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
+
+      <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- SVG Gradients Definition Pool (invisible) -->
+  <svg style="position: absolute; width: 0; height: 0;" width="0" height="0">
+    <defs>
+      <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#00f2fe" />
+        <stop offset="100%" stop-color="#4facfe" />
+      </linearGradient>
+      <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#7f00ff" />
+        <stop offset="100%" stop-color="#e100ff" />
+      </linearGradient>
+      <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#2575fc" />
+        <stop offset="100%" stop-color="#6a11cb" />
+      </linearGradient>
+      <linearGradient id="pinkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#ff0844" />
+        <stop offset="100%" stop-color="#ffb199" />
+      </linearGradient>
+      <linearGradient id="orangeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#ff7b00" />
+        <stop offset="100%" stop-color="#ffae00" />
+      </linearGradient>
+      <linearGradient id="emeraldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#00ff87" />
+        <stop offset="100%" stop-color="#60efff" />
+      </linearGradient>
+      <linearGradient id="indigoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#3f51b5" />
+        <stop offset="100%" stop-color="#5c6bc0" />
+      </linearGradient>
+      <linearGradient id="amberGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#FFE259" />
+        <stop offset="100%" stop-color="#FFA751" />
+      </linearGradient>
+      <linearGradient id="coreGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#00f2fe" />
+        <stop offset="50%" stop-color="#7f00ff" />
+        <stop offset="100%" stop-color="#e100ff" />
+      </linearGradient>
+      <linearGradient id="roseGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#FF3366" />
+        <stop offset="100%" stop-color="#BA26FC" />
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <!-- Hero Section -->
+  <section id="about" class="hero">
+    <div class="container hero-grid">
+      <div class="hero-info reveal active">
+        <div class="hero-badge">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+          </svg>
+          <span data-i18n="hero_badge">Software Engineer & Data Enthusiast</span>
+        </div>
+        <h2 data-i18n="hero_greeting">Hallo, ich bin</h2>
+        <h1 data-i18n="hero_title">Amir Argani</h1>
+        <div class="hero-subtitle gradient-text" data-i18n="hero_subtitle">Data meets Software Engineering</div>
+        <p data-i18n="hero_desc">Ich baue die Brücke zwischen Code, KI und Business Value. Seit 2014 entwickle ich
+          digitale Lösungen und kombiniere Computer Engineering mit praxisnaher Weiterbildung in Data Science & KI (DSI
+          Berlin).</p>
+
+        <div class="hero-targets">
+          <div class="target-row">
+            <span class="target-label" data-i18n="hero_roles_title">Ich suche neue Herausforderungen als:</span>
+            <span class="target-value gradient-text-alt" style="font-weight: 600;" data-i18n="hero_roles">Data Scientist
+              • Analytics Engineer • Data Engineer</span>
+          </div>
+          <div class="target-row">
+            <span class="target-label" data-i18n="hero_pref_title">Bevorzugt:</span>
+            <span class="target-value" data-i18n="hero_pref">Hamburg • Lübeck • 100% Remote in Deutschland</span>
+          </div>
+        </div>
+
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary" data-i18n="hero_cv_btn">Kontakt aufnehmen</a>
+          <a href="https://github.com/amirargani" target="_blank" rel="noopener" class="btn btn-secondary"
+            data-i18n="hero_github_btn">
+            <svg style="width: 20px; height: 20px; fill: currentColor;" viewBox="0 0 24 24">
+              <path
+                d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z" />
+            </svg>
+            GitHub ansehen
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal">
+        <div class="sphere-wrapper">
+          <div class="sphere-bg"></div>
+          <div class="sphere-ring-1"></div>
+          <div class="sphere-ring-2"></div>
+          <div class="sphere-core">
+            <img src="https://github.com/amirargani.png" alt="Amir Argani" class="profile-img" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem & Solution Section -->
+  <section id="approach">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2 data-i18n="section_ps_title">Das Problem & Mein Ansatz</h2>
+        <p data-i18n="section_ps_subtitle">Wie ich helfe, Daten produktiv nutzbar zu machen</p>
+      </div>
+
+      <div class="ps-grid">
+        <!-- Problem Card -->
+        <div class="glow-card problem-card reveal">
+          <div class="card-content">
+            <div class="card-header-with-icon">
+              <div class="card-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path
+                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                </svg>
+              </div>
+              <h3 data-i18n="problem_title">Das Problem in Unternehmen</h3>
+            </div>
+            <p class="card-desc" data-i18n="problem_desc_1">Viele Unternehmen erfassen Daten – nutzen sie aber nicht
+              effektiv:</p>
+            <ul class="ps-list">
+              <li data-i18n="problem_point_1">Manuelle Prozesse verlangsamen Abläufe.</li>
+              <li data-i18n="problem_point_2">Daten bleiben in Datensilos (z. B. zwischen Zeiterfassung und
+                ERP-Systemen).</li>
+              <li data-i18n="problem_point_3">Fehlende Struktur führt zu schlechter Datenqualität.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Solution Card -->
+        <div class="glow-card solution-card reveal">
+          <div class="card-content">
+            <div class="card-header-with-icon">
+              <div class="card-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h3 data-i18n="solution_title">Mein Lösungsansatz</h3>
+            </div>
+            <p class="card-desc" data-i18n="solution_desc_1">Ich entwickle Systeme, die genau diese Probleme lösen:</p>
+            <ul class="ps-list">
+              <li data-i18n="solution_point_1">Integration von Daten in bestehende Unternehmensprozesse.</li>
+              <li data-i18n="solution_point_2">Klare Datenstrukturen und saubere Zuordnung.</li>
+              <li data-i18n="solution_point_3">Automatisierung statt manueller Übertragung.</li>
+              <li data-i18n="solution_point_4">Kombination von ERP-Systemen und Machine Learning.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Projects Section -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2 data-i18n="section_projects_title">Erfolgsgeschichten & Projekte</h2>
+        <p data-i18n="section_projects_subtitle">Praxisbeispiele für datengetriebene Integrationen</p>
+      </div>
+
+      <div class="glow-card project-card reveal">
+        <div class="project-details">
+          <div class="project-tag" data-i18n="crobuzzer_badge">ERP-Integration</div>
+          <h3 data-i18n="crobuzzer_title">CRObuzzer</h3>
+          <p data-i18n="crobuzzer_desc">Integration von timeBuzzer mit Microsoft Dynamics 365 Business Central, um
+            Zeiterfassungsdaten automatisch in Projekt- und Abrechnungslogik zu überführen.</p>
+
+          <div class="project-section-sub">
+            <h4 data-i18n="crobuzzer_challenge_title">Herausforderung:</h4>
+            <ul>
+              <li data-i18n="crobuzzer_challenge">Zeiterfassungsdaten manuell zu übertragen ist fehleranfällig und
+                blockiert wertvolle Ressourcen.</li>
+            </ul>
+          </div>
+
+          <div class="project-section-sub">
+            <h4 data-i18n="crobuzzer_solution_title">Ergebnis:</h4>
+            <ul>
+              <li data-i18n="crobuzzer_result_1">Automatische Überführung von Zeiterfassungsdaten in Projekt- und
+                Abrechnungslogik.</li>
+              <li data-i18n="crobuzzer_result_2">Weniger manuelle Arbeit, höhere Datenqualität und eine bessere
+                Entscheidungsbasis im Projektcontrolling.</li>
+            </ul>
+          </div>
+
+          <div class="project-tech" data-i18n="crobuzzer_tech_used">
+            Technologien: Business Central (AL), APIs, JavaScript, Postman
+          </div>
+
+          <div class="project-actions" style="margin-top: 1.5rem; display: flex; gap: 1rem;">
+            <a href="https://cromind.com/crobuzzer/" target="_blank" class="btn btn-secondary"
+              style="padding: 0.7rem 1.4rem; font-size: 0.9rem; border-radius: 8px;">
+              <span data-i18n="project_link_text">Website ansehen</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" style="margin-left: 0.35rem;">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                <polyline points="15 3 21 3 21 9" />
+                <line x1="10" y1="14" x2="21" y2="3" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="project-visual">
+          <div class="integration-art">
+            <div class="node node-left">
+              <!-- timeBuzzer icon representation -->
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="url(#cyanGrad)" stroke-width="2">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 6v6l4 2" />
+              </svg>
+            </div>
+            <div class="node-line line-left"></div>
+            <div class="node node-center">
+              <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="url(#coreGrad)" stroke-width="1.5">
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+              </svg>
+            </div>
+            <div class="node-line line-right"></div>
+            <div class="node node-right">
+              <!-- ERP / BC representation -->
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="url(#pinkGrad)" stroke-width="2">
+                <path d="M3 3h18v18H3z" />
+                <path d="M21 9H3M21 15H3M12 3v18" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Dashboard Section -->
+  <section id="skills">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2 data-i18n="section_skills_title">Kenntnisse & Tech-Skills</h2>
+        <p data-i18n="section_skills_subtitle">Strukturierte Übersicht über mein Technologie-Stack</p>
+      </div>
+
+      <div class="skills-dashboard">
+
+        <!-- Primary Featured Skills: Circular Gauges -->
+        <div class="glow-card skills-featured reveal">
+
+          <!-- Category 1: Data Analysis & BI Tools -->
+          <div class="radial-progress gauge-cyan" data-category="cat_data_science" data-progress="0">
+            <div class="gauge-wrapper">
+              <svg class="svg-gauge">
+                <circle class="progress-circle-bg" cx="60" cy="60" r="45" />
+                <circle class="progress-circle-fill" cx="60" cy="60" r="45" />
+              </svg>
+              <div class="gauge-val">0%</div>
+            </div>
+            <span class="radial-label" data-i18n="cat_data_science">Data Analysis & BI Tools</span>
+            <span class="radial-desc" data-i18n="skill_level_label">Kenntnisstand</span>
+          </div>
+
+          <!-- Category 2: Programming -->
+          <div class="radial-progress gauge-purple" data-category="cat_programming" data-progress="0">
+            <div class="gauge-wrapper">
+              <svg class="svg-gauge">
+                <circle class="progress-circle-bg" cx="60" cy="60" r="45" />
+                <circle class="progress-circle-fill" cx="60" cy="60" r="45" />
+              </svg>
+              <div class="gauge-val">0%</div>
+            </div>
+            <span class="radial-label" data-i18n="cat_programming">Programming</span>
+            <span class="radial-desc" data-i18n="skill_level_label">Kenntnisstand</span>
+          </div>
+
+          <!-- Category 3: Web Development -->
+          <div class="radial-progress gauge-blue" data-category="cat_web_dev" data-progress="0">
+            <div class="gauge-wrapper">
+              <svg class="svg-gauge">
+                <circle class="progress-circle-bg" cx="60" cy="60" r="45" />
+                <circle class="progress-circle-fill" cx="60" cy="60" r="45" />
+              </svg>
+              <div class="gauge-val">0%</div>
+            </div>
+            <span class="radial-label" data-i18n="cat_web_dev">Web Development</span>
+            <span class="radial-desc" data-i18n="skill_level_label">Kenntnisstand</span>
+          </div>
+
+          <!-- Category 4: App Development -->
+          <div class="radial-progress gauge-pink" data-category="cat_app_dev" data-progress="0">
+            <div class="gauge-wrapper">
+              <svg class="svg-gauge">
+                <circle class="progress-circle-bg" cx="60" cy="60" r="45" />
+                <circle class="progress-circle-fill" cx="60" cy="60" r="45" />
+              </svg>
+              <div class="gauge-val">0%</div>
+            </div>
+            <span class="radial-label" data-i18n="cat_app_dev">App Development</span>
+            <span class="radial-desc" data-i18n="skill_level_label">Kenntnisstand</span>
+          </div>
+
+          <!-- Category 5: Cloud & DevOps -->
+          <div class="radial-progress gauge-orange" data-category="cat_cloud_devops" data-progress="0">
+            <div class="gauge-wrapper">
+              <svg class="svg-gauge">
+                <circle class="progress-circle-bg" cx="60" cy="60" r="45" />
+                <circle class="progress-circle-fill" cx="60" cy="60" r="45" />
+              </svg>
+              <div class="gauge-val">0%</div>
+            </div>
+            <span class="radial-label" data-i18n="cat_cloud_devops">Cloud & DevOps</span>
+            <span class="radial-desc" data-i18n="skill_level_label">Kenntnisstand</span>
+          </div>
+
+          <!-- Category 6: Relational & NoSQL Databases -->
+          <div class="radial-progress gauge-emerald" data-category="cat_databases" data-progress="0">
+            <div class="gauge-wrapper">
+              <svg class="svg-gauge">
+                <circle class="progress-circle-bg" cx="60" cy="60" r="45" />
+                <circle class="progress-circle-fill" cx="60" cy="60" r="45" />
+              </svg>
+              <div class="gauge-val">0%</div>
+            </div>
+            <span class="radial-label" data-i18n="cat_databases">Relational & NoSQL Databases</span>
+            <span class="radial-desc" data-i18n="skill_level_label">Kenntnisstand</span>
+          </div>
+
+          <!-- Category 7: Automation & ETL -->
+          <div class="radial-progress gauge-indigo" data-category="cat_automation_etl" data-progress="0">
+            <div class="gauge-wrapper">
+              <svg class="svg-gauge">
+                <circle class="progress-circle-bg" cx="60" cy="60" r="45" />
+                <circle class="progress-circle-fill" cx="60" cy="60" r="45" />
+              </svg>
+              <div class="gauge-val">0%</div>
+            </div>
+            <span class="radial-label" data-i18n="cat_automation_etl">Automation & ETL</span>
+            <span class="radial-desc" data-i18n="skill_level_label">Kenntnisstand</span>
+          </div>
+
+          <!-- Category 8: Tools & Platforms -->
+          <div class="radial-progress gauge-amber" data-category="cat_tools" data-progress="0">
+            <div class="gauge-wrapper">
+              <svg class="svg-gauge">
+                <circle class="progress-circle-bg" cx="60" cy="60" r="45" />
+                <circle class="progress-circle-fill" cx="60" cy="60" r="45" />
+              </svg>
+              <div class="gauge-val">0%</div>
+            </div>
+            <span class="radial-label" data-i18n="cat_tools">Tools & Platforms</span>
+            <span class="radial-desc" data-i18n="skill_level_label">Kenntnisstand</span>
+          </div>
+
+        </div>
+
+        <!-- 7 Category Skill Cards Grid -->
+        <div class="skills-grid-wrapper">
+
+          <!-- Category 1: Data Science -->
+          <div class="glow-card skill-cat-card reveal">
+            <div class="card-content">
+              <div class="skill-cat-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="url(#cyanGrad)" stroke-width="2">
+                  <path d="M21.21 15.89A10 10 0 1 1 8 2.83M22 12A10 10 0 0 0 12 2v10z" />
+                </svg>
+                <h3 data-i18n="cat_data_science">Datenanalyse & Data Science</h3>
+              </div>
+              <div class="skill-list">
+                <div class="skill-item" data-progress="80">
+                  <div class="skill-info"><span class="skill-name" data-i18n="skill_eda">EDA (Exploratory Data
+                      Analysis)</span><span class="skill-percentage">80%</span></div>
+                  <div class="progress-bar-bg">
+                    <div class="progress-bar-fill cyan-progress-fill"></div>
+                  </div>
+                </div>
+                <div class="skill-item" data-progress="70">
+                  <div class="skill-info"><span class="skill-name" data-i18n="skill_ml">Maschinelles Lernen
+                      (Scikit-Learn, Regression, Klassifizierung, Clustering etc.)</span><span
+                      class="skill-percentage">70%</span></div>
+                  <div class="progress-bar-bg">
+                    <div class="progress-bar-fill cyan-progress-fill"></div>
+                  </div>
+                </div>
+                <div class="skill-item" data-progress="80">
+                  <div class="skill-info"><span class="skill-name">Streamlit</span><span
+                      class="skill-percentage">80%</span></div>
+                  <div class="progress-bar-bg">
+                    <div class="progress-bar-fill cyan-progress-fill"></div>
+                  </div>
+                </div>
+                <div class="skill-item" data-progress="80">
+                  <div class="skill-info"><span class="skill-name">Power BI</span><span
+                      class="skill-percentage">80%</span></div>
+                  <div class="progress-bar-bg">
+                    <div class="progress-bar-fill cyan-progress-fill"></div>
+                  </div>
+                </div>
+                <div class="skill-item" data-progress="80">
+                  <div class="skill-info"><span class="skill-name" data-i18n="skill_tableau">Tableau</span><span
+                      class="skill-percentage">80%</span></div>
+                  <div class="progress-bar-bg">
+                    <div class="progress-bar-fill cyan-progress-fill"></div>
+                  </div>
+                </div>
+                <div class="skill-item" data-progress="80">
+                  <div class="skill-info"><span class="skill-name" data-i18n="skill_excel">Excel</span><span
+                      class="skill-percentage">80%</span></div>
+                  <div class="progress-bar-bg">
+                    <div class="progress-bar-fill cyan-progress-fill"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 2: Programming -->
+          <div class="glow-card skill-cat-card reveal">
+            <div class="card-content">
+              <div class="skill-cat-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="url(#purpleGrad)" stroke-width="2">
+                  <path d="M16 18l6-6-6-6M8 6l-6 6 6 6" />
+                </svg>
+                <h3 data-i18n="cat_programming">Programmierung</h3>
+              </div>
+              <div class="skill-list">
+                <div class="skill-item" data-progress="80">
+                  <div class="skill-info"><span class="skill-name">Python</span><span
+                      class="skill-percentage">80%</span></div>
+                  <div class="progress-bar-bg">
+                    <div class="progress-bar-fill purple-progress-fill"></div>
+                  </div>
+                </div>
+                <div class="skill-item" data-progress="70">
+                  <div class="skill-info"><span class="skill-name">C#/.NET Core</span><span
+                      class="skill-percentage">70%</span></div>
+                  <div class="progress-bar-bg">
+                    <div class="progress-bar-fill purple-progress-fill"></div>
+                  </div>
+                </div>
+                <div class="skill-item" data-progress="80">
+                  <div class="skill-info"><span class="skill-name" data-i18n="skill_al">AL Programming
+                      Language</span><span class="skill-percentage">80%</span></div>
+                  <div class="progress-bar-bg">
+                    <div class="progress-bar-fill purple-progress-fill"></div>
+                  </div>
+                </div>
+                <div class="skill-item" data-progress="70">
+                  <div class="skill-info"><span class="skill-name">Visual Basic</span><span
+                      class="skill-percentage">70%</span></div>
+                  <div class="progress-bar-bg">
+                    <div class="progress-bar-fill purple-progress-fill"></div>
+                  </div>
+                </div>
+                <div class="skill-item" data-progress="70">
+                  <div class="skill-info"><span class="skill-name">C++</span><span class="skill-percentage">70%</span>
+                  </div>
+                  <div class="progress-bar-bg">
+                    <div class="progress-bar-fill purple-progress-fill"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 3: Web-Entwicklung -->
+          <div class="glow-card skill-cat-card reveal">
+            <div class="card-content">
+              <div class="skill-cat-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="url(#blueGrad)" stroke-width="2">
+                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+                  <line x1="8" y1="21" x2="16" y2="21" />
+                  <line x1="12" y1="17" x2="12" y2="21" />
+                </svg>
+                <h3 data-i18n="cat_web_dev">Web-Entwicklung</h3>
+              </div>
+              <div class="skill-list">
+                <div class="skill-item" data-progress="90">
+                  <div class="skill-info"><span class="skill-name">HTML</span><span class="skill-percentage">90%</span>
+                  </div>
+                  <div class="progress-bar-bg">
+                    <div class="progress-bar-fill blue-progress-fill"></div>
+                  </div>
+                </div>
+                <div class="skill-item" data-progress="80">
+                  <div class="skill-info"><span class="skill-name">CSS</span><span class="skill-percentage">80%</span>
+                  </div>
+                  <div class="progress-bar-bg">
+                    <div class="progress-bar-fill blue-progress-fill"></div>
+                  </div>
+                </div>
+                <div class="skill-item" data-progress="70">
+                  <div class="skill-info"><span class="skill-name">JavaScript</span><span
+                      class="skill-percentage">70%</span></div>
+                  <div class="progress-bar-bg">
+                    <div class="progress-bar-fill blue-progress-fill"></div>
+                  </div>
+                </div>
+                <div class="skill-item" data-progress="70">
+                  <div class="skill-info"><span class="skill-name">TypeScript</span><span
+                      class="skill-percentage">70%</span></div>
+                  <div class="progress-bar-bg">
+                    <div class="progress-bar-fill blue-progress-fill"></div>
+                  </div>
+                </div>
+                <div class="skill-item" data-progress="70">
+                  <div class="skill-info"><span class="skill-name">Node.js</span><span
+                      class="skill-percentage">70%</span></div>
+                  <div class="progress-bar-bg">
+                    <div class="progress-bar-fill blue-progress-fill"></div>
+                  </div>
+                </div>
+                <div class="skill-item" data-progress="70">
+                  <div class="skill-info"><span class="skill-name">React</span><span class="skill-percentage">70%</span>
+                  </div>
+                  <div class="progress-bar-bg">
+                    <div class="progress-bar-fill blue-progress-fill"></div>
+                  </div>
+                </div>
+                <div class="skill-item" data-progress="70">
+                  <div class="skill-info"><span class="skill-name">ASP .NET CORE/MVC</span><span
+                      class="skill-percentage">70%</span>
+                  </div>
+                  <div class="progress-bar-bg">
+                    <div class="progress-bar-fill blue-progress-fill"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 8: App-Entwicklung -->
+          <div class="glow-card skill-cat-card reveal">
+            <div class="card-content">
+              <div class="skill-cat-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="url(#pinkGrad)" stroke-width="2">
+                  <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
+                  <line x1="12" y1="18" x2="12.01" y2="18" />
+                </svg>
+                <h3 data-i18n="cat_app_dev">App-Entwicklung</h3>
+              </div>
+              <div class="skill-list">
+                <div class="skill-item" data-progress="60">
+                  <div class="skill-info"><span class="skill-name">Swift</span><span class="skill-percentage">60%</span>
+                  </div>
+                  <div class="progress-bar-bg">
+                    <div class="progress-bar-fill pink-progress-fill"></div>
+                  </div>
+                </div>
+                <div class="skill-item" data-progress="60">
+                  <div class="skill-info"><span class="skill-name">Java</span><span class="skill-percentage">60%</span>
+                  </div>
+                  <div class="progress-bar-bg">
+                    <div class="progress-bar-fill pink-progress-fill"></div>
+                  </div>
+                </div>
+                <div class="skill-item" data-progress="60">
+                  <div class="skill-info"><span class="skill-name">Flutter & Dart</span><span
+                      class="skill-percentage">60%</span></div>
+                  <div class="progress-bar-bg">
+                    <div class="progress-bar-fill pink-progress-fill"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 4: Cloud & DevOps -->
+          <div class="glow-card skill-cat-card reveal">
+            <div class="card-content">
+              <div class="skill-cat-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="url(#orangeGrad)" stroke-width="2">
+                  <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
+                </svg>
+                <h3 data-i18n="cat_cloud_devops">Cloud & DevOps</h3>
+              </div>
+              <div class="skill-list">
+                <div class="skill-item" data-progress="70">
+                  <div class="skill-info"><span class="skill-name">AWS (S3, IAM, EC2, RDS, Lambda, etc.)</span><span
+                      class="skill-percentage">70%</span></div>
+                  <div class="progress-bar-bg">
+                    <div class="progress-bar-fill orange-progress-fill"></div>
+                  </div>
+                </div>
+                <div class="skill-item" data-progress="75">
+                  <div class="skill-info"><span class="skill-name">Docker</span><span
+                      class="skill-percentage">75%</span></div>
+                  <div class="progress-bar-bg">
+                    <div class="progress-bar-fill orange-progress-fill"></div>
+                  </div>
+                </div>
+                <div class="skill-item" data-progress="70">
+                  <div class="skill-info"><span class="skill-name">Azure DevOps</span><span
+                      class="skill-percentage">70%</span></div>
+                  <div class="progress-bar-bg">
+                    <div class="progress-bar-fill orange-progress-fill"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 5: Databases -->
+          <div class="glow-card skill-cat-card reveal">
+            <div class="card-content">
+              <div class="skill-cat-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="url(#emeraldGrad)" stroke-width="2">
+                  <ellipse cx="12" cy="5" rx="9" ry="3" />
+                  <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
+                  <path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3" />
+                </svg>
+                <h3 data-i18n="cat_databases">Datenbanken</h3>
+              </div>
+              <div class="skill-list">
+                <div class="skill-item" data-progress="80">
+                  <div class="skill-info"><span class="skill-name" data-i18n="skill_sql_server">SQL Server</span><span
+                      class="skill-percentage">80%</span></div>
+                  <div class="progress-bar-bg">
+                    <div class="progress-bar-fill emerald-progress-fill"></div>
+                  </div>
+                </div>
+                <div class="skill-item" data-progress="80">
+                  <div class="skill-info"><span class="skill-name" data-i18n="skill_mysql">MySQL</span><span
+                      class="skill-percentage">80%</span></div>
+                  <div class="progress-bar-bg">
+                    <div class="progress-bar-fill emerald-progress-fill"></div>
+                  </div>
+                </div>
+                <div class="skill-item" data-progress="80">
+                  <div class="skill-info"><span class="skill-name" data-i18n="skill_postgresql">PostgreSQL</span><span
+                      class="skill-percentage">80%</span></div>
+                  <div class="progress-bar-bg">
+                    <div class="progress-bar-fill emerald-progress-fill"></div>
+                  </div>
+                </div>
+                <div class="skill-item" data-progress="80">
+                  <div class="skill-info"><span class="skill-name" data-i18n="skill_sqlite">SQLite</span><span
+                      class="skill-percentage">80%</span></div>
+                  <div class="progress-bar-bg">
+                    <div class="progress-bar-fill emerald-progress-fill"></div>
+                  </div>
+                </div>
+                <div class="skill-item" data-progress="80">
+                  <div class="skill-info"><span class="skill-name" data-i18n="skill_nosql">MongoDB</span><span
+                      class="skill-percentage">80%</span></div>
+                  <div class="progress-bar-bg">
+                    <div class="progress-bar-fill emerald-progress-fill"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 6: Automatisierung & ETL -->
+          <div class="glow-card skill-cat-card reveal">
+            <div class="card-content">
+              <div class="skill-cat-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="url(#indigoGrad)" stroke-width="2">
+                  <rect x="3" y="3" width="6" height="6" rx="1" />
+                  <rect x="15" y="3" width="6" height="6" rx="1" />
+                  <rect x="9" y="15" width="6" height="6" rx="1" />
+                  <path d="M6 9v3a2 2 0 0 0 2 2h4" />
+                  <path d="M18 9v3a2 2 0 0 1-2 2h-4" />
+                  <path d="M12 14v1" />
+                </svg>
+                <h3 data-i18n="cat_automation_etl">Automatisierung & ETL</h3>
+              </div>
+              <div class="skill-list">
+                <div class="skill-item" data-progress="80">
+                  <div class="skill-info"><span class="skill-name" data-i18n="skill_make">Make</span><span
+                      class="skill-percentage">80%</span></div>
+                  <div class="progress-bar-bg">
+                    <div class="progress-bar-fill indigo-progress-fill"></div>
+                  </div>
+                </div>
+                <div class="skill-item" data-progress="80">
+                  <div class="skill-info"><span class="skill-name" data-i18n="skill_n8n">n8n</span><span
+                      class="skill-percentage">80%</span></div>
+                  <div class="progress-bar-bg">
+                    <div class="progress-bar-fill indigo-progress-fill"></div>
+                  </div>
+                </div>
+                <div class="skill-item" data-progress="80">
+                  <div class="skill-info"><span class="skill-name" data-i18n="skill_airflow">Apache Airflow</span><span
+                      class="skill-percentage">80%</span></div>
+                  <div class="progress-bar-bg">
+                    <div class="progress-bar-fill indigo-progress-fill"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 7: Tools & Platforms -->
+          <div class="glow-card skill-cat-card reveal">
+            <div class="card-content">
+              <div class="skill-cat-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="url(#amberGrad)" stroke-width="2">
+                  <circle cx="12" cy="12" r="3" />
+                  <path
+                    d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+                </svg>
+                <h3 data-i18n="cat_tools">Tools & Plattformen</h3>
+              </div>
+              <div class="skill-list">
+                <div class="skill-item" data-progress="80">
+                  <div class="skill-info"><span class="skill-name">Git</span><span class="skill-percentage">80%</span>
+                  </div>
+                  <div class="progress-bar-bg">
+                    <div class="progress-bar-fill amber-progress-fill"></div>
+                  </div>
+                </div>
+                <div class="skill-item" data-progress="75">
+                  <div class="skill-info"><span class="skill-name">GitHub</span><span
+                      class="skill-percentage">75%</span></div>
+                  <div class="progress-bar-bg">
+                    <div class="progress-bar-fill amber-progress-fill"></div>
+                  </div>
+                </div>
+                <div class="skill-item" data-progress="70">
+                  <div class="skill-info"><span class="skill-name">hasura.io</span><span
+                      class="skill-percentage">70%</span></div>
+                  <div class="progress-bar-bg">
+                    <div class="progress-bar-fill amber-progress-fill"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 8: Office 365 -->
+          <div class="glow-card skill-cat-card reveal">
+            <div class="card-content">
+              <div class="skill-cat-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="url(#purpleGrad)" stroke-width="2">
+                  <rect x="3" y="3" width="7" height="7" rx="1" />
+                  <rect x="14" y="3" width="7" height="7" rx="1" />
+                  <rect x="3" y="14" width="7" height="7" rx="1" />
+                  <rect x="14" y="14" width="7" height="7" rx="1" />
+                </svg>
+                <h3 data-i18n="cat_office_365">Office 365</h3>
+              </div>
+              <div class="skill-list">
+                <div class="skill-item" data-progress="80">
+                  <div class="skill-info"><span class="skill-name" data-i18n="skill_excel">Excel</span><span
+                      class="skill-percentage">80%</span></div>
+                  <div class="progress-bar-bg">
+                    <div class="progress-bar-fill purple-progress-fill"></div>
+                  </div>
+                </div>
+                <div class="skill-item" data-progress="80">
+                  <div class="skill-info"><span class="skill-name" data-i18n="skill_word">Word</span><span
+                      class="skill-percentage">80%</span></div>
+                  <div class="progress-bar-bg">
+                    <div class="progress-bar-fill purple-progress-fill"></div>
+                  </div>
+                </div>
+                <div class="skill-item" data-progress="80">
+                  <div class="skill-info"><span class="skill-name" data-i18n="skill_powerpoint">PowerPoint</span><span
+                      class="skill-percentage">80%</span></div>
+                  <div class="progress-bar-bg">
+                    <div class="progress-bar-fill purple-progress-fill"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 7: Languages -->
+          <div class="glow-card skill-cat-card reveal">
+            <div class="card-content">
+              <div class="skill-cat-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="url(#roseGrad)" stroke-width="2">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                </svg>
+                <h3 data-i18n="cat_languages">Sprachen</h3>
+              </div>
+              <div class="lang-badge-grid">
+
+                <div class="lang-badge-item">
+                  <div class="lang-icon">
+                    <svg width="32" height="32" viewBox="0 0 30 30" style="display: block;">
+                      <defs>
+                        <clipPath id="circleClipPersian">
+                          <circle cx="15" cy="15" r="14" />
+                        </clipPath>
+                      </defs>
+                      <g clip-path="url(#circleClipPersian)">
+                        <!-- Green band -->
+                        <rect y="1" width="30" height="9.33" fill="#038847" />
+                        <!-- White band -->
+                        <rect y="10.33" width="30" height="9.33" fill="#ffffff" />
+                        <!-- Red band -->
+                        <rect y="19.66" width="30" height="9.34" fill="#D81E05" />
+
+                        <!-- Golden Lion & Sun (Emblem) -->
+                        <!-- Rising Sun behind Lion's back -->
+                        <circle cx="15.8" cy="15" r="2.2" fill="#FFD700" opacity="0.85" />
+                        <!-- Rays -->
+                        <path
+                          d="M 15.8 12.8 L 15.8 11.5 M 14.2 13.3 L 13.2 12.3 M 17.4 13.3 L 18.4 12.3 M 13.6 15 L 12.3 15 M 18 15 L 19.3 15"
+                          stroke="#FFD700" stroke-width="0.4" />
+
+                        <!-- Lion body & paws -->
+                        <path
+                          d="M 12.8 17.8 C 12.3 17.8 11.8 17.3 11.8 16.5 C 11.8 15.5 12.8 15.5 13.3 15.5 C 13.8 15.5 14.0 15.8 14.3 15.8 C 14.6 15.8 15.0 15.5 15.8 15.5 C 16.6 15.5 17.3 16.2 17.3 17.0 L 17.3 17.8 C 17.3 18.2 17.0 18.5 16.6 18.5 C 16.3 18.5 16.0 18.2 16.0 17.8 C 16.0 17.4 15.6 17.2 15.2 17.2 C 14.8 17.2 14.4 17.4 14.4 17.8 L 14.4 18.5 C 14.4 18.8 14.1 19.0 13.8 19.0 C 13.5 19.0 13.2 18.8 13.2 18.5 L 13.2 17.8 C 13.2 17.4 13.0 17.4 12.8 17.4"
+                          fill="#FFD700" />
+
+                        <!-- Head -->
+                        <circle cx="12.3" cy="15.2" r="1.1" fill="#FFD700" />
+                        <!-- Mane / crown hint -->
+                        <path d="M 11.8 14.3 Q 12.3 13.8, 12.8 14.3" stroke="#FFD700" stroke-width="0.3" fill="none" />
+
+                        <!-- Raised Paw with Curved Sword -->
+                        <path d="M 11.8 16.2 Q 10.8 14.2, 9.4 14.6" fill="none" stroke="#FFD700" stroke-width="0.6"
+                          stroke-linecap="round" />
+
+                        <!-- Tail arched over back -->
+                        <path d="M 16.8 17.0 Q 18.0 16.0 17.6 14.5" fill="none" stroke="#FFD700" stroke-width="0.5"
+                          stroke-linecap="round" />
+                      </g>
+                      <circle cx="15" cy="15" r="14" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1.2" />
+                    </svg>
+                  </div>
+                  <div class="lang-info">
+                    <div class="skill-item" data-progress="100">
+                      <div class="skill-info">
+                        <span class="skill-name" data-i18n="lang_persian">Persisch (Muttersprache)</span>
+                        <span class="skill-percentage" data-i18n="lang_persian_level">100%</span>
+                      </div>
+                      <div class="progress-bar-bg">
+                        <div class="progress-bar-fill rose-progress-fill"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="lang-badge-item">
+                  <div class="lang-icon">
+                    <svg width="32" height="32" viewBox="0 0 30 30" style="display: block;">
+                      <defs>
+                        <clipPath id="circleClipGerman">
+                          <circle cx="15" cy="15" r="14" />
+                        </clipPath>
+                      </defs>
+                      <g clip-path="url(#circleClipGerman)">
+                        <!-- Schwarz-Rot-Gold -->
+                        <rect y="1" width="30" height="9.33" fill="#000000" />
+                        <rect y="10.33" width="30" height="9.33" fill="#D81E05" />
+                        <rect y="19.66" width="30" height="9.34" fill="#FFD700" />
+                      </g>
+                      <circle cx="15" cy="15" r="14" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1.2" />
+                    </svg>
+                  </div>
+                  <div class="lang-info">
+                    <div class="skill-item" data-progress="70">
+                      <div class="skill-info">
+                        <span class="skill-name" data-i18n="lang_german">Deutsch (Fließend)</span>
+                        <span class="skill-percentage" data-i18n="lang_german_level">70%</span>
+                      </div>
+                      <div class="progress-bar-bg">
+                        <div class="progress-bar-fill rose-progress-fill"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="lang-badge-item">
+                  <div class="lang-icon">
+                    <svg width="32" height="32" viewBox="0 0 30 30" style="display: block;">
+                      <defs>
+                        <clipPath id="circleClipBritish">
+                          <circle cx="15" cy="15" r="14" />
+                        </clipPath>
+                      </defs>
+                      <g clip-path="url(#circleClipBritish)">
+                        <!-- Union Jack -->
+                        <!-- Blue background -->
+                        <rect y="1" width="30" height="28" fill="#012169" />
+                        <!-- White diagonal crosses -->
+                        <path d="M0 1 L30 29 M30 1 L0 29" stroke="#ffffff" stroke-width="3.2" />
+                        <!-- Red diagonal crosses -->
+                        <path d="M0 1 L30 29 M30 1 L0 29" stroke="#C8102E" stroke-width="1.2" />
+                        <!-- White cross -->
+                        <path d="M15 1 L15 29 M0 15 L30 15" stroke="#ffffff" stroke-width="5.2" />
+                        <!-- Red cross -->
+                        <path d="M15 1 L15 29 M0 15 L30 15" stroke="#C8102E" stroke-width="3.2" />
+                      </g>
+                      <circle cx="15" cy="15" r="14" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1.2" />
+                    </svg>
+                  </div>
+                  <div class="lang-info">
+                    <div class="skill-item" data-progress="47">
+                      <div class="skill-info">
+                        <span class="skill-name" data-i18n="lang_english">Englisch (Konversationssicher)</span>
+                        <span class="skill-percentage" data-i18n="lang_english_level">47%</span>
+                      </div>
+                      <div class="progress-bar-bg">
+                        <div class="progress-bar-fill rose-progress-fill"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- GitHub Repositories Section -->
+  <section id="repositories">
+    <div class="container reveal">
+      <div class="section-header">
+        <div
+          style="display: inline-flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 1.5rem;">
+          <svg style="width: 44px; height: 44px; fill: currentColor;" viewBox="0 0 24 24">
+            <path
+              d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z" />
+          </svg>
+          <h2 data-i18n="section_repos_title" style="margin-bottom: 0;">GitHub Repositories</h2>
+        </div>
+        <p data-i18n="section_repos_subtitle">Entdecken Sie meine Open-Source-Projekte und Code-Architekturen</p>
+      </div>
+
+      <!-- Repository Category Filter Tabs -->
+      <div class="repo-filter-container reveal">
+        <button class="repo-filter-btn active" data-filter="all">
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="7" height="7"></rect>
+            <rect x="14" y="3" width="7" height="7"></rect>
+            <rect x="14" y="14" width="7" height="7"></rect>
+            <rect x="3" y="14" width="7" height="7"></rect>
+          </svg>
+          <span data-i18n="repo_filter_all">Alle</span>
+        </button>
+        <button class="repo-filter-btn" data-filter="data-science">
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="20" x2="18" y2="10"></line>
+            <line x1="12" y1="20" x2="12" y2="4"></line>
+            <line x1="6" y1="20" x2="6" y2="14"></line>
+          </svg>
+          <span data-i18n="repo_filter_ds">Data Science</span>
+        </button>
+        <button class="repo-filter-btn" data-filter="web-cloud">
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+          <span data-i18n="repo_filter_web">Web & Cloud</span>
+        </button>
+        <button class="repo-filter-btn" data-filter="desktop-systems">
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+            <line x1="8" y1="21" x2="16" y2="21"></line>
+            <line x1="12" y1="17" x2="12" y2="21"></line>
+          </svg>
+          <span data-i18n="repo_filter_desktop">Desktop & System-Utilities</span>
+        </button>
+        <button class="repo-filter-btn" data-filter="mobile-cross">
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+            <line x1="12" y1="18" x2="12.01" y2="18"></line>
+          </svg>
+          <span data-i18n="repo_filter_mobile">Mobile & Cross-Platform</span>
+        </button>
+      </div>
+
+      <div class="repositories-accordion">
+
+        <!-- Repo 1: DeepWorkInsights -->
+        <details class="repo-item" data-category="data-science">
+          <summary>
+            <div class="repo-summary-header">
+              <span>DeepWorkInsights</span>
+              <div class="repo-summary-techs">
+                <span class="repo-tech-badge">Python</span>
+                <span class="repo-tech-badge">Docker</span>
+                <span class="repo-tech-badge">H2O AutoML</span>
+                <span class="repo-tech-badge">Auto-Sklearn</span>
+              </div>
+            </div>
+            <div class="repo-toggle-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round">
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </svg>
+            </div>
+          </summary>
+          <div class="repo-details-content">
+            <div class="repo-field">
+              <h4 data-i18n="repo_what_is">Was ist das & Ziel</h4>
+              <p data-i18n="repo_1_what_is">Ein automatisiertes Datenpipeline- und Vorhersageprojekt, das offizielle
+                monatliche Arbeitsmarktdaten für Deutschland herunterlädt und verarbeitet.</p>
+            </div>
+            <div class="repo-field">
+              <h4 data-i18n="repo_desc">Beschreibung</h4>
+              <p data-i18n="repo_1_desc">Downloads official monthly unemployment data from the Federal Employment Agency
+                (BA), parses it into CSV datasets, and runs two independent AutoML engines (H2O AutoML and Auto-sklearn)
+                to forecast the current month's figures. The pipeline is containerized using Docker and Docker Compose.
+              </p>
+            </div>
+            <div class="repo-field">
+              <h4 data-i18n="repo_techs">Verwendete Technologien</h4>
+              <p>Python 3.10+, H2O AutoML, Auto-Sklearn, Docker, Docker Compose, Pandas, NumPy, OpenPyXL</p>
+            </div>
+            <div class="repo-link-wrapper">
+              <a href="https://github.com/amirargani/DeepWorkInsights" target="_blank" rel="noopener"
+                class="btn btn-secondary" style="padding: 0.5rem 1.2rem; font-size: 0.85rem; border-radius: 8px;">
+                <span data-i18n="repo_visit">Projekt auf GitHub ansehen</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  style="margin-left: 0.35rem;">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                  <polyline points="15 3 21 3 21 9" />
+                  <line x1="10" y1="14" x2="21" y2="3" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </details>
+
+        <!-- Repo 2: UptimeSHIELD -->
+        <details class="repo-item" data-category="web-cloud">
+          <summary>
+            <div class="repo-summary-header">
+              <span>UptimeSHIELD</span>
+              <div class="repo-summary-techs">
+                <span class="repo-tech-badge">Node.js</span>
+                <span class="repo-tech-badge">TypeScript</span>
+                <span class="repo-tech-badge">React 19</span>
+                <span class="repo-tech-badge">Gemini AI</span>
+              </div>
+            </div>
+            <div class="repo-toggle-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round">
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </svg>
+            </div>
+          </summary>
+          <div class="repo-details-content">
+            <div class="repo-field">
+              <h4 data-i18n="repo_what_is">Was ist das & Ziel</h4>
+              <p data-i18n="repo_2_what_is">Ein professionelles Full-Stack-Überwachungs-Dashboard zur
+                Echtzeit-Überwachung und vollautomatischen Wiederherstellung kritischer Windows-Dienste.</p>
+            </div>
+            <div class="repo-field">
+              <h4 data-i18n="repo_desc">Beschreibung</h4>
+              <p data-i18n="repo_2_desc">A professional-grade client-server monitoring dashboard that tracks critical
+                Windows services. Features real-time status heartbeats, custom auto-recovery retry policies, interactive
+                charts via Recharts, and deep Google Gemini AI integration to analyze log files and recommend diagnostic
+                solutions.</p>
+            </div>
+            <div class="repo-field">
+              <h4 data-i18n="repo_techs">Verwendete Technologien</h4>
+              <p>React 19, TypeScript 5.8, Vite 6.2, Node.js, Express, Google Gemini AI (Diagnostics API), Recharts,
+                Tailwind CSS 3.4, Lucide Icons</p>
+            </div>
+            <div class="repo-link-wrapper">
+              <a href="https://github.com/amirargani/UptimeSHIELD" target="_blank" rel="noopener"
+                class="btn btn-secondary" style="padding: 0.5rem 1.2rem; font-size: 0.85rem; border-radius: 8px;">
+                <span data-i18n="repo_visit">Projekt auf GitHub ansehen</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  style="margin-left: 0.35rem;">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                  <polyline points="15 3 21 3 21 9" />
+                  <line x1="10" y1="14" x2="21" y2="3" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </details>
+
+        <!-- Repo 3: TheFutureOfYouth -->
+        <details class="repo-item" data-category="data-science">
+          <summary>
+            <div class="repo-summary-header">
+              <span>TheFutureOfYouth</span>
+              <div class="repo-summary-techs">
+                <span class="repo-tech-badge">Python</span>
+                <span class="repo-tech-badge">Streamlit</span>
+                <span class="repo-tech-badge">Scikit-learn</span>
+              </div>
+            </div>
+            <div class="repo-toggle-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round">
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </svg>
+            </div>
+          </summary>
+          <div class="repo-details-content">
+            <div class="repo-field">
+              <h4 data-i18n="repo_what_is">Was ist das & Ziel</h4>
+              <p data-i18n="repo_3_what_is">Eine interaktive Datenanalyse- und Machine-Learning-Webanwendung, die die
+                Herausforderungen der Jugend in Deutschland beleuchtet.</p>
+            </div>
+            <div class="repo-field">
+              <h4 data-i18n="repo_desc">Beschreibung</h4>
+              <p data-i18n="repo_3_desc">A collaborative data science project exploring educational, employment, and
+                mental health challenges facing German youth. Built as an interactive Streamlit dashboard featuring
+                custom data pipelines with Pandas, dynamic Plotly visualizations, Scikit-learn regression models for
+                unemployment forecasting, and comparative Power BI (.pbix) dashboards.</p>
+            </div>
+            <div class="repo-field">
+              <h4 data-i18n="repo_techs">Verwendete Technologien</h4>
+              <p>Python 3.11, Streamlit 1.50, Scikit-learn, Plotly, Pandas, NumPy, Power BI (.pbix)</p>
+            </div>
+            <div class="repo-link-wrapper">
+              <a href="https://github.com/amirargani/TheFutureOfYouth" target="_blank" rel="noopener"
+                class="btn btn-secondary" style="padding: 0.5rem 1.2rem; font-size: 0.85rem; border-radius: 8px;">
+                <span data-i18n="repo_visit">Projekt auf GitHub ansehen</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  style="margin-left: 0.35rem;">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                  <polyline points="15 3 21 3 21 9" />
+                  <line x1="10" y1="14" x2="21" y2="3" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </details>
+
+        <!-- Repo 4: REBOOTMASTER -->
+        <details class="repo-item" data-category="desktop-systems">
+          <summary>
+            <div class="repo-summary-header">
+              <span>REBOOTMASTER</span>
+              <div class="repo-summary-techs">
+                <span class="repo-tech-badge">C#</span>
+                <span class="repo-tech-badge">.NET 10</span>
+                <span class="repo-tech-badge">Windows Forms</span>
+              </div>
+            </div>
+            <div class="repo-toggle-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round">
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </svg>
+            </div>
+          </summary>
+          <div class="repo-details-content">
+            <div class="repo-field">
+              <h4 data-i18n="repo_what_is">Was ist das & Ziel</h4>
+              <p data-i18n="repo_4_what_is">Eine hochperformante Windows Forms Desktop-Anwendung zur kontinuierlichen
+                Überwachung und automatisierten Wiederherstellung kritischer Windows-Dienste.</p>
+            </div>
+            <div class="repo-field">
+              <h4 data-i18n="repo_desc">Beschreibung</h4>
+              <p data-i18n="repo_4_desc">A robust system-monitoring application built on .NET 10 that tracks critical
+                running programs. Instantly restarts failed services, encrypts sensitive configurations
+                (SMTP/credentials) using AES encryption, prints diagnostic traces with log4net, sends fail-safe email
+                notifications upon persistent failure, and includes a full suite of 56 xUnit tests.</p>
+            </div>
+            <div class="repo-field">
+              <h4 data-i18n="repo_techs">Verwendete Technologien</h4>
+              <p>C# 12, .NET 10, Windows Forms, log4net, AES Encryption, SMTP Mail Service, xUnit Tests</p>
+            </div>
+            <div class="repo-link-wrapper">
+              <a href="https://github.com/amirargani/REBOOTMASTER" target="_blank" rel="noopener"
+                class="btn btn-secondary" style="padding: 0.5rem 1.2rem; font-size: 0.85rem; border-radius: 8px;">
+                <span data-i18n="repo_visit">Projekt auf GitHub ansehen</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  style="margin-left: 0.35rem;">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                  <polyline points="15 3 21 3 21 9" />
+                  <line x1="10" y1="14" x2="21" y2="3" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </details>
+
+        <!-- Repo 5: Knotenpunkt -->
+        <details class="repo-item" data-category="mobile-cross">
+          <summary>
+            <div class="repo-summary-header">
+              <span>Knotenpunkt</span>
+              <div class="repo-summary-techs">
+                <span class="repo-tech-badge">Swift</span>
+                <span class="repo-tech-badge">Java</span>
+                <span class="repo-tech-badge">Google Apps Script</span>
+              </div>
+            </div>
+            <div class="repo-toggle-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round">
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </svg>
+            </div>
+          </summary>
+          <div class="repo-details-content">
+            <div class="repo-field">
+              <h4 data-i18n="repo_what_is">Was ist das & Ziel</h4>
+              <p data-i18n="repo_5_what_is">Eine plattformübergreifende Komplettlösung zur effizienten Verwaltung,
+                Organisation und Helferkoordination von Kirchengemeinden.</p>
+            </div>
+            <div class="repo-field">
+              <h4 data-i18n="repo_desc">Beschreibung</h4>
+              <p data-i18n="repo_5_desc">A unified church orchestration system containing native client applications for
+                iOS (built with Swift, UIKit, and URLSession) and Android (built with Java, Volley, and RecyclerView),
+                powered by a lightweight JavaScript backend running on Google Apps Script, using Google Sheets as a
+                database and syncing with Google Calendar.</p>
+            </div>
+            <div class="repo-field">
+              <h4 data-i18n="repo_techs">Verwendete Technologien</h4>
+              <p>Swift (iOS Native), Java (Android Native), Google Apps Script (JavaScript), Google Sheets DB, Google
+                Calendar API</p>
+            </div>
+            <div class="repo-link-wrapper">
+              <a href="https://github.com/amirargani/Knotenpunkt" target="_blank" rel="noopener"
+                class="btn btn-secondary" style="padding: 0.5rem 1.2rem; font-size: 0.85rem; border-radius: 8px;">
+                <span data-i18n="repo_visit">Projekt auf GitHub ansehen</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  style="margin-left: 0.35rem;">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                  <polyline points="15 3 21 3 21 9" />
+                  <line x1="10" y1="14" x2="21" y2="3" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </details>
+
+        <!-- Repo 6: War3TFTSwitcher -->
+        <details class="repo-item" data-category="desktop-systems">
+          <summary>
+            <div class="repo-summary-header">
+              <span>War3TFTSwitcher</span>
+              <div class="repo-summary-techs">
+                <span class="repo-tech-badge">Visual Basic</span>
+              </div>
+            </div>
+            <div class="repo-toggle-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round">
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </svg>
+            </div>
+          </summary>
+          <div class="repo-details-content">
+            <div class="repo-field">
+              <h4 data-i18n="repo_what_is">Was ist das & Ziel</h4>
+              <p data-i18n="repo_6_what_is">Ein ultra-schnelles Legacy-System-Utility zum schnellen
+                Patch-Versionswechsel des Spiels Warcraft III: The Frozen Throne.</p>
+            </div>
+            <div class="repo-field">
+              <h4 data-i18n="repo_desc">Beschreibung</h4>
+              <p data-i18n="repo_6_desc">Developed between 2009 and 2013 for competitive Garena players. This
+                lightweight Windows utility manipulates registry paths to hot-swap game patches in under 10 seconds,
+                saving gigabytes of storage by avoiding folder duplication. Features a custom borderless form with both
+                classic and dark themes.</p>
+            </div>
+            <div class="repo-field">
+              <h4 data-i18n="repo_techs">Verwendete Technologien</h4>
+              <p>Visual Basic (VB)</p>
+            </div>
+            <div class="repo-link-wrapper">
+              <a href="https://github.com/amirargani/War3TFTSwitcher" target="_blank" rel="noopener"
+                class="btn btn-secondary" style="padding: 0.5rem 1.2rem; font-size: 0.85rem; border-radius: 8px;">
+                <span data-i18n="repo_visit">Projekt auf GitHub ansehen</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  style="margin-left: 0.35rem;">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                  <polyline points="15 3 21 3 21 9" />
+                  <line x1="10" y1="14" x2="21" y2="3" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </details>
+
+        <!-- Repo 7: Kelisayesalib -->
+        <details class="repo-item" data-category="web-cloud">
+          <summary>
+            <div class="repo-summary-header">
+              <span>Kelisayesalib</span>
+              <div class="repo-summary-techs">
+                <span class="repo-tech-badge">C#</span>
+                <span class="repo-tech-badge">ASP.NET Core MVC</span>
+              </div>
+            </div>
+            <div class="repo-toggle-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round">
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </svg>
+            </div>
+          </summary>
+          <div class="repo-details-content">
+            <div class="repo-field">
+              <h4 data-i18n="repo_what_is">Was ist das & Ziel</h4>
+              <p data-i18n="repo_7_what_is">Ein umfassendes, webbasiertes Kirchen- und Gemeindeverwaltungssystem mit
+                integrierten Benutzerrollen und mehrsprachiger Unterstützung.</p>
+            </div>
+            <div class="repo-field">
+              <h4 data-i18n="repo_desc">Beschreibung</h4>
+              <p data-i18n="repo_7_desc">A full-featured enterprise web application built on ASP.NET Core 5.0 MVC and C#
+                9.0. It leverages Entity Framework Core for data management, ASP.NET Core Identity for secure
+                authentication, SQL Server (with SQLite support), and a responsive Bootstrap-powered frontend with
+                Farsi/Persian localization to manage worship services, speaker scheduling, events, and ministries.</p>
+            </div>
+            <div class="repo-field">
+              <h4 data-i18n="repo_techs">Verwendete Technologien</h4>
+              <p>ASP.NET Core 5.0 MVC, C# 9.0, Entity Framework Core, SQL Server, ASP.NET Core Identity, Bootstrap,
+                jQuery, Razor Views</p>
+            </div>
+            <div class="repo-link-wrapper">
+              <a href="https://github.com/amirargani/Kelisayesalib" target="_blank" rel="noopener"
+                class="btn btn-secondary" style="padding: 0.5rem 1.2rem; font-size: 0.85rem; border-radius: 8px;">
+                <span data-i18n="repo_visit">Projekt auf GitHub ansehen</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  style="margin-left: 0.35rem;">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                  <polyline points="15 3 21 3 21 9" />
+                  <line x1="10" y1="14" x2="21" y2="3" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </details>
+
+        <!-- Repo 8: Holstentor -->
+        <details class="repo-item" data-category="web-cloud">
+          <summary>
+            <div class="repo-summary-header">
+              <span>Holstentor</span>
+              <div class="repo-summary-techs">
+                <span class="repo-tech-badge">C#</span>
+                <span class="repo-tech-badge">ASP.NET MVC 5</span>
+              </div>
+            </div>
+            <div class="repo-toggle-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round">
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </svg>
+            </div>
+          </summary>
+          <div class="repo-details-content">
+            <div class="repo-field">
+              <h4 data-i18n="repo_what_is">Was ist das & Ziel</h4>
+              <p data-i18n="repo_8_what_is">Ein professionelles, konsolidiertes Restaurant-Management-System zur
+                Digitalisierung von Menüs, Kategorien, Medien und Systemadministration.</p>
+            </div>
+            <div class="repo-field">
+              <h4 data-i18n="repo_desc">Beschreibung</h4>
+              <p data-i18n="repo_8_desc">A consolidated workspace housing two independent, full-stack restaurant
+                administration systems: a modern web application built on ASP.NET Core 1.1 (C#, EF Core) and a classic
+                web app built on ASP.NET MVC 5 / .NET Framework 4.7.2 (EF 6 Database-First). Both stacks utilize SQL
+                Server databases, Razor Views, and responsive frontend menus.</p>
+            </div>
+            <div class="repo-field">
+              <h4 data-i18n="repo_techs">Verwendete Technologien</h4>
+              <p>ASP.NET Core 1.1, ASP.NET MVC 5, C#, Entity Framework Core, Entity Framework 6, SQL Server, Bootstrap,
+                jQuery, Fancybox</p>
+            </div>
+            <div class="repo-link-wrapper">
+              <a href="https://github.com/amirargani/Holstentor" target="_blank" rel="noopener"
+                class="btn btn-secondary" style="padding: 0.5rem 1.2rem; font-size: 0.85rem; border-radius: 8px;">
+                <span data-i18n="repo_visit">Projekt auf GitHub ansehen</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  style="margin-left: 0.35rem;">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                  <polyline points="15 3 21 3 21 9" />
+                  <line x1="10" y1="14" x2="21" y2="3" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </details>
+
+        <!-- Repo 9: KefirFAQMatching -->
+        <details class="repo-item" data-category="data-science">
+          <summary>
+            <div class="repo-summary-header">
+              <span>KefirFAQMatching</span>
+              <div class="repo-summary-techs">
+                <span class="repo-tech-badge">C#</span>
+                <span class="repo-tech-badge">ASP.NET MVC</span>
+                <span class="repo-tech-badge">AngularJS</span>
+              </div>
+            </div>
+            <div class="repo-toggle-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round">
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </svg>
+            </div>
+          </summary>
+          <div class="repo-details-content">
+            <div class="repo-field">
+              <h4 data-i18n="repo_what_is">Was ist das & Ziel</h4>
+              <p data-i18n="repo_9_what_is">Ein intelligentes Web-FAQ-System zur automatisierten Beantwortung von
+                Kundenanfragen mittels Textähnlichkeits-Algorithmen.</p>
+            </div>
+            <div class="repo-field">
+              <h4 data-i18n="repo_desc">Beschreibung</h4>
+              <p data-i18n="repo_9_desc">Designed as a Bachelor's thesis project. A C# .NET Framework 4.8 full-stack
+                application featuring a dedicated library (`KefirProjectLib`) that runs TF-IDF vectorization and cosine
+                similarity calculations for semantic text matching. Unmatched queries are persisted to a SQL Server
+                database for review in a responsive AngularJS 1.5.8 and Bootstrap 3 dashboard.</p>
+            </div>
+            <div class="repo-field">
+              <h4 data-i18n="repo_techs">Verwendete Technologien</h4>
+              <p>C#, .NET Framework 4.8, AngularJS 1.5.8, SQL Server, TF-IDF NLP, Cosine Similarity, Bootstrap 3.0.0</p>
+            </div>
+            <div class="repo-link-wrapper">
+              <a href="https://github.com/amirargani/KefirFAQMatching" target="_blank" rel="noopener"
+                class="btn btn-secondary" style="padding: 0.5rem 1.2rem; font-size: 0.85rem; border-radius: 8px;">
+                <span data-i18n="repo_visit">Projekt auf GitHub ansehen</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  style="margin-left: 0.35rem;">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                  <polyline points="15 3 21 3 21 9" />
+                  <line x1="10" y1="14" x2="21" y2="3" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </details>
+
+        <!-- Repo 10: MusicBackgroundWinForm -->
+        <details class="repo-item" data-category="desktop-systems">
+          <summary>
+            <div class="repo-summary-header">
+              <span>MusicBackgroundWinForm</span>
+              <div class="repo-summary-techs">
+                <span class="repo-tech-badge">C#</span>
+                <span class="repo-tech-badge">Windows Forms</span>
+              </div>
+            </div>
+            <div class="repo-toggle-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round">
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </svg>
+            </div>
+          </summary>
+          <div class="repo-details-content">
+            <div class="repo-field">
+              <h4 data-i18n="repo_what_is">Was ist das & Ziel</h4>
+              <p data-i18n="repo_10_what_is">Eine ansprechende Windows Forms Desktop-Anwendung mit kontinuierlicher
+                MP3-Audiowiedergabe und flüssigen grafischen Übergängen.</p>
+            </div>
+            <div class="repo-field">
+              <h4 data-i18n="repo_desc">Beschreibung</h4>
+              <p data-i18n="repo_10_desc">Known internally as "Dictionary 2015". A C# .NET Framework 4.5.1 Windows Forms
+                app showcasing seamless audio integration. It extracts an embedded MP3 resource to the temp directory on
+                startup for continuous playback using the WMPLib COM library, all wrapped in a custom borderless
+                draggable frame with smooth fade and slide animations.</p>
+            </div>
+            <div class="repo-field">
+              <h4 data-i18n="repo_techs">Verwendete Technologien</h4>
+              <p>C#, Windows Forms, .NET Framework 4.5.1, WMPLib COM, Custom Animations, Draggable Window</p>
+            </div>
+            <div class="repo-link-wrapper">
+              <a href="https://github.com/amirargani/MusicBackgroundWinForm" target="_blank" rel="noopener"
+                class="btn btn-secondary" style="padding: 0.5rem 1.2rem; font-size: 0.85rem; border-radius: 8px;">
+                <span data-i18n="repo_visit">Projekt auf GitHub ansehen</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  style="margin-left: 0.35rem;">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                  <polyline points="15 3 21 3 21 9" />
+                  <line x1="10" y1="14" x2="21" y2="3" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </details>
+
+      </div>
+
+      <div style="text-align: center; margin-top: 3.5rem;">
+        <a href="https://github.com/amirargani?tab=repositories" target="_blank" rel="noopener"
+          class="btn btn-secondary" style="padding: 0.9rem 2.2rem; font-size: 1rem; border-radius: 12px;">
+          <span>Alle Repositories auf GitHub ansehen</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            style="margin-left: 0.5rem;">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+            <polyline points="15 3 21 3 21 9" />
+            <line x1="10" y1="14" x2="21" y2="3" />
+          </svg>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="container reveal">
+      <div class="contact-wrapper">
+        <h2 class="gradient-text"
+          style="font-family: var(--font-heading); font-size: 3.5rem; font-weight: 800; margin-bottom: 1.5rem;"
+          data-i18n="section_contact_title">Lassen Sie uns vernetzen!</h2>
+        <p class="contact-text" data-i18n="section_contact_subtitle">Bereit für das nächste datengetriebene Projekt?</p>
+        <p class="contact-text" style="font-size: 1.1rem; max-width: 550px;" data-i18n="contact_desc">Ich freue mich
+          über Anfragen für Positionen in Hamburg, Lübeck oder 100% Remote. Kontaktieren Sie mich gerne über LinkedIn
+          oder GitHub.</p>
+
+        <a href="https://linkedin.com/in/amir-argani" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top: 1rem;"
+          data-i18n="contact_linkedin_btn">Auf LinkedIn vernetzen</a>
+
+        <div class="contact-socials">
+          <a href="https://linkedin.com/in/amir-argani" target="_blank" rel="noopener" class="social-btn"
+            aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
+            </svg>
+          </a>
+          <a href="https://github.com/amirargani" target="_blank" rel="noopener" class="social-btn" aria-label="GitHub">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p data-i18n="footer_text">© 2026 Amir Argani. Alle Rechte vorbehalten. Entwickelt mit Fokus auf Data Science &
+        Software Engineering.</p>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+      stroke-linecap="round" stroke-linejoin="round">
+      <line x1="12" y1="19" x2="12" y2="5"></line>
+      <polyline points="5 12 12 5 19 12"></polyline>
+    </svg>
+  </button>
+
+  <!-- Core Scripts -->
+  <script src="script.js"></script>
+</body>
+
+</html>
