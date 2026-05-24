@@ -304,7 +304,8 @@ const translations = {
 };
 
 // Global variables
-let currentLang = localStorage.getItem("portfolio_lang") || "de";
+let currentLang = localStorage.getItem("portfolio_lang") || "en";
+
 
 // Calculate dynamic category percentages based on bottom subcategories
 function calculateCategoryPercentages() {
