@@ -1037,9 +1037,8 @@ header {
   stroke-width: 8;
   stroke-linecap: round;
   stroke-dasharray: 283;
-  stroke-dashoffset: 283;
-  /* Will be set dynamically by JS */
-  transition: stroke-dashoffset 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+  stroke-dashoffset: 283; /* fully hidden by default; JS animates from here */
+  /* transition controlled entirely by JS */
 }
 
 /* Different gradients for circular gauges */
