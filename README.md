@@ -52,6 +52,12 @@ The website is engineered with a **dark-mode glassmorphic design system**, custo
 
 All notable enhancements to this repository are documented below:
 
+### [v1.1.0] - 2026-05-24
+#### Added
+* **Certificates Showcase**: Integrated a new section to display official Data Science certificates.
+* **Secure PDF Viewer**: Engineered a custom modal using Google Docs Viewer to display PDFs natively on all browsers while forcefully preventing native downloads (especially overriding Safari's un-removable HUD) and fully blocking right-click/context menus.
+* **Consistent Button Styling**: Standardized global button CSS so all action buttons mirror the premium LinkedIn button aesthetic perfectly.
+
 ### [v1.0.0] - 2026-05-24
 #### Added
 * **Premium Portfolio Core**: Implemented a responsive single-page portfolio with glassmorphism layout, fluid animations, and customized circular progress gauges.

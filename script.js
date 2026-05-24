@@ -663,7 +663,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!modal || !modalIframe) return;
 
     modalTitle.textContent = title;
-    modalIframe.src = pdfUrl + "#toolbar=0";
+    // Use Google Docs Viewer to bypass Safari's native PDF HUD
+    modalIframe.src = "https://docs.google.com/gview?url=" + encodeURIComponent(pdfUrl) + "&embedded=true";
 
     modal.classList.add("open");
     document.body.style.overflow = "hidden"; // Prevent background scrolling
