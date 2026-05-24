@@ -9,7 +9,18 @@ const translations = {
     nav_problem_solution: "Mein Ansatz",
     nav_projects: "Projekte",
     nav_skills: "Kenntnisse",
+    nav_certificates: "Zertifikate",
     nav_contact: "Kontakt",
+
+    // Certificates Section
+    section_cert_title: "Zertifikate & Abschlussbescheinigungen",
+    section_cert_subtitle: "Offizielle Nachweise meiner Data-Science-Ausbildung an der DSI Berlin",
+    cert_1_title: "Zertifikat – 6 Monate Data Science",
+    cert_1_issuer: "DSI Berlin – Data Science Institute",
+    cert_2_title: "Abschlussbescheinigung Data Science",
+    cert_2_issuer: "DSI Berlin – Data Science Institute",
+    cert_view_btn: "PDF öffnen",
+    cert_modal_close: "Schließen",
 
     // Hero Section
     hero_badge: "Software Engineer & Data Enthusiast",
@@ -158,7 +169,18 @@ const translations = {
     nav_problem_solution: "My Approach",
     nav_projects: "Projects",
     nav_skills: "Skills",
+    nav_certificates: "Certificates",
     nav_contact: "Contact",
+
+    // Certificates Section
+    section_cert_title: "Certificates & Completion Certificates",
+    section_cert_subtitle: "Official proof of my Data Science training at DSI Berlin",
+    cert_1_title: "Certificate – 6 Months Data Science",
+    cert_1_issuer: "DSI Berlin – Data Science Institute",
+    cert_2_title: "Certificate of Completion – Data Science",
+    cert_2_issuer: "DSI Berlin – Data Science Institute",
+    cert_view_btn: "Open PDF",
+    cert_modal_close: "Close",
 
     // Hero Section
     hero_badge: "Software Engineer & Data Enthusiast",
@@ -627,4 +649,71 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
+
+  // ==========================================
+  // PDF Viewer Modal Logic
+  // ==========================================
+  const certButtons = document.querySelectorAll(".cert-open-btn");
+  const modal = document.getElementById("cert-modal");
+  const modalIframe = document.getElementById("cert-modal-iframe");
+  const modalTitle = document.getElementById("cert-modal-title");
+  const modalClose = document.getElementById("cert-modal-close");
+
+  function openPdfModal(pdfUrl, title) {
+    if (!modal || !modalIframe) return;
+
+    modalTitle.textContent = title;
+    modalIframe.src = pdfUrl + "#toolbar=0";
+
+    modal.classList.add("open");
+    document.body.style.overflow = "hidden"; // Prevent background scrolling
+  }
+
+  function closePdfModal() {
+    if (!modal) return;
+    modal.classList.remove("open");
+    document.body.style.overflow = "";
+    // Clear iframe src after animation to stop loading
+    setTimeout(() => {
+      if (modalIframe) modalIframe.src = "";
+    }, 350);
+  }
+
+  // Attach click events to all certificate buttons
+  certButtons.forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const card = btn.closest(".cert-card");
+      if (!card) return;
+
+      // Get the correct PDF based on current language
+      const pdfUrl = card.getAttribute(`data-pdf-${currentLang}`);
+      const titleElement = card.querySelector(".cert-title");
+      const title = titleElement ? titleElement.textContent : "Certificate";
+
+      openPdfModal(pdfUrl, title);
+    });
+  });
+
+  // Close modal when close button is clicked
+  if (modalClose) {
+    modalClose.addEventListener("click", closePdfModal);
+  }
+
+  // Close modal when clicking outside the box (on the overlay)
+  if (modal) {
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        closePdfModal();
+      }
+    });
+  }
+
+  // Close modal on Escape key
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal && modal.classList.contains("open")) {
+      closePdfModal();
+    }
+  });
+
 });
