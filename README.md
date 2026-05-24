@@ -52,22 +52,17 @@ The website is engineered with a **dark-mode glassmorphic design system**, custo
 
 All notable enhancements to this repository are documented below:
 
-### [v1.4.0] — 2026-05-24
+### [v1.0.0] - 2026-05-24
 #### Added
-* **Apache License 2.0**: Added the official `LICENSE` file under the Apache License 2.0 framework with copyright details.
-* **Comprehensive `.gitattributes`**: Created a professional configuration that standardizes line endings (`eol=lf`), preserves binary media files, and sets Linguist overrides to hide utility shell files from repository language statistics.
-* **Official `README.md`**: Designed and added this comprehensive, highly styled repository documentation.
+* **Premium Portfolio Core**: Implemented a responsive single-page portfolio with glassmorphism layout, fluid animations, and customized circular progress gauges.
+* **Bilingual Switcher**: Integrated immediate translation support between German (`DE`) and English (`EN`) across all pages.
+* **GitHub Repository Accordion**: Dynamic, interactive accordions showcasing 10 open-source repositories, categorised and filterable via modern SVG vector icons.
+* **Mobile Screen Language Switcher**: Repositioned the `DE`/`EN` buttons next to the mobile menu hamburger button for perfect, responsive vertical alignment.
+* **LinkedIn Connection CTA**: Upgraded the main contact button to point directly to LinkedIn (*"Auf LinkedIn vernetzen"* / *"Connect on LinkedIn"*) with safe blank targets.
+* **Apache License 2.0**: Added the official `LICENSE` file for open-source compliance and copyright protection.
+* **Automated Publishing Script**: Created the interactive `publish.sh` shell helper to automate local commits, remote links, and secure HTTPS pushes to GitHub Pages.
+* **Repository Configurations**: Configured professional `.gitignore` and `.gitattributes` filters to normalize line endings (`eol=lf`), protect binary media assets, and keep public stats pure.
 
-#### Changed
-* **Interactive LinkedIn Redirects**: Converted the primary email contact button from `mailto:amir.argani@gmail.com` to direct LinkedIn profile routing (`target="_blank" rel="noopener"`), fully translated in German (*"Auf LinkedIn vernetzen"*) and English (*"Connect on LinkedIn"*).
-* **Email Reference Cleanup**: Removed all manual email contact references in both localization dictionaries, keeping the primary focus on professional networking via LinkedIn and GitHub.
-* **Optimized `.gitignore`**: Upgraded the ignore file to a complete, professional standard to prevent accidental commits of macOS DS files, system caches, and local editor metadata.
-* **Translated Deployment Script**: Fully translated the automated `publish.sh` shell console outputs, instructions, and error handling into professional English.
-
-### [v1.3.0] — 2026-05-24
-#### Added
-* **Mobile Language Switcher Support**: Optimized the header layout for mobile viewports (`max-width: 768px`) to place the `DE`/`EN` buttons in the top navbar directly next to the mobile menu hamburger button.
-* **Automated Publishing Script**: Built `publish.sh`, a custom, executable shell helper script to streamline, verify, and run production deployments to GitHub Pages in a single command.
 
 ---
 
