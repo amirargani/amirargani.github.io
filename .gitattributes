@@ -1,0 +1,49 @@
+# ==============================================================================
+# Git Line Ending and Attributes Settings
+# ==============================================================================
+
+# 1. Force Git to auto-detect text files and normalize line endings to LF
+* text=auto
+
+# ==============================================================================
+# Text File Normalization (Standardizes line endings to LF across Windows/macOS)
+# ==============================================================================
+*.html text eol=lf
+*.css text eol=lf
+*.js text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.gitignore text eol=lf
+*.gitattributes text eol=lf
+
+# ==============================================================================
+# Shell Scripts (Must use LF line endings to prevent run failures on Unix)
+# ==============================================================================
+*.sh text eol=lf
+
+# ==============================================================================
+# Vector graphics (SVG is code-based text, normalize it)
+# ==============================================================================
+*.svg text eol=lf
+
+# ==============================================================================
+# Binary Formats (Instruct Git to never attempt text conversions or diffs)
+# ==============================================================================
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.pdf binary
+*.woff binary
+*.woff2 binary
+*.eot binary
+*.ttf binary
+*.otf binary
+
+# ==============================================================================
+# GitHub Linguist Customizations
+# ==============================================================================
+# Mark helper scripts as vendored to keep your language statistics pure
+publish.sh linguist-vendored
