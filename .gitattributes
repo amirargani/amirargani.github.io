@@ -42,8 +42,7 @@
 *.ttf binary
 *.otf binary
 
-# ==============================================================================
-# GitHub Linguist Customizations
-# ==============================================================================
-# Mark helper scripts as vendored to keep your language statistics pure
+# Mark helper scripts as vendored and non-detectable to keep your language statistics 100% pure (hiding Shell)
 publish.sh linguist-vendored
+publish.sh linguist-detectable=false
+
