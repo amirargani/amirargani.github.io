@@ -367,23 +367,30 @@ function updateLanguage(lang) {
     }
   });
 
-  // Calculate dynamic percentages first
+  // Calculate dynamic percentages for circular gauges (data-progress set here)
   calculateCategoryPercentages();
-
-  // Re-animate the skill elements on translation if they are in viewport
-  animateSkillBars();
+  // Note: animateSkillBars() is intentionally NOT called here —
+  // it is triggered once by the IntersectionObserver when the user scrolls to #skills
 }
 
-// Skill bars progress animation
+// Skill bars progress animation — runs once on page load with stagger
 function animateSkillBars() {
   const skillItems = document.querySelectorAll(".skill-item, .radial-progress");
-  skillItems.forEach(item => {
+
+  skillItems.forEach((item, index) => {
     const progress = item.getAttribute("data-progress");
+    const delay = index * 55; // 55ms stagger between each bar/circle
 
     // Animate linear progress bar
     const bar = item.querySelector(".progress-bar-fill");
     if (bar) {
-      bar.style.width = `${progress}%`;
+      bar.style.transition = "none";
+      bar.style.width = "0%";         // reset to start
+      bar.getBoundingClientRect();    // force reflow
+      setTimeout(() => {
+        bar.style.transition = "width 1.4s cubic-bezier(0.16, 1, 0.3, 1)";
+        bar.style.width = `${progress}%`;
+      }, delay);
     }
 
     // Animate radial progress ring
@@ -391,35 +398,110 @@ function animateSkillBars() {
     if (circle) {
       const radius = (circle.r && circle.r.baseVal && circle.r.baseVal.value > 0) ? circle.r.baseVal.value : 45;
       const circumference = 2 * Math.PI * radius;
-      const offset = circumference - (progress / 100) * circumference;
+      const targetOffset = circumference - (progress / 100) * circumference;
+
+      circle.style.transition = "none";
       circle.style.strokeDasharray = `${circumference} ${circumference}`;
-      circle.style.strokeDashoffset = offset;
+      circle.style.strokeDashoffset = circumference; // reset to empty
+      circle.getBoundingClientRect();                 // force reflow
+      setTimeout(() => {
+        circle.style.transition = "stroke-dashoffset 1.4s cubic-bezier(0.16, 1, 0.3, 1)";
+        circle.style.strokeDashoffset = targetOffset;
+      }, delay);
     }
   });
 }
 
-// Setup animations on scroll
+// Setup reveal animations on scroll
 function setupScrollAnimations() {
   const animatedElements = document.querySelectorAll(".reveal");
+  const skillsFeatured = document.querySelector(".skills-featured");
+  let circlesAnimated = false;
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add("active");
+        observer.unobserve(entry.target); // fire once per element
 
-        // If it's the skills section, animate the bars immediately
-        if (entry.target.id === "skills" || entry.target.contains(document.querySelector(".skill-grid"))) {
-          setTimeout(animateSkillBars, 150);
+        // 1) Circular gauges: animate when the featured gauge row enters view
+        if (!circlesAnimated && entry.target.classList.contains("skills-featured")) {
+          circlesAnimated = true;
+          setTimeout(() => animateRadialCircles(), 150);
+        }
+
+        // 2) Linear bars: animate per card when each skill-cat-card enters view
+        if (entry.target.classList.contains("skill-cat-card")) {
+          setTimeout(() => animateBarsInCard(entry.target), 150);
         }
       }
     });
   }, {
-    threshold: 0.15,
-    rootMargin: "0px 0px -50px 0px"
+    threshold: 0.12,
+    rootMargin: "0px 0px -40px 0px"
   });
 
   animatedElements.forEach(el => observer.observe(el));
 }
+
+// Animate only the circular radial gauges (once on scroll into view)
+function animateRadialCircles() {
+  const circles = document.querySelectorAll(".radial-progress");
+  circles.forEach((item, index) => {
+    const progress = parseInt(item.getAttribute("data-progress") || "0", 10);
+    const circle = item.querySelector(".progress-circle-fill");
+    if (!circle) return;
+    const radius = (circle.r && circle.r.baseVal && circle.r.baseVal.value > 0) ? circle.r.baseVal.value : 45;
+    const circumference = 2 * Math.PI * radius;
+    const targetOffset = circumference - (progress / 100) * circumference;
+
+    // Reset to empty (no transition)
+    circle.style.transition = "none";
+    circle.style.strokeDasharray = `${circumference} ${circumference}`;
+    circle.style.strokeDashoffset = String(circumference);
+
+    // Double rAF: ensures browser has painted the reset before starting transition
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        setTimeout(() => {
+          circle.style.transition = "stroke-dashoffset 1.4s cubic-bezier(0.16, 1, 0.3, 1)";
+          circle.style.strokeDashoffset = String(targetOffset);
+        }, index * 80);
+      });
+    });
+  });
+}
+
+// Animate only the linear progress bars inside a given skill category card
+function animateBarsInCard(card) {
+  const bars = card.querySelectorAll(".skill-item");
+  bars.forEach((item, index) => {
+    const progress = parseInt(item.getAttribute("data-progress") || "0", 10);
+    const bar = item.querySelector(".progress-bar-fill");
+    if (!bar) return;
+
+    // Reset to 0 (no transition)
+    bar.style.transition = "none";
+    bar.style.width = "0%";
+
+    // Double rAF: ensures browser has painted reset before transition starts
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        setTimeout(() => {
+          bar.style.transition = "width 1.4s cubic-bezier(0.16, 1, 0.3, 1)";
+          bar.style.width = `${progress}%`;
+        }, index * 80);
+      });
+    });
+  });
+}
+
+// Legacy: kept for compatibility (e.g. language switch scenario)
+function animateSkillBars() {
+  animateRadialCircles();
+  document.querySelectorAll(".skill-cat-card").forEach(card => animateBarsInCard(card));
+}
+
 
 // Mouse movement interactive light effect (glow cards)
 function setupCardGlowEffect() {
@@ -545,7 +627,4 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
-
-  // Trigger initial skill animations if section is already in view
-  setTimeout(animateSkillBars, 500);
 });
