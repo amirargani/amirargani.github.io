@@ -1692,7 +1692,7 @@ footer p {
   .hero-grid {
     grid-template-columns: 1fr;
     gap: 3rem;
-    text-align: center;
+    text-align: left;
   }
 
   .hero-badge {
