@@ -52,6 +52,10 @@ The website is engineered with a **dark-mode glassmorphic design system**, custo
 
 All notable enhancements to this repository are documented below:
 
+### [v1.0.5]
+#### Added
+* **Dynamic Footer Year**: Upgraded the footer copyright text to utilize a dynamic JavaScript date function (`new Date().getFullYear()`), ensuring the displayed year automatically updates to the current year.
+
 ### [v1.0.4]
 #### Fixed
 * **Google Docs Viewer Initialization**: Resolved a known Google Docs Viewer iframe bug where the PDF would load as a blank screen on the first click. Implemented a forced layout computation delay (`100ms`) and dynamic timestamp query parameters (`&t=...`) to aggressively bypass proxy caching and ensure reliable rendering.
