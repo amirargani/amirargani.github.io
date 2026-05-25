@@ -52,6 +52,10 @@ The website is engineered with a **dark-mode glassmorphic design system**, custo
 
 All notable enhancements to this repository are documented below:
 
+### [v1.0.3]
+#### Added
+* **Clean URL Navigation**: Intercepted anchor links via JavaScript to enable buttery smooth scrolling to sections while completely suppressing the `#hash` from appearing in the browser's address bar, maintaining a pristine `https://amirargani.github.io/` base URL at all times.
+
 ### [v1.0.2]
 #### Added
 * **Link Obfuscation**: Upgraded security by internally Base64-encoding all PDF source URLs in the HTML so that raw asset links cannot be scraped or seen in plain text by inspecting the source code.
