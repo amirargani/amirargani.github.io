@@ -725,4 +725,29 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // ==========================================
+  // Clean URL Smooth Scrolling (No Hash in URL)
+  // ==========================================
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const targetId = this.getAttribute('href');
+      // Only process valid IDs (e.g. #about), skip raw "#"
+      if (targetId && targetId !== '#') {
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          e.preventDefault(); // Prevent URL from changing
+          targetElement.scrollIntoView({
+            behavior: 'smooth'
+          });
+          
+          // If there is a mobile menu checkbox, uncheck it to close the menu
+          const menuToggle = document.getElementById('menu-toggle');
+          if (menuToggle && menuToggle.checked) {
+            menuToggle.checked = false;
+          }
+        }
+      }
+    });
+  });
+
 });
