@@ -161,7 +161,7 @@ const translations = {
     contact_desc: "Ich freue mich über Anfragen für Positionen in Hamburg, Lübeck oder 100% Remote. Kontaktieren Sie mich gerne über LinkedIn oder GitHub.",
 
     contact_linkedin_btn: "Auf LinkedIn vernetzen",
-    footer_text: "© 2026 Amir Argani. Alle Rechte vorbehalten. Entwickelt mit Fokus auf Data Science & Software Engineering."
+    footer_text: `© ${new Date().getFullYear()} Amir Argani. Alle Rechte vorbehalten. Entwickelt mit Fokus auf Data Science & Software Engineering.`
   },
   en: {
     // Navigation
@@ -321,7 +321,7 @@ const translations = {
     contact_desc: "I look forward to hearing about opportunities in Hamburg, Lübeck, or 100% Remote. Feel free to contact me via LinkedIn or GitHub.",
 
     contact_linkedin_btn: "Connect on LinkedIn",
-    footer_text: "© 2026 Amir Argani. All rights reserved. Built with focus on Data Science & Software Engineering."
+    footer_text: `© ${new Date().getFullYear()} Amir Argani. All rights reserved. Built with focus on Data Science & Software Engineering.`
   }
 };
 
