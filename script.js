@@ -663,11 +663,18 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!modal || !modalIframe) return;
 
     modalTitle.textContent = title;
-    // Use Google Docs Viewer to bypass Safari's native PDF HUD
-    modalIframe.src = "https://docs.google.com/gview?url=" + encodeURIComponent(pdfUrl) + "&embedded=true";
 
+    // First, make the modal visible in the DOM
     modal.classList.add("open");
     document.body.style.overflow = "hidden"; // Prevent background scrolling
+
+    // Fix: Wait a tiny bit for the layout to compute before setting the iframe src.
+    // This prevents the common Google Docs Viewer "blank screen on first load" bug.
+    // We also append a timestamp to bypass Google's aggressive 204 No Content cache.
+    setTimeout(() => {
+      const cacheBuster = "&t=" + new Date().getTime();
+      modalIframe.src = "https://docs.google.com/gview?url=" + encodeURIComponent(pdfUrl) + "&embedded=true" + cacheBuster;
+    }, 100);
   }
 
   function closePdfModal() {

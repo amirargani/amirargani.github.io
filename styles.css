@@ -1703,7 +1703,7 @@ footer p {
   .hero p {
     margin-left: auto;
     margin-right: auto;
-    text-align: center;
+    text-align: justify;
   }
 
   .hero-actions {
