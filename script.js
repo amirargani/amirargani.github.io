@@ -687,8 +687,16 @@ document.addEventListener("DOMContentLoaded", () => {
       const card = btn.closest(".cert-card");
       if (!card) return;
 
-      // Get the correct PDF based on current language
-      const pdfUrl = card.getAttribute(`data-pdf-${currentLang}`);
+      // Get the correct PDF based on current language and decode it
+      const pdfUrlBase64 = card.getAttribute(`data-pdf-${currentLang}`);
+      let pdfUrl = "";
+      try {
+        pdfUrl = atob(pdfUrlBase64);
+      } catch (e) {
+        console.error("Error decoding PDF URL", e);
+        return;
+      }
+      
       const titleElement = card.querySelector(".cert-title");
       const title = titleElement ? titleElement.textContent : "Certificate";
 

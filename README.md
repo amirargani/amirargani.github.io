@@ -52,6 +52,11 @@ The website is engineered with a **dark-mode glassmorphic design system**, custo
 
 All notable enhancements to this repository are documented below:
 
+### [v1.0.2]
+#### Added
+* **Link Obfuscation**: Upgraded security by internally Base64-encoding all PDF source URLs in the HTML so that raw asset links cannot be scraped or seen in plain text by inspecting the source code.
+* **Safari Scroll Performance**: Restructured the Google Docs Viewer iframe to utilize internal viewport optimization, completely eliminating load delay and scroll lag on iOS and macOS Safari.
+
 ### [v1.0.1]
 #### Added
 * **Certificates Showcase**: Integrated a new section to display official Data Science certificates.
