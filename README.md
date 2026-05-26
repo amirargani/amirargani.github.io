@@ -52,6 +52,13 @@ The website is engineered with a **dark-mode glassmorphic design system**, custo
 
 All notable enhancements to this repository are documented below:
 
+### [v1.0.7]
+#### Added
+* **Fluid Fullwidth Footer Watermark**: Implemented an ultra-premium fluid typography system using CSS `clamp(3.2rem, 16vw, 20rem)` and proportional `em` letter spacing (`-0.04em`). The giant `AMIRARGANI` watermark now scales fluidly and seamlessly to span the full screen width (**Fullwidth**) across all resolutions without any jumps, overlaps, or horizontal scrollbar overflows.
+* **Balanced 2-Column Skills Grid**: Optimized `.skills-grid-wrapper` to display the 10 Skill Category Cards in a stunning 2-column grid on desktop viewports (`> 992px`), cutting vertical scrolling distance in half and creating perfect layout symmetry.
+* **Adaptive Card Paddings**: Dynamically scaled card paddings (`.glow-card`, `.skill-cat-card`, `.cert-card`) from `2.5rem` down to `1.25rem` (20px) on mobile viewports to maximize readable screen space.
+* **Typography Scaling**: Adjusted heading size of `.project-details h3` and overall padding balances under smaller viewports to prevent awkward line breaks and guarantee premium readability.
+
 ### [v1.0.6]
 #### Added
 * **Interactive Watermark Logo**: Integrated a giant, semi-transparent watermark logo `AMIRARGANI` at the absolute bottom of the footer, beautifully bleeding off the page.
