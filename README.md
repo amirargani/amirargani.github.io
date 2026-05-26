@@ -52,6 +52,16 @@ The website is engineered with a **dark-mode glassmorphic design system**, custo
 
 All notable enhancements to this repository are documented below:
 
+### [v1.0.6]
+#### Added
+* **Interactive Watermark Logo**: Integrated a giant, semi-transparent watermark logo `AMIRARGANI` at the absolute bottom of the footer, beautifully bleeding off the page.
+* **AI Scan Line Animation**: Added a looping background scan line animation (`aiLaserScan`) that sweeps a glowing cyan laser back and forth across the watermark using `background-clip: text`.
+* **Pixel-Perfect Responsive Spacing**: Optimized vertical spacing on all viewports using fluid, mathematically proportional viewport sizing to ensure consistent spacing between copyright text and the footer watermark.
+* **Branded GitHub Icon Integration**: Replaced generic external-link arrow icons with the official GitHub logo SVG on both the main repositories button and all individual project links for a cohesive brand identity.
+* **Refined Accordion Hover Physics**: Aligned all accordion project button hovers with the site's default lift animation (`translateY(-3px)`) while keeping inline icons static relative to the text.
+* **Custom SVG Icons in Hero Section**: Integrated modern line-art SVG icons (briefcase for career roles and map-pin for preferences) inside translation-safe containers to prevent icon loss during language switches.
+* **English-First Default Localization**: Translated all remaining hardcoded German elements, meta tags, and ARIA labels in `index.html` to establish English as the professional default language while maintaining full toggle support.
+
 ### [v1.0.5]
 #### Added
 * **Dynamic Footer Year**: Upgraded the footer copyright text to utilize a dynamic JavaScript date function (`new Date().getFullYear()`), ensuring the displayed year automatically updates to the current year.

@@ -1,108 +1,3 @@
-/*
- * Amir Argani - Premium Portfolio Stylesheet
- * Responsive, Dark Mode, Glassmorphic, and Highly Interactive
- */
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap');
-
-:root {
-  /* Design Tokens */
-  --bg-primary: #07080c;
-  --bg-secondary: #0c0d16;
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
-
-  --accent-cyan: #00f2fe;
-  --accent-blue: #4facfe;
-  --accent-purple: #7f00ff;
-  --accent-pink: #e100ff;
-
-  --grad-cyan-blue: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-blue) 100%);
-  --grad-purple-pink: linear-gradient(135deg, var(--accent-purple) 0%, var(--accent-pink) 100%);
-  --grad-dark: linear-gradient(180deg, #0c0d16 0%, #07080c 100%);
-
-  --card-bg: rgba(255, 255, 255, 0.02);
-  --card-border: rgba(255, 255, 255, 0.07);
-  --card-glow-intensity: rgba(0, 242, 254, 0.15);
-
-  --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-
-  --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  --transition-fast: all 0.2s ease;
-}
-
-/* Base Settings */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  scroll-behavior: smooth;
-  font-size: 16px;
-  background-color: var(--bg-primary);
-}
-
-body {
-  font-family: var(--font-body);
-  color: var(--text-primary);
-  background-color: var(--bg-primary);
-  line-height: 1.6;
-  overflow-x: hidden;
-}
-
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--bg-primary);
-}
-
-::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--grad-cyan-blue);
-}
-
-::selection {
-  background: rgba(0, 242, 254, 0.3);
-  color: var(--text-primary);
-}
-
-/* Utilities & Structural Elements */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
-}
-
-section {
-  padding: 4rem 0;
-  position: relative;
-}
-
-.gradient-text {
-  background: var(--grad-cyan-blue);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.gradient-text-alt {
-  background: var(--grad-purple-pink);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
 /* Navigation Header */
 header {
   position: fixed;
@@ -140,10 +35,12 @@ header {
     opacity: 0.25;
     transform: translate(-50%, -50%) scale(0.85);
   }
+
   50% {
     opacity: 0.65;
     transform: translate(-50%, -50%) scale(1.05);
   }
+
   100% {
     opacity: 0.25;
     transform: translate(-50%, -50%) scale(0.85);
@@ -416,19 +313,24 @@ header {
 }
 
 .hero-targets {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 16px;
-  padding: 1.5rem;
+  display: grid;
+  gap: 1rem;
   margin-bottom: 2.5rem;
-  backdrop-filter: blur(10px);
 }
+
 
 .target-row {
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
-  margin-bottom: 1rem;
+  gap: 0.6rem;
+  padding: 1.35rem 1.5rem;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.16);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease, background 0.35s ease;
   font-size: 0.95rem;
 }
 
@@ -983,7 +885,8 @@ header {
 }
 
 .skills-featured:hover {
-  transform: none !important; /* Keep large grid container stable */
+  transform: none !important;
+  /* Keep large grid container stable */
 }
 
 .radial-progress {
@@ -1011,10 +914,12 @@ header {
     border-color: rgba(0, 242, 254, 0.8);
     box-shadow: 0 0 40px rgba(0, 242, 254, 0.4), inset 0 0 20px rgba(0, 242, 254, 0.1);
   }
+
   50% {
     border-color: rgba(0, 242, 254, 1);
     box-shadow: 0 0 60px rgba(0, 242, 254, 0.6), inset 0 0 35px rgba(0, 242, 254, 0.2);
   }
+
   100% {
     border-color: var(--card-border);
     box-shadow: none;
@@ -1038,7 +943,8 @@ header {
   stroke-width: 8;
   stroke-linecap: round;
   stroke-dasharray: 283;
-  stroke-dashoffset: 283; /* fully hidden by default; JS animates from here */
+  stroke-dashoffset: 283;
+  /* fully hidden by default; JS animates from here */
   /* transition controlled entirely by JS */
 }
 
@@ -1287,6 +1193,10 @@ header {
   margin-top: 3rem;
 }
 
+.footer-socials {
+  margin-top: 1rem;
+}
+
 .social-btn {
   width: 54px;
   height: 54px;
@@ -1318,14 +1228,176 @@ header {
 /* Footer Section */
 footer {
   border-top: 1px solid rgba(255, 255, 255, 0.05);
-  padding: 3rem 0;
+  padding: 3rem 0 0 0;
+  /* Zero bottom padding so the absolute watermark fits right at the bottom edge */
   text-align: center;
   background: #040508;
+  position: relative;
+  overflow: hidden;
+  min-height: 220px;
+  /* Gives nice height for watermark space */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  flex-grow: 1;
+}
+
+.footer-divider {
+  /* Full-bleed divider: spans the entire viewport while staying centered
+     relative to the page content container. Keeps visible on dark backdrops. */
+  position: relative;
+  width: 100vw;
+  max-width: none;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  margin: 0;
+  margin-top: 3rem;
+}
+
+.footer-bottom-row {
+  padding: 0.5rem 0 10.5rem 0;
+  /* Gives perfect consistent padding above the watermark on desktop */
+  z-index: 2;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
 }
 
 footer p {
-  color: var(--text-muted);
-  font-size: 0.9rem;
+  color: var(--text-secondary);
+  /* Clear, legible color for the copyright line */
+  font-size: 0.95rem;
+}
+
+.footer-name {
+  color: var(--accent-cyan);
+  /* Outstanding cyan highlight for the name */
+  font-weight: 600;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.footer-name:hover {
+  color: #ffffff;
+  /* Turns pure white on hover with a glowing cyan shadow */
+  text-shadow: 0 0 12px rgba(0, 242, 254, 0.6);
+}
+
+/* Watermark at the absolute bottom of the page, bleeding off */
+.footer-watermark {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(32%);
+  /* Bleeds off the bottom beautifully (exactly 32% cut off) */
+  font-family: var(--font-heading);
+  font-size: 13rem;
+  /* Giant text on desktop */
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -6px;
+  /* Futuristic AI Scanning Line Animation using Background Clip */
+  background: linear-gradient(to right,
+      rgba(255, 255, 255, 0.05) 0%,
+      rgba(255, 255, 255, 0.05) 38%,
+      rgba(0, 242, 254, 0.35) 47%,
+      var(--accent-cyan) 50%,
+      rgba(0, 242, 254, 0.35) 53%,
+      rgba(255, 255, 255, 0.05) 62%,
+      rgba(255, 255, 255, 0.05) 100%);
+  background-size: 250% 100%;
+  background-position: 150% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  /* standard property for compatibility */
+  -webkit-text-fill-color: transparent;
+
+  user-select: none;
+  pointer-events: none;
+  /* 100% click-through, prevents blocking any footer clicks or links! */
+  white-space: nowrap;
+  line-height: 1;
+  /* Clean standard line height to prevent text height bugs */
+  z-index: 1;
+
+  /* High-tech looping scan line animation (goes left-to-right and then right-to-left) */
+  animation: aiLaserScan 8s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
+}
+
+/* AI scan line keyframe animation with beautiful lingering pauses at the ends */
+@keyframes aiLaserScan {
+  0% {
+    background-position: 150% 0;
+    /* Completely off the left side (dark base state) */
+  }
+
+  8% {
+    background-position: 112% 0;
+    /* Reaches the first letters and slows down/glows */
+  }
+
+  18% {
+    background-position: 112% 0;
+    /* Holds/lingers on the first letters to show bright color */
+  }
+
+  48% {
+    background-position: -112% 0;
+    /* Sweeps across and reaches the last letters on the right */
+  }
+
+  58% {
+    background-position: -112% 0;
+    /* Holds/lingers on the last letters to keep them glowing bright! */
+  }
+
+  68% {
+    background-position: -150% 0;
+    /* Sweeps off the right edge (fades out / goes further) */
+  }
+
+  100% {
+    background-position: -150% 0;
+    /* Quiet dark period before the alternate sweep starts back */
+  }
+}
+
+/* Fluid responsive styles for Tablet */
+@media (max-width: 992px) {
+  .footer-bottom-row {
+    padding: 0.5rem 0 9rem 0;
+    /* Reduced spacing for tablet with a smaller watermark */
+  }
+
+  .footer-watermark {
+    font-size: 7.3rem;
+    letter-spacing: -5px;
+    transform: translateX(-50%) translateY(30%);
+  }
+}
+
+/* Fluid responsive styles for Mobile */
+@media (max-width: 576px) {
+  .footer-bottom-row {
+    padding: 0.75rem 0 8.5rem 0;
+    /* More compact mobile spacing */
+  }
+
+  .footer-watermark {
+    font-size: 4.3rem;
+    letter-spacing: -4px;
+    transform: translateX(-50%) translateY(36%);
+  }
 }
 
 /* Animations on Scroll settings (reveal effects) */
@@ -1526,7 +1598,7 @@ footer p {
   flex: 1;
 }
 
-.repo-summary-header > span {
+.repo-summary-header>span {
   font-family: var(--font-heading);
   font-size: 1.3rem;
   font-weight: 700;
@@ -1535,7 +1607,7 @@ footer p {
   transition: var(--transition-fast);
 }
 
-.repo-item:hover summary .repo-summary-header > span {
+.repo-item:hover summary .repo-summary-header>span {
   color: var(--accent-cyan);
 }
 
@@ -1599,7 +1671,7 @@ footer p {
   background: rgba(255, 255, 255, 0.01);
 }
 
-.repo-item[open] summary .repo-summary-header > span {
+.repo-item[open] summary .repo-summary-header>span {
   color: var(--accent-cyan);
 }
 
@@ -1671,16 +1743,13 @@ footer p {
   transition: transform 0.3s ease;
 }
 
-.repo-link-wrapper .btn:hover svg {
-  transform: translate(2px, -2px);
-}
-
 /* Slide Down Keyframe Animation */
 @keyframes slideDown {
   from {
     opacity: 0;
     transform: translateY(-12px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -1810,18 +1879,22 @@ footer p {
   .repo-item summary {
     padding: 1.25rem 1.5rem;
   }
+
   .repo-summary-header {
     gap: 0.8rem;
   }
-  .repo-summary-header > span {
+
+  .repo-summary-header>span {
     font-size: 1.15rem;
     width: 100%;
   }
+
   .repo-toggle-icon {
     width: 32px;
     height: 32px;
     margin-left: 0.75rem;
   }
+
   .repo-details-content {
     padding: 1.5rem;
     gap: 1.25rem;
@@ -1850,13 +1923,16 @@ footer p {
   .repo-item summary {
     padding: 1rem 1.15rem;
   }
-  .repo-summary-header > span {
+
+  .repo-summary-header>span {
     font-size: 1.05rem;
   }
+
   .repo-details-content {
     padding: 1.15rem;
     gap: 1rem;
   }
+
   .repo-link-wrapper .btn {
     width: 100%;
     justify-content: center;
@@ -1951,19 +2027,19 @@ footer p {
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background: linear-gradient(135deg, rgba(0,242,254,0.12), rgba(127,0,255,0.12));
-  border: 1.5px solid rgba(0,242,254,0.25);
+  background: linear-gradient(135deg, rgba(0, 242, 254, 0.12), rgba(127, 0, 255, 0.12));
+  border: 1.5px solid rgba(0, 242, 254, 0.25);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  box-shadow: 0 0 24px rgba(0,242,254,0.1);
+  box-shadow: 0 0 24px rgba(0, 242, 254, 0.1);
   transition: box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .cert-card:hover .cert-icon-wrap {
-  box-shadow: 0 0 36px rgba(0,242,254,0.25);
-  border-color: rgba(0,242,254,0.5);
+  box-shadow: 0 0 36px rgba(0, 242, 254, 0.25);
+  border-color: rgba(0, 242, 254, 0.5);
 }
 
 .cert-icon-wrap svg {
@@ -1985,8 +2061,8 @@ footer p {
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  background: linear-gradient(135deg, rgba(0,242,254,0.12), rgba(127,0,255,0.12));
-  border: 1px solid rgba(0,242,254,0.2);
+  background: linear-gradient(135deg, rgba(0, 242, 254, 0.12), rgba(127, 0, 255, 0.12));
+  border: 1px solid rgba(0, 242, 254, 0.2);
   color: var(--accent-cyan);
   margin-bottom: 0.75rem;
 }
@@ -2034,9 +2110,9 @@ footer p {
 
 .cert-modal-box {
   background: rgba(15, 16, 22, 0.95);
-  border: 1px solid rgba(255,255,255,0.08);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 18px;
-  box-shadow: 0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(0,242,254,0.08);
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(0, 242, 254, 0.08);
   width: min(960px, 100%);
   height: min(88vh, 860px);
   display: flex;
@@ -2055,8 +2131,8 @@ footer p {
   align-items: center;
   justify-content: space-between;
   padding: 1rem 1.5rem;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-  background: rgba(255,255,255,0.02);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.02);
   flex-shrink: 0;
 }
 
@@ -2084,8 +2160,8 @@ footer p {
   width: 38px;
   height: 38px;
   border-radius: 10px;
-  border: 1px solid rgba(255,255,255,0.08);
-  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.04);
   color: var(--text-secondary);
   cursor: pointer;
   transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
@@ -2093,9 +2169,9 @@ footer p {
 }
 
 .cert-dl-btn:hover {
-  background: rgba(0,242,254,0.12);
+  background: rgba(0, 242, 254, 0.12);
   color: var(--accent-cyan);
-  border-color: rgba(0,242,254,0.3);
+  border-color: rgba(0, 242, 254, 0.3);
 }
 
 .cert-close-btn:hover {

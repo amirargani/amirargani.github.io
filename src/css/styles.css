@@ -1,0 +1,9 @@
+/*
+* Diese Datei importiert alle CSS-Dateien des Projekts.
+* Sie wird in der index.html geladen.
+* core.css enthält die globalen Styles und Resets.
+* app.css enthält die Komponenten- und Seitenstile.
+*/
+
+@import url('./core.css');
+@import url('./app.css');
