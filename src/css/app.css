@@ -827,7 +827,7 @@ header {
 
 .skills-grid-wrapper {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(2, 1fr);
   gap: 2.5rem;
 }
 
@@ -1298,14 +1298,15 @@ footer p {
   position: absolute;
   bottom: 0;
   left: 50%;
-  transform: translateX(-50%) translateY(32%);
+  transform: translateX(-50%) translateY(30%);
   /* Bleeds off the bottom beautifully (exactly 32% cut off) */
   font-family: var(--font-heading);
-  font-size: 13rem;
-  /* Giant text on desktop */
+  font-size: clamp(3.2rem, 16vw, 20rem);
+  /* Giant text on desktop, fluid down to 3.2rem on smallest phones, always fullwidth */
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: -6px;
+  letter-spacing: -0.04em;
+  /* Proportional letter-spacing using em scales beautifully at all sizes */
   /* Futuristic AI Scanning Line Animation using Background Clip */
   background: linear-gradient(to right,
       rgba(255, 255, 255, 0.05) 0%,
@@ -1379,10 +1380,16 @@ footer p {
     /* Reduced spacing for tablet with a smaller watermark */
   }
 
-  .footer-watermark {
-    font-size: 7.3rem;
-    letter-spacing: -5px;
-    transform: translateX(-50%) translateY(30%);
+  .skills-grid-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .glow-card {
+    padding: 2rem;
+  }
+
+  .skill-cat-card {
+    padding: 2rem;
   }
 }
 
@@ -1391,12 +1398,6 @@ footer p {
   .footer-bottom-row {
     padding: 0.75rem 0 8.5rem 0;
     /* More compact mobile spacing */
-  }
-
-  .footer-watermark {
-    font-size: 4.3rem;
-    letter-spacing: -4px;
-    transform: translateX(-50%) translateY(36%);
   }
 }
 
@@ -1806,6 +1807,10 @@ footer p {
     gap: 2.5rem;
   }
 
+  .project-details h3 {
+    font-size: 1.8rem;
+  }
+
   .project-visual {
     order: -1;
   }
@@ -1899,6 +1904,10 @@ footer p {
     padding: 1.5rem;
     gap: 1.25rem;
   }
+
+  .cert-card {
+    padding: 2rem 1.5rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -1936,6 +1945,26 @@ footer p {
   .repo-link-wrapper .btn {
     width: 100%;
     justify-content: center;
+  }
+
+  .glow-card {
+    padding: 1.25rem;
+  }
+
+  .skill-cat-card {
+    padding: 1.25rem;
+  }
+
+  .cert-card {
+    padding: 1.5rem 1.15rem;
+  }
+
+  .skills-featured {
+    padding: 2rem 1rem;
+  }
+
+  .project-details h3 {
+    font-size: 1.5rem;
   }
 }
 
