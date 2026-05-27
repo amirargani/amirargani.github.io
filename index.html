@@ -33,12 +33,14 @@
   <!-- Navigation Bar -->
   <header>
     <div class="container navbar">
-      <a href="#about" class="logo">
-        <div class="logo-avatar-wrapper">
-          <img src="https://github.com/amirargani.png" alt="Amir Argani" class="logo-avatar" />
-        </div>
-        <!-- <span>Amir Argani</span> <span class="logo-dot"></span> -->
-      </a>
+      <div class="logo-container">
+        <a href="#about" class="logo">
+          <div class="logo-avatar-wrapper">
+            <img src="https://github.com/amirargani.png" alt="Amir Argani" class="logo-avatar" />
+          </div>
+        </a>
+        <div class="project-version">v1.0.8</div>
+      </div>
 
       <nav>
         <ul class="nav-menu" id="nav-links">
@@ -397,114 +399,226 @@
         <p data-i18n="section_skills_subtitle">Structured overview of my technology stack</p>
       </div>
 
-      <div class="skills-dashboard">
+      <div class="dashboard-window">
+        <div class="window-header">
+          <div class="window-controls">
+            <span class="window-dot red"></span>
+            <span class="window-dot yellow"></span>
+            <span class="window-dot green"></span>
+          </div>
+
+          <div class="dashboard-toggles">
+            <div class="toggle-slider"></div>
+            <button class="toggle-btn active" data-view="radial" title="Circular Gauges">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 2a10 10 0 0 1 10 10"/>
+              </svg>
+              <span data-i18n="toggle_radial">Radial</span>
+            </button>
+            <button class="toggle-btn" data-view="radar" title="Radar Chart">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 22 8.5 22 19.5 12 22 2 19.5 2 8.5"/>
+                <line x1="12" y1="2" x2="12" y2="22"/>
+                <line x1="2" y1="8.5" x2="22" y2="19.5"/>
+                <line x1="2" y1="19.5" x2="22" y2="8.5"/>
+              </svg>
+              <span data-i18n="toggle_radar">Radar</span>
+            </button>
+            <button class="toggle-btn" data-view="matrix" title="Skill Matrix">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="6" cy="18" r="3"/>
+                <circle cx="12" cy="12" r="3"/>
+                <circle cx="18" cy="6" r="3"/>
+                <line x1="3" y1="21" x2="3" y2="3"/>
+                <line x1="3" y1="21" x2="21" y2="21"/>
+              </svg>
+              <span data-i18n="toggle_matrix">Matrix</span>
+            </button>
+            <button class="toggle-btn" data-view="bar" title="Bar Chart">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="6" x2="21" y2="6"/>
+                <line x1="3" y1="12" x2="17" y2="12"/>
+                <line x1="3" y1="18" x2="13" y2="18"/>
+              </svg>
+              <span data-i18n="toggle_bar">Bar</span>
+            </button>
+            <button class="toggle-btn" data-view="line" title="Line Chart">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="3 17 9 11 15 13 21 6"/>
+                <polyline points="3 21 21 21"/>
+              </svg>
+              <span data-i18n="toggle_line">Line</span>
+            </button>
+          </div>
+
+          <div class="window-title"><span class="live-pulse-dot"></span>LIVE</div>
+        </div>
+        <div class="window-body">
+          <div class="skills-dashboard">
 
         <!-- Primary Featured Skills: Circular Gauges -->
         <div class="glow-card skills-featured reveal">
+          
+          <!-- 1. Circular Gauges View (Default) -->
+          <div class="gauges-grid-wrapper">
 
-          <!-- Category 1: Data Analysis & BI Tools -->
-          <div class="radial-progress gauge-cyan" data-category="cat_data_science" data-progress="0">
-            <div class="gauge-wrapper">
-              <svg class="svg-gauge">
-                <circle class="progress-circle-bg" cx="60" cy="60" r="45" />
-                <circle class="progress-circle-fill" cx="60" cy="60" r="45" />
-              </svg>
-              <div class="gauge-val">0%</div>
+            <!-- Category 1: Data Analysis & BI Tools -->
+            <div class="radial-progress gauge-cyan" data-category="cat_data_science" data-progress="0">
+              <div class="gauge-wrapper">
+                <svg class="svg-gauge">
+                  <circle class="progress-circle-bg" cx="60" cy="60" r="45" />
+                  <circle class="progress-circle-fill" cx="60" cy="60" r="45" />
+                </svg>
+                <div class="gauge-val">0%</div>
+              </div>
+              <span class="radial-label" data-i18n="cat_data_science">Data Analysis & BI Tools</span>
+              <span class="radial-desc" data-i18n="skill_level_label">Skill Level</span>
             </div>
-            <span class="radial-label" data-i18n="cat_data_science">Data Analysis & BI Tools</span>
-            <span class="radial-desc" data-i18n="skill_level_label">Skill Level</span>
+
+            <!-- Category 2: Programming -->
+            <div class="radial-progress gauge-purple" data-category="cat_programming" data-progress="0">
+              <div class="gauge-wrapper">
+                <svg class="svg-gauge">
+                  <circle class="progress-circle-bg" cx="60" cy="60" r="45" />
+                  <circle class="progress-circle-fill" cx="60" cy="60" r="45" />
+                </svg>
+                <div class="gauge-val">0%</div>
+              </div>
+              <span class="radial-label" data-i18n="cat_programming">Programming</span>
+              <span class="radial-desc" data-i18n="skill_level_label">Skill Level</span>
+            </div>
+
+            <!-- Category 3: Web Development -->
+            <div class="radial-progress gauge-blue" data-category="cat_web_dev" data-progress="0">
+              <div class="gauge-wrapper">
+                <svg class="svg-gauge">
+                  <circle class="progress-circle-bg" cx="60" cy="60" r="45" />
+                  <circle class="progress-circle-fill" cx="60" cy="60" r="45" />
+                </svg>
+                <div class="gauge-val">0%</div>
+              </div>
+              <span class="radial-label" data-i18n="cat_web_dev">Web Development</span>
+              <span class="radial-desc" data-i18n="skill_level_label">Skill Level</span>
+            </div>
+
+            <!-- Category 4: App Development -->
+            <div class="radial-progress gauge-pink" data-category="cat_app_dev" data-progress="0">
+              <div class="gauge-wrapper">
+                <svg class="svg-gauge">
+                  <circle class="progress-circle-bg" cx="60" cy="60" r="45" />
+                  <circle class="progress-circle-fill" cx="60" cy="60" r="45" />
+                </svg>
+                <div class="gauge-val">0%</div>
+              </div>
+              <span class="radial-label" data-i18n="cat_app_dev">App Development</span>
+              <span class="radial-desc" data-i18n="skill_level_label">Skill Level</span>
+            </div>
+
+            <!-- Category 5: Cloud & DevOps -->
+            <div class="radial-progress gauge-orange" data-category="cat_cloud_devops" data-progress="0">
+              <div class="gauge-wrapper">
+                <svg class="svg-gauge">
+                  <circle class="progress-circle-bg" cx="60" cy="60" r="45" />
+                  <circle class="progress-circle-fill" cx="60" cy="60" r="45" />
+                </svg>
+                <div class="gauge-val">0%</div>
+              </div>
+              <span class="radial-label" data-i18n="cat_cloud_devops">Cloud & DevOps</span>
+              <span class="radial-desc" data-i18n="skill_level_label">Skill Level</span>
+            </div>
+
+            <!-- Category 6: Databases -->
+            <div class="radial-progress gauge-emerald" data-category="cat_databases" data-progress="0">
+              <div class="gauge-wrapper">
+                <svg class="svg-gauge">
+                  <circle class="progress-circle-bg" cx="60" cy="60" r="45" />
+                  <circle class="progress-circle-fill" cx="60" cy="60" r="45" />
+                </svg>
+                <div class="gauge-val">0%</div>
+              </div>
+              <span class="radial-label" data-i18n="cat_databases">Databases</span>
+              <span class="radial-desc" data-i18n="skill_level_label">Skill Level</span>
+            </div>
+
+            <!-- Category 7: Automation & ETL -->
+            <div class="radial-progress gauge-indigo" data-category="cat_automation_etl" data-progress="0">
+              <div class="gauge-wrapper">
+                <svg class="svg-gauge">
+                  <circle class="progress-circle-bg" cx="60" cy="60" r="45" />
+                  <circle class="progress-circle-fill" cx="60" cy="60" r="45" />
+                </svg>
+                <div class="gauge-val">0%</div>
+              </div>
+              <span class="radial-label" data-i18n="cat_automation_etl">Automation & ETL</span>
+              <span class="radial-desc" data-i18n="skill_level_label">Skill Level</span>
+            </div>
+
+            <!-- Category 8: Tools & Platforms -->
+            <div class="radial-progress gauge-amber" data-category="cat_tools" data-progress="0">
+              <div class="gauge-wrapper">
+                <svg class="svg-gauge">
+                  <circle class="progress-circle-bg" cx="60" cy="60" r="45" />
+                  <circle class="progress-circle-fill" cx="60" cy="60" r="45" />
+                </svg>
+                <div class="gauge-val">0%</div>
+              </div>
+              <span class="radial-label" data-i18n="cat_tools">Tools & Platforms</span>
+              <span class="radial-desc" data-i18n="skill_level_label">Skill Level</span>
+            </div>
+
+          </div> <!-- Close gauges-grid-wrapper -->
+
+          <!-- 2. Radar Chart View -->
+          <div class="radar-chart-wrapper" style="display: none;">
+            <svg class="radar-svg" viewBox="0 0 600 450" width="100%" height="100%">
+              <!-- Grid background octagons and lines -->
+              <g class="radar-grid"></g>
+              <!-- Colored polygon of data -->
+              <polygon class="radar-polygon"></polygon>
+              <!-- Interactive vertex dots -->
+              <g class="radar-dots"></g>
+              <!-- Text labels -->
+              <g class="radar-labels"></g>
+            </svg>
           </div>
 
-          <!-- Category 2: Programming -->
-          <div class="radial-progress gauge-purple" data-category="cat_programming" data-progress="0">
-            <div class="gauge-wrapper">
-              <svg class="svg-gauge">
-                <circle class="progress-circle-bg" cx="60" cy="60" r="45" />
-                <circle class="progress-circle-fill" cx="60" cy="60" r="45" />
-              </svg>
-              <div class="gauge-val">0%</div>
-            </div>
-            <span class="radial-label" data-i18n="cat_programming">Programming</span>
-            <span class="radial-desc" data-i18n="skill_level_label">Skill Level</span>
+          <!-- 3. 2D Scatter Matrix View -->
+          <div class="scatter-matrix-wrapper" style="display: none;">
+            <svg class="scatter-svg" viewBox="0 0 600 450" width="100%" height="100%">
+              <!-- Grid axes and quadrant labels -->
+              <g class="scatter-grid"></g>
+              <!-- Interactive data bubbles -->
+              <g class="scatter-bubbles"></g>
+            </svg>
           </div>
 
-          <!-- Category 3: Web Development -->
-          <div class="radial-progress gauge-blue" data-category="cat_web_dev" data-progress="0">
-            <div class="gauge-wrapper">
-              <svg class="svg-gauge">
-                <circle class="progress-circle-bg" cx="60" cy="60" r="45" />
-                <circle class="progress-circle-fill" cx="60" cy="60" r="45" />
-              </svg>
-              <div class="gauge-val">0%</div>
-            </div>
-            <span class="radial-label" data-i18n="cat_web_dev">Web Development</span>
-            <span class="radial-desc" data-i18n="skill_level_label">Skill Level</span>
+          <!-- 4. Interactive Bar Chart View -->
+          <div class="bar-chart-wrapper" style="display: none;">
+            <svg class="bar-svg" viewBox="0 0 600 450" width="100%" height="100%">
+              <!-- Grid vertical helper lines -->
+              <g class="bar-grid"></g>
+              <!-- Horizontal bars and text labels -->
+              <g class="bar-bars"></g>
+            </svg>
           </div>
 
-          <!-- Category 4: App Development -->
-          <div class="radial-progress gauge-pink" data-category="cat_app_dev" data-progress="0">
-            <div class="gauge-wrapper">
-              <svg class="svg-gauge">
-                <circle class="progress-circle-bg" cx="60" cy="60" r="45" />
-                <circle class="progress-circle-fill" cx="60" cy="60" r="45" />
-              </svg>
-              <div class="gauge-val">0%</div>
-            </div>
-            <span class="radial-label" data-i18n="cat_app_dev">App Development</span>
-            <span class="radial-desc" data-i18n="skill_level_label">Skill Level</span>
+          <!-- 5. Interactive Line Chart View -->
+          <div class="line-chart-wrapper" style="display: none;">
+            <svg class="line-svg" viewBox="0 0 600 380" width="100%" height="100%">
+              <!-- Grid horizontal helper lines -->
+              <g class="line-grid"></g>
+              <!-- Gradient Area fill under path -->
+              <path class="line-area-path" fill="none"></path>
+              <!-- Main continuous line path -->
+              <path class="line-stroke-path" fill="none"></path>
+              <!-- Vertex glowing dots and hover controls -->
+              <g class="line-dots"></g>
+            </svg>
           </div>
 
-          <!-- Category 5: Cloud & DevOps -->
-          <div class="radial-progress gauge-orange" data-category="cat_cloud_devops" data-progress="0">
-            <div class="gauge-wrapper">
-              <svg class="svg-gauge">
-                <circle class="progress-circle-bg" cx="60" cy="60" r="45" />
-                <circle class="progress-circle-fill" cx="60" cy="60" r="45" />
-              </svg>
-              <div class="gauge-val">0%</div>
-            </div>
-            <span class="radial-label" data-i18n="cat_cloud_devops">Cloud & DevOps</span>
-            <span class="radial-desc" data-i18n="skill_level_label">Skill Level</span>
-          </div>
-
-          <!-- Category 6: Relational & NoSQL Databases -->
-          <div class="radial-progress gauge-emerald" data-category="cat_databases" data-progress="0">
-            <div class="gauge-wrapper">
-              <svg class="svg-gauge">
-                <circle class="progress-circle-bg" cx="60" cy="60" r="45" />
-                <circle class="progress-circle-fill" cx="60" cy="60" r="45" />
-              </svg>
-              <div class="gauge-val">0%</div>
-            </div>
-            <span class="radial-label" data-i18n="cat_databases">Databases</span>
-            <span class="radial-desc" data-i18n="skill_level_label">Skill Level</span>
-          </div>
-
-          <!-- Category 7: Automation & ETL -->
-          <div class="radial-progress gauge-indigo" data-category="cat_automation_etl" data-progress="0">
-            <div class="gauge-wrapper">
-              <svg class="svg-gauge">
-                <circle class="progress-circle-bg" cx="60" cy="60" r="45" />
-                <circle class="progress-circle-fill" cx="60" cy="60" r="45" />
-              </svg>
-              <div class="gauge-val">0%</div>
-            </div>
-            <span class="radial-label" data-i18n="cat_automation_etl">Automation & ETL</span>
-            <span class="radial-desc" data-i18n="skill_level_label">Skill Level</span>
-          </div>
-
-          <!-- Category 8: Tools & Platforms -->
-          <div class="radial-progress gauge-amber" data-category="cat_tools" data-progress="0">
-            <div class="gauge-wrapper">
-              <svg class="svg-gauge">
-                <circle class="progress-circle-bg" cx="60" cy="60" r="45" />
-                <circle class="progress-circle-fill" cx="60" cy="60" r="45" />
-              </svg>
-              <div class="gauge-val">0%</div>
-            </div>
-            <span class="radial-label" data-i18n="cat_tools">Tools & Platforms</span>
-            <span class="radial-desc" data-i18n="skill_level_label">Skill Level</span>
-          </div>
+          <!-- Shared Tooltip for Interactive Elements -->
+          <div class="chart-tooltip" style="opacity: 0;"></div>
 
         </div>
 
@@ -522,15 +636,13 @@
               </div>
               <div class="skill-list">
                 <div class="skill-item" data-progress="74">
-                  <div class="skill-info"><span class="skill-name" data-i18n="skill_eda">EDA (Exploratory Data
-                      Analysis)</span><span class="skill-percentage">74%</span></div>
+                  <div class="skill-info"><span class="skill-name" data-i18n="skill_eda">Exploratory Data Analysis</span><span class="skill-percentage">74%</span></div>
                   <div class="progress-bar-bg">
                     <div class="progress-bar-fill cyan-progress-fill"></div>
                   </div>
                 </div>
                 <div class="skill-item" data-progress="68">
-                  <div class="skill-info"><span class="skill-name" data-i18n="skill_ml">Machine Learning (Scikit-Learn,
-                      Regression, etc.)</span><span class="skill-percentage">68%</span></div>
+                  <div class="skill-info"><span class="skill-name" data-i18n="skill_ml">Machine Learning</span><span class="skill-percentage">68%</span></div>
                   <div class="progress-bar-bg">
                     <div class="progress-bar-fill cyan-progress-fill"></div>
                   </div>
@@ -592,8 +704,7 @@
                   </div>
                 </div>
                 <div class="skill-item" data-progress="78">
-                  <div class="skill-info"><span class="skill-name" data-i18n="skill_al">AL Programming Language
-                      (Business Central)</span><span class="skill-percentage">78%</span></div>
+                  <div class="skill-info"><span class="skill-name" data-i18n="skill_al">AL Programming Language</span><span class="skill-percentage">78%</span></div>
                   <div class="progress-bar-bg">
                     <div class="progress-bar-fill purple-progress-fill"></div>
                   </div>
@@ -729,7 +840,7 @@
               </div>
               <div class="skill-list">
                 <div class="skill-item" data-progress="68">
-                  <div class="skill-info"><span class="skill-name">AWS (S3, IAM, EC2, RDS, Lambda, etc.)</span><span
+                  <div class="skill-info"><span class="skill-name">AWS</span><span
                       class="skill-percentage">68%</span></div>
                   <div class="progress-bar-bg">
                     <div class="progress-bar-fill orange-progress-fill"></div>
@@ -1061,7 +1172,9 @@
 
         </div>
 
-      </div>
+      </div> <!-- Close skills-dashboard -->
+      </div> <!-- Close window-body -->
+      </div> <!-- Close dashboard-window -->
     </div>
   </section>
 
@@ -1807,10 +1920,12 @@
   </button>
 
   <!-- Core Scripts -->
-  <!-- Translations (must load before script.js) -->
+  <!-- Translations (must load before core scripts) -->
   <script src="src/translations/de.js"></script>
   <script src="src/translations/en.js"></script>
-  <script src="src/js/script.js"></script>
+  <script src="src/js/core.js"></script>
+  <script src="src/js/charts.js"></script>
+  <script src="src/js/app.js"></script>
 
 </body>
 
