@@ -75,12 +75,17 @@ document.addEventListener("DOMContentLoaded", () => {
     modal.classList.add("open");
     document.body.style.overflow = "hidden"; // Prevent background scrolling
 
-    // Fix: Wait a tiny bit for the layout to compute before setting the iframe src.
-    // This prevents the common Google Docs Viewer "blank screen on first load" bug.
-    // We also append a timestamp to bypass Google's aggressive 204 No Content cache.
+    // Fix: Render natively on Apple/Safari systems (which fully support PDF iframes) to bypass blank screen bugs,
+    // and fallback to Google Docs Viewer on non-Apple/Android platforms to prevent triggering file downloads.
     setTimeout(() => {
-      const cacheBuster = "&t=" + new Date().getTime();
-      modalIframe.src = "https://docs.google.com/gview?url=" + encodeURIComponent(pdfUrl) + "&embedded=true" + cacheBuster;
+      const isAppleOrSafari = /Macintosh|MacIntel|iPad|iPhone|iPod/i.test(navigator.userAgent) || /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+      
+      if (isAppleOrSafari) {
+        modalIframe.src = pdfUrl;
+      } else {
+        const cacheBuster = "&t=" + new Date().getTime();
+        modalIframe.src = "https://docs.google.com/gview?url=" + encodeURIComponent(pdfUrl) + "&embedded=true" + cacheBuster;
+      }
     }, 100);
   }
 
