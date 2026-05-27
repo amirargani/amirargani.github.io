@@ -52,6 +52,13 @@ The website is engineered with a **dark-mode glassmorphic design system**, custo
 
 All notable enhancements to this repository are documented below:
 
+### [v1.0.9]
+#### Fixed
+* **PDF Viewer Stability**: Resolved the intermittent first-load blank PDF startup in Safari/Chrome/Edge by resetting the iframe to `about:blank`, then reloading with a cache-busting Google Docs Viewer URL and keeping the loader visible until actual load completion.
+* **Bilingual PDF Loader**: Added translation support for the certificate loading text via the new `cert_loader_text` key, so the modal shows the correct language in both English and German.
+* **Safari Right-Click Protection**: Reverted the Safari-native PDF embed path introduced in commit `af8cb55` because it bypassed our right-click blocker. The viewer now uses the stable shared Google Docs Viewer path again to reliably disable context-menu actions while the modal is open.
+* **JavaScript Bugfix**: Corrected the missing closing brace in `openPdfModal()` and restored a clean modal open/close flow.
+
 ### [v1.0.8]
 #### Added
 * **Dynamic Interactive Charts Expansion**: Upgraded the Skills Dashboard to feature five specialized, interactive data visualization views:

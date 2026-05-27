@@ -54,6 +54,15 @@ header {
   }
 }
 
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .logo-avatar-wrapper {
   position: relative;
   width: 28px;
