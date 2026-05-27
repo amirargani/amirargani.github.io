@@ -20,6 +20,7 @@ var en = {
   cert_2_issuer: "DSI Berlin – Data Science Institute",
   cert_view_btn: "Open PDF",
   cert_modal_close: "Close",
+  cert_loader_text: "Loading PDF...",
 
   // Hero Section
   hero_badge: "Software Engineer & Data Enthusiast",

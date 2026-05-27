@@ -65,6 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const modalIframe = document.getElementById("cert-modal-iframe");
   const modalTitle = document.getElementById("cert-modal-title");
   const modalClose = document.getElementById("cert-modal-close");
+  const pdfLoader = document.getElementById("pdf-loader");
 
   function openPdfModal(pdfUrl, title) {
     if (!modal || !modalIframe) return;
@@ -74,19 +75,53 @@ document.addEventListener("DOMContentLoaded", () => {
     // First, make the modal visible in the DOM
     modal.classList.add("open");
     document.body.style.overflow = "hidden"; // Prevent background scrolling
+    
+    // Show loader
+    if (pdfLoader) pdfLoader.style.display = "flex";
 
-    // Fix: Render natively on Apple/Safari systems (which fully support PDF iframes) to bypass blank screen bugs,
-    // and fallback to Google Docs Viewer on non-Apple/Android platforms to prevent triggering file downloads.
-    setTimeout(() => {
-      const isAppleOrSafari = /Macintosh|MacIntel|iPad|iPhone|iPod/i.test(navigator.userAgent) || /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-      
-      if (isAppleOrSafari) {
-        modalIframe.src = pdfUrl;
-      } else {
-        const cacheBuster = "&t=" + new Date().getTime();
-        modalIframe.src = "https://docs.google.com/gview?url=" + encodeURIComponent(pdfUrl) + "&embedded=true" + cacheBuster;
+    // Always use Google Docs viewer for PDF embeds to keep contextmenu control stable.
+    const targetUrl = "https://docs.google.com/gview?url=" + encodeURIComponent(pdfUrl) + "&embedded=true" + "&t=" + new Date().getTime();
+
+    // Force a hard iframe reset before loading the PDF content.
+    modalIframe.src = "about:blank";
+
+    const hideLoader = () => {
+      if (pdfLoader) pdfLoader.style.display = "none";
+    };
+
+    let loadAttempts = 0;
+    let iframeLoadStarted = false;
+    const loadIframe = () => {
+      if (!modal.classList.contains("open")) return;
+      loadAttempts += 1;
+      iframeLoadStarted = true;
+      modalIframe.src = targetUrl;
+    };
+
+    const cancelLoaderTimers = () => {
+      if (loaderTimeout) clearTimeout(loaderTimeout);
+      if (reloadTimeout) clearTimeout(reloadTimeout);
+    };
+
+    let loaderTimeout = setTimeout(() => {
+      hideLoader();
+    }, 4000);
+
+    let reloadTimeout = setTimeout(() => {
+      if (modal.classList.contains("open") && loadAttempts === 1) {
+        loadIframe();
       }
-    }, 100);
+    }, 1200);
+
+    modalIframe.onload = () => {
+      if (!iframeLoadStarted) return;
+      cancelLoaderTimers();
+      hideLoader();
+    };
+
+    setTimeout(() => {
+      loadIframe();
+    }, 300);
   }
 
   function closePdfModal() {
@@ -141,6 +176,45 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && modal && modal.classList.contains("open")) {
       closePdfModal();
+    }
+  });
+
+  // ==========================================
+  // PDF Security: Block Right-Click & Download Shortcuts (Chrome & Safari)
+  // ==========================================
+
+  const pdfBlocker = document.getElementById("pdf-contextmenu-blocker");
+  const blockPdfContextMenu = (e) => {
+    if (modal && modal.classList.contains("open")) {
+      e.preventDefault();
+      e.stopPropagation();
+      return false;
+    }
+  };
+
+  // Global capture-phase handler for any context menu while the modal is open.
+  document.addEventListener("contextmenu", blockPdfContextMenu, true);
+
+  if (pdfBlocker) {
+    pdfBlocker.addEventListener("contextmenu", blockPdfContextMenu, true);
+  }
+
+  if (modal) {
+    modal.addEventListener("contextmenu", blockPdfContextMenu, true);
+  }
+
+  if (modalIframe) {
+    modalIframe.addEventListener("contextmenu", blockPdfContextMenu, true);
+  }
+
+  // Block keyboard shortcuts for printing and saving while modal is open
+  document.addEventListener("keydown", (e) => {
+    if (modal && modal.classList.contains("open")) {
+      // Ctrl+P (Print), Ctrl+S (Save), Cmd+P (Mac Print), Cmd+S (Mac Save)
+      if ((e.ctrlKey || e.metaKey) && (e.key === "p" || e.key === "P" || e.key === "s" || e.key === "S")) {
+        e.preventDefault();
+        return false;
+      }
     }
   });
 
