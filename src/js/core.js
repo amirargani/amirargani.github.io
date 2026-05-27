@@ -1,5 +1,5 @@
 /**
- * Amir Argani - Portfolio Controller & Localisation
+ * Amir Argani - Core Page Controller & Localisation
  *
  * Translations are loaded from:
  *   translations/de.js  → window.de
@@ -8,11 +8,8 @@
 
 var translations = { de, en };
 
-
-
 // Global variables
 let currentLang = localStorage.getItem("portfolio_lang") || "en";
-
 
 // Load HTML fragments from src/htm into elements with data-include
 async function loadHtmlIncludes() {
@@ -33,7 +30,6 @@ async function loadHtmlIncludes() {
     }
   }));
 }
-
 
 // Calculate dynamic category percentages based on bottom subcategories
 function calculateCategoryPercentages() {
@@ -62,6 +58,14 @@ function calculateCategoryPercentages() {
         if (valElem) {
           valElem.textContent = `${average}%`;
         }
+        const barValElem = item.querySelector(".bar-val");
+        if (barValElem) {
+          barValElem.textContent = `${average}%`;
+        }
+        const colValElem = item.querySelector(".column-val");
+        if (colValElem) {
+          colValElem.textContent = `${average}%`;
+        }
       }
     }
   });
@@ -79,8 +83,6 @@ function updateLanguage(lang) {
   document.querySelectorAll("[data-i18n]").forEach(element => {
     const key = element.getAttribute("data-i18n");
     if (translations[lang] && translations[lang][key]) {
-      // If it has children (like nested SVGs or icons), we might only want to replace text.
-      // But we can use innerHTML for clean integration if we format translations correctly.
       element.innerHTML = translations[lang][key];
     }
   });
@@ -97,8 +99,6 @@ function updateLanguage(lang) {
 
   // Calculate dynamic percentages for circular gauges (data-progress set here)
   calculateCategoryPercentages();
-  // Note: animateSkillBars() is intentionally NOT called here —
-  // it is triggered once by the IntersectionObserver when the user scrolls to #skills
 }
 
 // Skill bars progress animation — runs once on page load with stagger
@@ -172,32 +172,34 @@ function setupScrollAnimations() {
   animatedElements.forEach(el => observer.observe(el));
 }
 
-// Animate only the circular radial gauges (once on scroll into view)
+// Dynamic counter animation helper
+function animateTextCounter(element, targetValue) {
+  if (!element) return;
+  let current = 0;
+  const duration = 1200; // Match transition time
+  const startTime = performance.now();
+
+  function update(now) {
+    const elapsed = now - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const easeProgress = 1 - Math.pow(1 - progress, 3); // Ease out cubic
+    current = Math.round(easeProgress * targetValue);
+    element.textContent = `${current}%`;
+
+    if (progress < 1) {
+      requestAnimationFrame(update);
+    } else {
+      element.textContent = `${targetValue}%`;
+    }
+  }
+  requestAnimationFrame(update);
+}
+
+// Legacy: kept for compatibility (e.g. language switch scenario)
 function animateRadialCircles() {
-  const circles = document.querySelectorAll(".radial-progress");
-  circles.forEach((item, index) => {
-    const progress = parseInt(item.getAttribute("data-progress") || "0", 10);
-    const circle = item.querySelector(".progress-circle-fill");
-    if (!circle) return;
-    const radius = (circle.r && circle.r.baseVal && circle.r.baseVal.value > 0) ? circle.r.baseVal.value : 45;
-    const circumference = 2 * Math.PI * radius;
-    const targetOffset = circumference - (progress / 100) * circumference;
-
-    // Reset to empty (no transition)
-    circle.style.transition = "none";
-    circle.style.strokeDasharray = `${circumference} ${circumference}`;
-    circle.style.strokeDashoffset = String(circumference);
-
-    // Double rAF: ensures browser has painted the reset before starting transition
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        setTimeout(() => {
-          circle.style.transition = "stroke-dashoffset 1.4s cubic-bezier(0.16, 1, 0.3, 1)";
-          circle.style.strokeDashoffset = String(targetOffset);
-        }, index * 80);
-      });
-    });
-  });
+  if (typeof animateFeaturedCharts === "function") {
+    animateFeaturedCharts();
+  }
 }
 
 // Animate only the linear progress bars inside a given skill category card
@@ -224,30 +226,13 @@ function animateBarsInCard(card) {
   });
 }
 
-// Legacy: kept for compatibility (e.g. language switch scenario)
+// Compatibility wrapper
 function animateSkillBars() {
   animateRadialCircles();
   document.querySelectorAll(".skill-cat-card").forEach(card => animateBarsInCard(card));
 }
 
-
-// Mouse movement interactive light effect (glow cards)
-function setupCardGlowEffect() {
-  const cards = document.querySelectorAll(".glow-card");
-
-  cards.forEach(card => {
-    card.addEventListener("mousemove", (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left; // x position within the element
-      const y = e.clientY - rect.top;  // y position within the element
-
-      card.style.setProperty("--mouse-x", `${x}px`);
-      card.style.setProperty("--mouse-y", `${y}px`);
-    });
-  });
-}
-
-// Document ready entry point
+// Core setup triggers inside DOMContentLoaded
 document.addEventListener("DOMContentLoaded", () => {
   loadHtmlIncludes().then(() => {
     // Setup language toggle triggers
@@ -281,63 +266,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // Set initial language
   updateLanguage(currentLang);
 
-  // Setup visual effects & animations
+  // Setup visual scroll animations
   setupScrollAnimations();
-  setupCardGlowEffect();
-
-  // Dynamic smooth scroll-to-card for circular gauges
-  document.querySelectorAll(".radial-progress[data-category]").forEach(gauge => {
-    gauge.addEventListener("click", () => {
-      const catKey = gauge.getAttribute("data-category");
-      const bottomTitle = document.querySelector(`.skill-cat-card h3[data-i18n="${catKey}"]`);
-      if (bottomTitle) {
-        const card = bottomTitle.closest(".skill-cat-card");
-        if (card) {
-          card.scrollIntoView({ behavior: "smooth", block: "center" });
-
-          // Trigger a beautiful brief glowing pulse to draw attention to the targeted card
-          card.classList.add("pulsing-glow");
-          setTimeout(() => {
-            card.classList.remove("pulsing-glow");
-          }, 1500);
-        }
-      }
-    });
-  });
-
-  // GitHub Repositories Filter Logic
-  const filterBtns = document.querySelectorAll(".repo-filter-btn");
-  const repoItems = document.querySelectorAll(".repo-item");
-
-  if (filterBtns.length > 0 && repoItems.length > 0) {
-    filterBtns.forEach(btn => {
-      btn.addEventListener("click", () => {
-        filterBtns.forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-
-        const filterValue = btn.getAttribute("data-filter");
-
-        repoItems.forEach(item => {
-          if (item.hasAttribute("open")) {
-            item.removeAttribute("open");
-          }
-
-          if (filterValue === "all" || item.getAttribute("data-category") === filterValue) {
-            item.style.display = "block";
-            item.style.opacity = "0";
-            item.style.transform = "translateY(10px)";
-            item.style.transition = "opacity 0.4s ease, transform 0.4s ease";
-            setTimeout(() => {
-              item.style.opacity = "1";
-              item.style.transform = "translateY(0)";
-            }, 50);
-          } else {
-            item.style.display = "none";
-          }
-        });
-      });
-    });
-  }
 
   // Back to Top Button logic
   const backToTopBtn = document.getElementById("back-to-top");
@@ -357,112 +287,4 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
-
-  // ==========================================
-  // PDF Viewer Modal Logic
-  // ==========================================
-  const certButtons = document.querySelectorAll(".cert-open-btn");
-  const modal = document.getElementById("cert-modal");
-  const modalIframe = document.getElementById("cert-modal-iframe");
-  const modalTitle = document.getElementById("cert-modal-title");
-  const modalClose = document.getElementById("cert-modal-close");
-
-  function openPdfModal(pdfUrl, title) {
-    if (!modal || !modalIframe) return;
-
-    modalTitle.textContent = title;
-
-    // First, make the modal visible in the DOM
-    modal.classList.add("open");
-    document.body.style.overflow = "hidden"; // Prevent background scrolling
-
-    // Fix: Wait a tiny bit for the layout to compute before setting the iframe src.
-    // This prevents the common Google Docs Viewer "blank screen on first load" bug.
-    // We also append a timestamp to bypass Google's aggressive 204 No Content cache.
-    setTimeout(() => {
-      const cacheBuster = "&t=" + new Date().getTime();
-      modalIframe.src = "https://docs.google.com/gview?url=" + encodeURIComponent(pdfUrl) + "&embedded=true" + cacheBuster;
-    }, 100);
-  }
-
-  function closePdfModal() {
-    if (!modal) return;
-    modal.classList.remove("open");
-    document.body.style.overflow = "";
-    // Clear iframe src after animation to stop loading
-    setTimeout(() => {
-      if (modalIframe) modalIframe.src = "";
-    }, 350);
-  }
-
-  // Attach click events to all certificate buttons
-  certButtons.forEach(btn => {
-    btn.addEventListener("click", (e) => {
-      e.preventDefault();
-      const card = btn.closest(".cert-card");
-      if (!card) return;
-
-      // Get the correct PDF based on current language and decode it
-      const pdfUrlBase64 = card.getAttribute(`data-pdf-${currentLang}`);
-      let pdfUrl = "";
-      try {
-        pdfUrl = atob(pdfUrlBase64);
-      } catch (e) {
-        console.error("Error decoding PDF URL", e);
-        return;
-      }
-
-      const titleElement = card.querySelector(".cert-title");
-      const title = titleElement ? titleElement.textContent : "Certificate";
-
-      openPdfModal(pdfUrl, title);
-    });
-  });
-
-  // Close modal when close button is clicked
-  if (modalClose) {
-    modalClose.addEventListener("click", closePdfModal);
-  }
-
-  // Close modal when clicking outside the box (on the overlay)
-  if (modal) {
-    modal.addEventListener("click", (e) => {
-      if (e.target === modal) {
-        closePdfModal();
-      }
-    });
-  }
-
-  // Close modal on Escape key
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && modal && modal.classList.contains("open")) {
-      closePdfModal();
-    }
-  });
-
-  // ==========================================
-  // Clean URL Smooth Scrolling (No Hash in URL)
-  // ==========================================
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      const targetId = this.getAttribute('href');
-      // Only process valid IDs (e.g. #about), skip raw "#"
-      if (targetId && targetId !== '#') {
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-          e.preventDefault(); // Prevent URL from changing
-          targetElement.scrollIntoView({
-            behavior: 'smooth'
-          });
-
-          // If there is a mobile menu checkbox, uncheck it to close the menu
-          const menuToggle = document.getElementById('menu-toggle');
-          if (menuToggle && menuToggle.checked) {
-            menuToggle.checked = false;
-          }
-        }
-      }
-    });
-  });
-
 });

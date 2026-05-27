@@ -87,9 +87,9 @@ var de = {
   subcat_nosql: "NoSQL-Datenbanken",
 
   // Skill Specific labels
-  skill_ml: "Maschinelles Lernen (Scikit-Learn, Regression, etc.)",
-  skill_eda: "EDA (Explorative Datenanalyse)",
-  skill_al: "AL Programming Language (Business Central)",
+  skill_ml: "Maschinelles Lernen",
+  skill_eda: "Explorative Datenanalyse",
+  skill_al: "AL Programming Language",
   skill_nosql: "MongoDB",
   skill_sql_server: "SQL Server",
   skill_mysql: "MySQL",
@@ -160,5 +160,10 @@ var de = {
   section_contact_subtitle: "Bereit für das nächste datengetriebene Projekt?",
   contact_desc: "Ich freue mich über Anfragen für Positionen in Hamburg, Lübeck oder 100% Remote. Kontaktieren Sie mich gerne über LinkedIn.",
   contact_linkedin_btn: "Auf LinkedIn vernetzen",
+  toggle_radial: "Kreis",
+  toggle_radar: "Radar",
+  toggle_matrix: "Matrix",
+  toggle_bar: "Balken",
+  toggle_line: "Linien",
   footer_text: `© ${new Date().getFullYear()} Amir Argani. Alle Rechte vorbehalten.`
 };

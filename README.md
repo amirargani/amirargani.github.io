@@ -52,6 +52,26 @@ The website is engineered with a **dark-mode glassmorphic design system**, custo
 
 All notable enhancements to this repository are documented below:
 
+### [v1.0.8]
+#### Added
+* **Dynamic Interactive Charts Expansion**: Upgraded the Skills Dashboard to feature five specialized, interactive data visualization views:
+  * **Radial Gauges (Default)**: Visual circular progress gauges mapping technical categories.
+  * **Interactive Radar Chart**: A premium polygonal spider-chart visualization.
+  * **Skill Bubble Matrix**: An interactive 2D bubble scatter plot showing category Expertise vs. Frequency of Use.
+  * **Horizontal Bar Chart**: Clean linear comparator rows with custom animations.
+  * **Line & Area Chart**: A continuous visual trend chart with custom glowing gradient areas.
+* **Stable Layout Dimensioning**: Standardized the glassmorphic Skills featured `.glow-card` container height to a perfectly stable `520px` (with standard uniform `3rem 2rem` padding) on desktop to guarantee zero jumpiness or layout shifting when toggling between the five views.
+* **High-Performance Modular Script Split**: Separated the single, large JavaScript file into three specialized modules loaded sequentially in `index.html` to optimize execution speeds:
+  * `src/js/core.js`: Framework core (multilingual translations engine, dynamic counter/average maths, scroll reveal observers, mobile menus, and back-to-top buttons).
+  * `src/js/charts.js`: Dashboard visualizer (Data configurations, dynamic SVG path builders, vertex animations, and view togglers).
+  * `src/js/app.js`: Interactive components (Mouse glows, Base64 PDF viewer modal triggers, repo filters, and hashless smooth scrolls).
+* **Dynamic DOM-Based Tooltip Extraction**: Designed a utility function `getSubSkillsFromDOM(catKey)` that dynamically traverses the DOM, extracting localized sub-skill name strings and progress percentages from the bottom skill category cards. Hooked this extractor into the Radar, Bar, and Line charts to show live translated details on hover.
+* **Pulsing Green Status Dot**: Added a highly premium, glowing Apple-style status indicator dot next to the **LIVE** dashboard title inside the header of the glassmorphic IDE frame. Powered by a custom infinite CSS keyframe breath animation (`live-pulse-glow`).
+* **Sliding Capsule Highlight Backdrop**: Engineered a sliding capsule highlight background (`.toggle-slider`) behind the dashboard buttons with a custom elastic ease transition (`transition: left 0.35s cubic-bezier(0.25, 1, 0.5, 1)`) and high-performance Javascript positioning.
+* **Branding Suffix Cleanups & Version Placement**:
+  * Removed unnecessary verbose suffixes like `(Scikit-Learn, Regression, etc.)`, `(Business Central)`, and `(S3, IAM, EC2, RDS, Lambda, etc.)` from technical skill labels for a cleaner, modern look.
+  * Positioned the project release version `v1.0.8` elegantly below the logo in the header with mobile media query alignment.
+
 ### [v1.0.7]
 #### Added
 * **Fluid Fullwidth Footer Watermark**: Implemented an ultra-premium fluid typography system using CSS `clamp(3.2rem, 16vw, 20rem)` and proportional `em` letter spacing (`-0.04em`). The giant `AMIRARGANI` watermark now scales fluidly and seamlessly to span the full screen width (**Fullwidth**) across all resolutions without any jumps, overlaps, or horizontal scrollbar overflows.
