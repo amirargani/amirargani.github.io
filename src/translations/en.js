@@ -103,6 +103,7 @@ var en = {
   skill_word: "Word",
   skill_powerpoint: "PowerPoint",
   skill_tableau: "Tableau",
+  skill_spark: "Apache Spark",
 
   // Languages
   lang_persian: "Persian (Native)",

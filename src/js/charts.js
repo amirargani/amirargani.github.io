@@ -10,8 +10,8 @@ const chartDataConfig = {
     freq: 85,
     nameEn: "Data Science",
     nameDe: "Data Science",
-    skillsEn: ["Exploratory Data Analysis", "Machine Learning", "Streamlit", "Power BI", "Tableau", "Excel"],
-    skillsDe: ["Exploratory Data Analysis", "Machine Learning", "Streamlit", "Power BI", "Tableau", "Excel"]
+    skillsEn: ["Exploratory Data Analysis", "Machine Learning", "Streamlit", "Power BI", "Tableau", "Apache Spark", "Excel"],
+    skillsDe: ["Exploratory Data Analysis", "Machine Learning", "Streamlit", "Power BI", "Tableau", "Apache Spark", "Excel"]
   },
   cat_programming: {
     color: "#7f00ff",
@@ -1046,6 +1046,23 @@ document.addEventListener("DOMContentLoaded", () => {
     // Add default view class
     skillsFeatured.classList.add("view-radial");
 
+    // Auto-switch to radar on mobile during initialization
+    if (window.innerWidth <= 576) {
+      const radarBtn = document.querySelector('.toggle-btn[data-view="radar"]');
+      if (radarBtn) {
+        toggleButtons.forEach(b => b.classList.remove("active"));
+        radarBtn.classList.add("active");
+        skillsFeatured.classList.remove("view-radial");
+        skillsFeatured.classList.add("view-radar");
+        
+        // Hide gauges and show radar wrapper
+        const gaugesWrapper = skillsFeatured.querySelector(".gauges-grid-wrapper");
+        const radarWrapper = skillsFeatured.querySelector(".radar-chart-wrapper");
+        if (gaugesWrapper) gaugesWrapper.style.display = "none";
+        if (radarWrapper) radarWrapper.style.display = "block";
+      }
+    }
+
     // Dynamic toggle slider update
     const updateToggleSlider = () => {
       const slider = document.querySelector(".toggle-slider");
@@ -1059,12 +1076,28 @@ document.addEventListener("DOMContentLoaded", () => {
     // Initialize position
     setTimeout(updateToggleSlider, 150);
 
-    // Re-align on window resize
-    window.addEventListener("resize", updateToggleSlider);
+    // Re-align on window resize and handle mobile view transition
+    window.addEventListener("resize", () => {
+      if (window.innerWidth <= 576) {
+        const activeBtn = document.querySelector(".toggle-btn.active");
+        if (activeBtn && activeBtn.getAttribute("data-view") === "radial") {
+          const radarBtn = document.querySelector('.toggle-btn[data-view="radar"]');
+          if (radarBtn) {
+            radarBtn.click();
+          }
+        }
+      }
+      updateToggleSlider();
+    });
 
     toggleButtons.forEach(btn => {
       btn.addEventListener("click", () => {
         const view = btn.getAttribute("data-view");
+
+        // Prevent clicking radial on mobile
+        if (view === "radial" && window.innerWidth <= 576) {
+          return;
+        }
 
         // Update active class on buttons
         toggleButtons.forEach(b => b.classList.remove("active"));
