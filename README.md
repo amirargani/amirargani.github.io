@@ -47,8 +47,8 @@ The website is engineered with a **dark-mode glassmorphic design system**, custo
 
 * **Bilingual Localization System**: Built-in translation engine supporting instantaneous, reactive toggling between **German (DE)** and **English (EN)** without page reloads.
 * **Interactive Dynamic Dashboard**: 
-  * 8 circular progress gauges mapping primary tech categories.
-  * Interactive category pointers that smoothly scroll to detail cards with neon glow pulse animations on click.
+  * Features 5 specialized data visualization modes: **Radial Gauges (Default)**, an **Interactive Radar/Spider Chart**, a **Skill Bubble Matrix** (Expertise vs. Frequency), a **Horizontal Bar Chart**, and a **Line & Area Chart**.
+  * Interactive category pointers that smoothly scroll to detail cards with custom neon glow pulse animations on click.
 * **Live GitHub Accordion Showcase**: Custom-engineered repository gallery that fetches and categorizes my top 10 open-source repositories using interactive, CSS-animated `<details>` and `<summary>` wrappers.
 * **Advanced Thematic Styling**: Unique, highly premium neon layouts including custom radial pulsing glows, premium neon card borders, and responsive styling.
 * **Keychain-Safe Publishing Helper**: Interactive shell-script verification for seamless, single-command production updates.
