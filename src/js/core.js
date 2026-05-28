@@ -87,6 +87,14 @@ function updateLanguage(lang) {
     }
   });
 
+  // Translate Reload button tooltip dynamically
+  const reloadBtn = document.getElementById("cert-modal-reload");
+  if (reloadBtn) {
+    const titleText = lang === "de" ? "PDF neu laden" : "Reload PDF";
+    reloadBtn.setAttribute("title", titleText);
+    reloadBtn.setAttribute("aria-label", titleText);
+  }
+
   // Handle active states on language switch buttons
   document.querySelectorAll(".lang-btn").forEach(btn => {
     const btnLang = btn.getAttribute("data-lang");
@@ -99,6 +107,11 @@ function updateLanguage(lang) {
 
   // Calculate dynamic percentages for circular gauges (data-progress set here)
   calculateCategoryPercentages();
+
+  // Dynamic charts translation redraw (safety checked since charts.js loads after core.js)
+  if (typeof animateFeaturedCharts === "function") {
+    animateFeaturedCharts();
+  }
 }
 
 // Skill bars progress animation — runs once on page load with stagger

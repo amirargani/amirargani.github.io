@@ -16,6 +16,21 @@ Welcome to the official repository for my interactive, ultra-modern, and premium
 [![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)](https://git-scm.com/)
 
 
+
+---
+
+## 📌 Table of Contents
+
+- [🚀 Badges & Core Stack](#-badges--core-stack)
+- [📖 About the Project](#-about-the-project)
+- [🌟 Key Features](#-key-features)
+- [🛠️ Technology Stack](#️-technology-stack-portfolio-frontend)
+- [📂 Project Structure](#-project-structure)
+- [💻 Local Development & Testing](#-local-development--testing)
+- [📋 Changelog](#-changelog)
+- [⚡ Deployment & Workflow Automation](#-deployment--workflow-automation)
+- [⚖️ License](#️-license)
+
 ---
 
 ## 📖 About the Project
@@ -48,9 +63,86 @@ The website is engineered with a **dark-mode glassmorphic design system**, custo
 
 ---
 
+## 📂 Project Structure
+
+```text
+amirargani.github.io/
+├── .gitattributes         # Git path-specific configurations (line ending normalization)
+├── .gitignore             # File and directory patterns to ignore in Git
+├── LICENSE                # Apache License 2.0 file
+├── README.md              # Comprehensive project documentation, structure and changelog
+├── index.html             # Main single-page portfolio application entry point
+├── publish.sh             # Interactive helper script to automate Git commits and deploys
+└── src/                   # Application source code directory
+    ├── css/               # Stylesheets directory
+    │   ├── styles.css     # Global style tokens, custom scrollbar, and navigation frame
+    │   ├── core.css       # Modular styling system utilities and layout frames
+    │   └── app.css        # Thematic progress card fills, certificate modals, and togglers
+    ├── fav/               # Local optimized favicon and app icon files
+    │   ├── favicon.ico    # Legacy fallback multi-resolution browser icon
+    │   ├── favicon-16x16.png  # Standard 16x16 browser tab favicon
+    │   ├── favicon-32x32.png  # Standard 32x32 browser tab favicon
+    │   └── apple-touch-icon.png  # Apple iOS homescreen bookmark touch icon
+    ├── icon/              # Static vector icon assets directory
+    ├── js/                # Client-side JavaScript modules directory
+    │   ├── core.js        # Core bilingual translation hooks, counters, and smooth scrolling
+    │   ├── charts.js      # Skills dashboard visualizer (Radar, Matrix, Line, Bar charts)
+    │   └── app.js         # Modal retry mechanics, repository filters, and animations
+    ├── py/                # Auxiliary Python utility scripts directory
+    │   ├── compile_icons.py # Optimizes and compiles static SVGs into inline skillIcons JS module
+    │   └── generate_favicons.py # Downloads user GitHub avatar and generates local multi-res favicon files
+    └── translations/      # Localization language directory
+        ├── de.js          # German locale translation mappings
+        └── en.js          # English locale translation mappings
+```
+
+---
+
+## 💻 Local Development & Testing
+
+For local development and testing, particularly when verifying browser-specific assets like favicons in Safari, it is highly recommended to run a local web server rather than opening `index.html` directly via the `file://` protocol (since Safari and other modern browsers block favicon rendering on the local filesystem for security reasons).
+
+To run a quick local development server:
+1. Open your terminal in the root of the repository.
+2. Start Python's built-in HTTP server:
+   ```bash
+   python3 -m http.server 8000
+   ```
+3. Navigate to the local server in your browser:
+   ```text
+   http://localhost:8000
+   ```
+
+> [!TIP]
+> **Safari Favicon Caching**: Safari caches website icons aggressively in a persistent system-level cache (`~/Library/Safari/Favicon Cache/`). If you make updates to favicons and they do not appear, open a **Safari Private Window** to view them immediately, or clear the system-level favicon cache folder.
+
+---
+
 ## 📋 Changelog
 
 All notable enhancements to this repository are documented below:
+
+### [v1.1.0]
+#### Added
+* **Manual Reload Option**: Integrated a custom-styled, bilingual SVG Reload button with an active glowing cyan hover state directly in the PDF modal header.
+* **Bilingual Tooltips**: Implemented runtime translation hooks in `core.js` to dynamically localize the tooltips and accessibility tags ("Reload PDF" / "PDF neu laden") depending on the active locale.
+* **Dark Loading Backdrop Overlay**: Re-engineered the PDF loader overlay (`#pdf-loader`) with a full-screen glassmorphic backdrop (`rgba(10, 11, 18, 0.95)` with a `4px` blur), eliminating browser-specific iframe white flashes for seamless dark-mode transitions.
+* **Interactive Retry Fallback Overlay**: Added a fail-safe interactive recovery overlay (`#pdf-loader-error`) that prompts the user with a bilingual warning if the proxy connection times out after 3 loading attempts (approx. 16.5 seconds), offering a manual reload click trigger.
+* **New Technical Skill**: Added Apache Spark (62%) to the *Data Analysis & BI Tools* category with complete bilingual translation mappings and automated average score recalculations.
+* **Full-Width Skill Cards Layout**: Redesigned the Skills Dashboard category cards to utilize a sleek full-width single-column layout, ensuring clean grid symmetry and maximum text and progress bar readability.
+* **Custom SVG Icons Compilation**: Compiled and optimized 34 high-fidelity, single-color SVG assets from the `src/icon/` directory directly into `app.js`, stripping redundant metadata and mapping dark fills to `currentColor` for dynamic theme integrations.
+* **Dynamic SVG Chart Label Translation**: Hooked the global `animateFeaturedCharts()` routine directly into `updateLanguage()` in `core.js` to automatically translate and refresh all interactive SVG chart labels (Radar, Scatter Matrix, Line, Bar) dynamically upon toggling language modes.
+* **Local Favicon Integration**: Migrated the remote avatar references to robust local resources in the new `src/fav/` directory (`favicon.ico`, `favicon-32x32.png`, `favicon-16x16.png`, and `apple-touch-icon.png`) for offline reliability and clean localized asset management.
+
+#### Fixed
+* **Flickering & Abort Errors**: Eliminated transient "PDF was not displayed" proxy errors by removing an aggressive 1.2-second unconditional iframe reload timer.
+* **Auto-Retry & Safety Loop**: Structured a robust auto-retry connection loop in `app.js` (up to 3 attempts, waiting 5.5 seconds each) utilizing query timestamps to force a fresh proxy load.
+* **Thread Cleanup**: Introduced modal lifecycle cleanup bindings (`activePdfCancelFn`) to instantly cancel all pending retry timeouts on close, preventing background network memory leaks.
+* **Mobile Skills Viewport Optimization**: Disabled and hid the complex circular gauge switcher on mobile viewports (widths <= 576px), automatically routing the default dashboard view to the highly responsive Radar chart.
+* **Mobile PDF Modal Viewport Height**: Rescaled the certificate modal dialog box on mobile screens to `min(78vh, 540px)` to perfectly match the aspect ratio of standard A4 documents and eliminate the empty black void below the iframe.
+* **Mobile & Tablet Repository Filter Optimization**: Compacted all repository category filters into sleek circular icon badges on viewport widths <= 1024px, ensuring all five filters align cleanly in a single row without awkward text wraps.
+* **Machine Learning Icon Background Fix**: Fixed the solid square rendering blockage on the *Machine Learning* icon by removing a redundant transparent Illustrator bounding-box rect which lost its `fill: none` styling after tag cleanups.
+* **Theme-specific Row Hover Highlights**: Replaced rigid, alternating row hover highlights with dynamic `:has()` parent card selectors, ensuring the glowing border and icon highlight perfectly match the specific category's brand color (solving the purple hover clash on the green Databases card).
 
 ### [v1.0.9]
 #### Fixed
