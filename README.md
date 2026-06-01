@@ -124,6 +124,27 @@ To run a quick local development server:
 
 All notable enhancements to this repository are documented below:
 
+### [v1.1.1]
+#### Added
+* **Holographic Standalone Brand Watermark**: Integrated a massive background branding logo of the official standalone GitHub Octocat silhouette (completely circle-free, matching the premium reference illustration) behind the `AMIRARGANI` watermark text in the footer.
+* **Responsive Watermark Spacing**: Fine-tuned `.footer-divider` margin-bottom and `.footer-watermark-bg-icon` sizes and offset transforms across all device viewports: Desktop (`12rem` margin, `48rem` size), Tablet (`6rem` margin, `32rem` size), and Mobile (`2rem` margin, `22rem` size) to prevent overlapping with social media links and keep layout symmetry.
+* **6th KPI Card (GitHub Repositories)**: Introduced a dynamic 6th KPI card that automatically scrapes and calculates the total repository count from the portfolio's active repository showcase nodes, animated with stagger count-up scripts and styled with an orange gradient and float animations.
+* **Dynamic CSS Border & Micro-Animations**: Introduced highly premium, custom-designed CSS border animations utilizing conic gradients, custom CSS variables (`--border-angle-slider`), and advanced dual linear-gradient masks (`mask-composite: exclude`) to create neon sweeping outlines around **active language switcher buttons (DE/EN)**, active filters, sliding view switchers, back-to-top status edges, and badges. Added customized, looping micro-animations for all 6 dashboard KPI metrics SVGs (heartbeat pulses, medal swings, code pulse, bounces, maps floating). Added a spectacular **Futuristic Footer Divider Comet Sweep** (`flyDividerComet`), sending a 30vw wide glowing cyan-to-transparent laser comet segment dynamically sweeping back and forth across the full-bleed divider line.
+* **Automated KPI Calculations**: Programmed automated calculations for "Earned Certificates" (derived from the timeline elements length in the resume section) and "GitHub Repositories" to update runtime numbers in real-time.
+* **Interactive Resume / CV Showcase & Timeline**: Designed and implemented a completely new, premium timeline-based Resume/CV showcase. Built using clean responsive CSS layout structures, it features custom vertical timeline connector lines, neon glowing interactive timeline dots, collapsible professional experience and education list items with animated expand/collapse details triggers ("Show Details" / "Hide Details"), and complete dynamic bilingual translation integration (DE/EN).
+* **Bilingual CV Reordering**: Reordered CV milestones in both locales and `index.html` markup to strategically emphasize and highlight core competencies in Analytics, Data Engineering, and Fullstack systems integration.
+* **Cookie Consent Banner & GDPR Manager**: Designed and implemented a fully-compliant, premium glassmorphic Cookie Consent Banner from scratch. Features a customized accordion settings panel (Essential, Preference, and Analytics), a dedicated footer trigger link to restore preferences, a glassmorphic Close "X" button with spin-and-scale hover transitions, and a fully responsive layout that wraps to full-width stacked columns on smaller viewports.
+* **Glassmorphic Toast Notifications**: Created a premium feedback alert system with sliding progress bars, cookie SVGs, and automated timeouts to notify the user upon accepting, declining, or modifying cookie choices.
+* **Interactive Chart Overlay Blocker**: Built a premium blurred backdrop filter over the interactive skills dashboard when analytics cookies are disabled, prompting users to easily customize and enable analytics via a direct activation link.
+* **Granular Cookie Storage Controls**: Tied client storage mechanisms directly to GDPR choices, ensuring `localStorage` states (e.g. language code, active dashboard view) are immediately cleared if preference cookies are declined.
+* **English Codebase Documentation**: Fully documented all modules and algorithms across Python scripts (`compile_icons.py`, `generate_favicons.py`), controllers (`core.js`, `app.js`), dashboard charts (`charts.js`), and dictionary translations using professional English JSDoc blocks and comments.
+
+#### Fixed
+* **Standard CSS Browser Compatibility**: Added standard `mask` properties alongside vendor-prefixed `-webkit-mask` declarations across all 4 custom animated dynamic borders to resolve all compiler/linter compatibility warnings.
+* **JavaScript Syntax Integrity**: Fixed a syntax bug caused by a duplicate dangling closing curly brace in `core.js` that caused visual page freezes.
+* **Mobile Tap Highlights Reset**: Added a global `-webkit-tap-highlight-color: transparent` reset inside `core.css` to prevent standard grey highlighted background flashes on tap actions on mobile web views.
+
+
 ### [v1.1.0]
 #### Added
 * **Manual Reload Option**: Integrated a custom-styled, bilingual SVG Reload button with an active glowing cyan hover state directly in the PDF modal header.

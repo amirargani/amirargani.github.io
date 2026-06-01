@@ -1,8 +1,18 @@
+"""
+Icon Compilation Script
+=======================
+Author: Amir Argani
+Description: This script parses individual SVG icon files, cleanses them of Adobe Illustrator 
+             and other metadata bloat, converts solid colors dynamically to 'currentColor' 
+             for modern CSS variables support, and compiles them directly into a javascript dictionary 
+             block inside `src/js/app.js` under `const skillIcons`.
+"""
+
 import os
 import re
 import xml.etree.ElementTree as ET
 
-# Define paths relative to the script's location to ensure portability
+# Define paths relative to the script's location to ensure portability across environments
 script_dir = os.path.dirname(os.path.abspath(__file__))
 workspace_dir = os.path.abspath(os.path.join(script_dir, "../.."))
 icon_dir = os.path.join(workspace_dir, "src/icon")

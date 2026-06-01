@@ -1,5 +1,13 @@
 /**
- * Amir Argani - Portfolio | English (EN) Translations
+ * Amir Argani - Portfolio Localization Dictionary
+ * ===============================================
+ * Language: English (EN)
+ * Author: Amir Argani
+ * 
+ * Description: This file exposes `window.en` as a global dictionary object. It is mapped
+ *              dynamically by `src/js/core.js` (`updateLanguage` function) to update all 
+ *              DOM text nodes decorated with `data-i18n="key"` attributes when the locale 
+ *              is toggled to English.
  */
 
 var en = {
@@ -21,6 +29,7 @@ var en = {
   cert_view_btn: "Open PDF",
   cert_modal_close: "Close",
   cert_loader_text: "Loading PDF...",
+  cert_loader_error: "The PDF could not be loaded after several attempts. Please click the Reload button (circular arrow) in the header to try manually.",
 
   // Hero Section
   hero_badge: "Software Engineer & Data Enthusiast",
@@ -68,6 +77,13 @@ var en = {
   section_skills_title: "Knowledge & Tech Skills",
   section_skills_subtitle: "Structured overview of my technology stack",
   skill_level_label: "Skill Level",
+  kpi_tech_stack: "Technologies Mastered",
+  kpi_avg_expertise: "Average Expertise",
+  kpi_experience: "Practical Experience",
+  kpi_experience_tech: "Technical Experience",
+  kpi_experience_overall: "Overall Experience",
+  kpi_certificates: "Earned Certificates",
+  kpi_github_repos: "GitHub Repositories",
 
   // Skill Categories
   cat_data_science: "Data Analysis & BI Tools",
@@ -167,5 +183,96 @@ var en = {
   toggle_matrix: "Matrix",
   toggle_bar: "Bar",
   toggle_line: "Line",
-  footer_text: `© ${new Date().getFullYear()} Amir Argani. All rights reserved.`
+  footer_text: `© ${new Date().getFullYear()} Amir Argani. All rights reserved.`,
+
+  // Resume / CV
+  nav_resume: "Resume",
+  section_resume_title: "Resume",
+  section_resume_subtitle: "My professional journey and education",
+  resume_exp_title: "PROFESSIONAL EXPERIENCE",
+  resume_edu_title: "EDUCATION",
+
+  cv_exp_1_title: "Fullstack Developer with focus on Data Integration & Interfaces | CROMIND",
+  cv_exp_1_meta: "06.2023 - 05.2025 • Schwarzenbek, Germany",
+  cv_exp_1_p1: "Structured aggregation and processing of heterogeneous data sources to define high-impact KPIs and analytical insights",
+  cv_exp_1_p2: "Engineered high-performance SQL-based data models for ERP systems to optimize enterprise-wide reporting",
+  cv_exp_1_p3: "Designed and deployed the CROWBV application for fully automated acquisition, real-time processing, and secure storage of maritime measurement data",
+  cv_exp_1_p4: "Conducted requirement analysis and coordination with C/AL developers (Microsoft Dynamics NAV), managed client inquiries via ticketing systems, and designed and implemented EDI and integration solutions utilizing SQL Server and SEEBURGER to automate data exchange and business processes for the client KleineWolke Lagerlogistik",
+  cv_exp_1_p5: "Ensured seamless data consistency to enable precise, data-driven steering of operational business processes",
+  cv_exp_1_p6: "Managed the reliable operation, proactive monitoring, and automated backups of business-critical EDI interfaces for a client's Monitor G5 ERP system",
+  cv_exp_1_p7: "Successfully executed complex integration projects in the interface environment (including CRObuzzer) for Microsoft Dynamics 365 Business Central",
+  cv_exp_1_p8: "Developed, optimized, and maintained modern RESTful and GraphQL APIs utilizing C# and .NET Core",
+  cv_exp_1_p9: "Designed layouts, customized, and continuously developed complex analytical reports within Microsoft Dynamics 365 Business Central",
+  cv_exp_1_p10: "Conducted in-depth technical analyses and code reviews, driving the continuous optimization and evolution of existing software solutions",
+  cv_exp_1_p11: "Managed version control and project workflows via Azure DevOps (Repos/Boards) and orchestrated modern build/release CI/CD pipelines",
+  cv_exp_1_p12: "Conducted systematic monitoring, structured logging, and precise root-cause error analysis of production systems using Icinga",
+
+  cv_exp_2_title: "Fullstack Developer & Co-Founder | Samandahandegan Kasbokar Sana",
+  cv_exp_2_meta: "05.2015 - 02.2017 • Isfahan, Iran",
+  cv_exp_2_p1: "Designed and implemented robust backend architectures (APIs, SQL Server)",
+  cv_exp_2_p2: "Automated complex image processing workflows utilizing Python",
+  cv_exp_2_p3: "Developed cross-platform web, desktop, and mobile applications utilizing .NET and Xamarin / .NET MAUI",
+  cv_exp_2_p4: "Co-founded and successfully established the startup UANDSHOP, a business-oriented social network",
+  cv_exp_2_p5: "Secured seed funding and incubation support from Digikala as accelerator and investor",
+
+  cv_exp_3_title: "Full Stack Developer & CTO | Beroz Pardaz Fahim Kostar",
+  cv_exp_3_meta: "01.2014 - 05.2015 • Isfahan, Iran",
+  cv_exp_3_p1: "Designed and implemented modern APIs alongside seamless integration of relational database management systems",
+  cv_exp_3_p2: "Planned and implemented highly scalable backend and frontend solutions utilizing .NET and ASP.NET",
+  cv_exp_3_p3: "Assumed overall technical leadership as CTO, driving software architecture, technology stack selection, and system design",
+  cv_exp_3_p4: "Established development standards and best practices to systematically enhance code quality and long-term maintainability",
+  cv_exp_3_p5: "Led and collaborated closely with agile cross-functional teams to translate complex technical requirements into product features",
+  cv_exp_3_p6: "Developed and maintained business-critical desktop and web applications",
+
+  cv_exp_4_title: "IT Specialist & Teacher | Karun School",
+  cv_exp_4_meta: "09.2005 - 06.2013 • Isfahan, Iran",
+  cv_exp_4_p1: "Delivered structured IT lectures (fundamentals & programming) and managed the comprehensive administration of the school's IT infrastructure",
+
+  cv_edu_1_title: "Data Science | Data Science Institute by Fabian Rappert",
+  cv_edu_1_meta: "05.2025 - 11.2025 • Berlin, Germany",
+  cv_edu_1_p1: "Conception, construction, and orchestration of robust end-to-end data pipelines (ETL/ELT) including API integration",
+  cv_edu_1_p2: "Large-scale data processing (Big Data Processing utilizing Apache Spark) and cloud scaling (AWS)",
+  cv_edu_1_p3: "Architecture of structured data models and goal-oriented KPI design for business steering",
+  cv_edu_1_p4: "Administration and optimization of modern database technologies (relational and NoSQL systems)",
+  cv_edu_1_p5: "Establishment of high data quality standards, advanced data cleaning, and data preprocessing",
+  cv_edu_1_p6: "Development of dynamic, interactive dashboards and data-driven reporting for decision-makers",
+  cv_edu_1_p7: "In-depth data analysis, exploratory data analysis (EDA), and advanced statistical evaluation",
+  cv_edu_1_p8: "Professional data visualization and strategic data storytelling to communicate complex insights clearly",
+  cv_edu_1_p9: "Machine Learning (Designing models for Regression, Classification, Clustering, Feature Engineering, and robust Model Validation)",
+
+  cv_edu_2_title: "B1-C1 German Course | bfw & IBH",
+  cv_edu_2_meta: "12.2019 - 03.2023 • Lübeck & Hamburg, Germany",
+
+  cv_edu_3_title: "Bachelor of Science in Software Engineering | Azad University",
+  cv_edu_3_meta: "09.2013 - 03.2017 • Najafabad, Iran",
+
+  resume_cert_title: "CERTIFICATES",
+  cv_cert_1_title: "Data Science Crash Course by Fabian Rappert",
+  cv_cert_1_meta: "09.11.2025 • Berlin, Germany",
+  cv_cert_2_title: "telc Certificate German B2 Level",
+  cv_cert_2_meta: "17.08.2022 • Hamburg, Germany",
+
+  // Cookie Consent Banner & GDPR Manager
+  cookie_settings_link: "Cookie Settings",
+  cookie_title: "Cookie Consent",
+  cookie_banner_desc: "I use cookies to personalize your website experience and optimize my tech stack dashboard. You can choose which cookies to allow.",
+  cookie_btn_accept_all: "Accept All",
+  cookie_btn_reject_all: "Reject",
+  cookie_btn_customize: "Customize",
+  cookie_btn_save: "Save Settings",
+  cookie_cat_necessary_title: "Essential Cookies (Required)",
+  cookie_cat_necessary_desc: "These cookies are strictly necessary for the core functionality of the website (e.g. saving language preferences and cookie choices) and cannot be disabled.",
+  cookie_cat_pref_title: "Preference Cookies",
+  cookie_cat_pref_desc: "Allows the website to remember user-personalized configurations, such as your active dashboard view (Radial / Radar).",
+  cookie_cat_analytics_title: "Analytics Cookies",
+  cookie_cat_analytics_desc: "Enables simulated statistics tracking to analyze how users interact with my interactive tech stack dashboard.",
+  charts_overlay_title: "Interactive Charts Disabled",
+  charts_overlay_desc: "To view interactive tech stack diagrams and local statistics, please enable Analytics Cookies in your settings.",
+  cookie_toast_saved: "Cookie preferences saved successfully!",
+  cookie_toast_accept_all: "All cookies have been successfully accepted!",
+  cookie_toast_reject_all: "Optional cookies have been successfully declined.",
+  cookie_toast_custom: "Cookie preferences have been successfully saved!",
+  timeline_show_details: "Show Details",
+  timeline_hide_details: "Hide Details"
 };
+

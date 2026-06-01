@@ -2,7 +2,10 @@
  * Amir Argani - Portfolio Interactions & Modal Triggers
  */
 
-// Mouse movement interactive light effect (glow cards)
+/**
+ * Registers custom mousemove mouse listeners on all '.glow-card' elements to calculate
+ * mouse positions relative to elements, enabling dynamic radial hover lighting gradients.
+ */
 function setupCardGlowEffect() {
   const cards = document.querySelectorAll(".glow-card");
 
@@ -22,6 +25,75 @@ function setupCardGlowEffect() {
 document.addEventListener("DOMContentLoaded", () => {
   // Setup visual card hover lights
   setupCardGlowEffect();
+
+  /**
+   * Scrapes and configures collapsible resume timeline details wrappers. Wraps bullet points,
+   * generates toggle control buttons, translates button labels, and manages layout expansions.
+   */
+  function initTimelineCollapsibles() {
+    const timelineItems = document.querySelectorAll(".timeline-item");
+    timelineItems.forEach(item => {
+      const list = item.querySelector(".timeline-list");
+      if (!list) return;
+
+      // Create collapsible wrapper
+      const wrapper = document.createElement("div");
+      wrapper.className = "timeline-list-wrapper";
+      
+      // Move the list inside the wrapper
+      list.parentNode.insertBefore(wrapper, list);
+      wrapper.appendChild(list);
+
+      // Get current language to set initial button text
+      const activeLang = typeof currentLang !== "undefined" ? currentLang : "en";
+      const initialText = activeLang === "de" ? "Details anzeigen" : "Show Details";
+
+      // Create toggle button
+      const button = document.createElement("button");
+      button.className = "timeline-toggle-btn";
+      button.setAttribute("aria-expanded", "false");
+      button.innerHTML = `
+        <svg class="timeline-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="8" y1="6" x2="21" y2="6"></line>
+          <line x1="8" y1="12" x2="21" y2="12"></line>
+          <line x1="8" y1="18" x2="21" y2="18"></line>
+          <line x1="3" y1="6" x2="3.01" y2="6"></line>
+          <line x1="3" y1="12" x2="3.01" y2="12"></line>
+          <line x1="3" y1="18" x2="3.01" y2="18"></line>
+        </svg>
+        <span class="timeline-toggle-text" data-i18n="timeline_show_details">${initialText}</span>
+        <svg class="timeline-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      `;
+
+      // Insert button before wrapper
+      wrapper.parentNode.insertBefore(button, wrapper);
+
+      // Click handler
+      button.addEventListener("click", () => {
+        const isExpanded = wrapper.classList.toggle("expanded");
+        button.classList.toggle("active", isExpanded);
+        button.setAttribute("aria-expanded", isExpanded ? "true" : "false");
+
+        const textSpan = button.querySelector(".timeline-toggle-text");
+        const nextKey = isExpanded ? "timeline_hide_details" : "timeline_show_details";
+        textSpan.setAttribute("data-i18n", nextKey);
+
+        // Update text in active language
+        const currentActiveLang = typeof currentLang !== "undefined" ? currentLang : "en";
+        if (typeof translations !== "undefined" && translations[currentActiveLang] && translations[currentActiveLang][nextKey]) {
+          textSpan.innerHTML = translations[currentActiveLang][nextKey];
+        } else {
+          textSpan.innerHTML = isExpanded 
+            ? (currentActiveLang === "de" ? "Details ausblenden" : "Hide Details")
+            : (currentActiveLang === "de" ? "Details anzeigen" : "Show Details");
+        }
+      });
+    });
+  }
+
+  initTimelineCollapsibles();
 
   // GitHub Repositories Filter Logic
   const filterBtns = document.querySelectorAll(".repo-filter-btn");
@@ -69,6 +141,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let activePdfCancelFn = null;
 
+  /**
+   * Opens the PDF viewer modal to display a certificate. Manages the custom loading state,
+   * exponential backoff reloading, iframe load listeners, and full error handlers.
+   * 
+   * @param {string} pdfUrl - The path or URL to the certificate PDF file.
+   * @param {string} title - The title of the certificate to display in the modal header.
+   */
   function openPdfModal(pdfUrl, title) {
     if (!modal || !modalIframe) return;
 
@@ -154,9 +233,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (loaderError) {
               loaderError.style.display = "flex";
               if (loaderErrorText) {
-                loaderErrorText.textContent = currentLang === "de"
-                  ? "Das PDF konnte nach mehreren Versuchen nicht geladen werden. Bitte klicken Sie oben auf das Neu-Laden-Symbol (Drehpfeil), um es manuell zu versuchen."
-                  : "The PDF could not be loaded after several attempts. Please click the Reload button (circular arrow) in the header to try manually.";
+                loaderErrorText.textContent = translations[currentLang]?.cert_loader_error || "";
               }
             }
           }
@@ -203,6 +280,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 300);
   }
 
+  /**
+   * Closes the PDF viewer modal, cleans up iframe sources, cancels any pending reload timers,
+   * and restores body scrolling.
+   */
   function closePdfModal() {
     if (!modal) return;
     modal.classList.remove("open");
@@ -332,7 +413,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // ==========================================
   // Dynamic Skill Icons Injection
   // ==========================================
-    const skillIcons = {
+      const skillIcons = {
     // Data Analysis & BI Tools
     "Exploratory Data Analysis": `<svg viewBox="0 0 1024 1024" fill="currentColor" width="18" height="18"><path fill="currentColor" d="m665.216 768 110.848 192h-73.856L591.36 768H433.024L322.176 960H248.32l110.848-192H160a32 32 0 0 1-32-32V192H64a32 32 0 0 1 0-64h896a32 32 0 1 1 0 64h-64v544a32 32 0 0 1-32 32H665.216zM832 192H192v512h640V192zM352 448a32 32 0 0 1 32 32v64a32 32 0 0 1-64 0v-64a32 32 0 0 1 32-32zm160-64a32 32 0 0 1 32 32v128a32 32 0 0 1-64 0V416a32 32 0 0 1 32-32zm160-64a32 32 0 0 1 32 32v192a32 32 0 1 1-64 0V352a32 32 0 0 1 32-32z" /></svg>`,
     "Machine Learning": `<svg viewBox="0 0 32 32" fill="currentColor" width="18" height="18"><path d="M27,24a2.9609,2.9609,0,0,0-1.2854.3008L21.4141,20H18v2h2.5859l3.7146,3.7148A2.9665,2.9665,0,0,0,24,27a3,3,0,1,0,3-3Zm0,4a1,1,0,1,1,1-1A1.0009,1.0009,0,0,1,27,28Z" /><path d="M27,13a2.9948,2.9948,0,0,0-2.8157,2H18v2h6.1843A2.9947,2.9947,0,1,0,27,13Zm0,4a1,1,0,1,1,1-1A1.0009,1.0009,0,0,1,27,17Z" /><path d="M27,2a3.0033,3.0033,0,0,0-3,3,2.9657,2.9657,0,0,0,.3481,1.373L20.5957,10H18v2h3.4043l4.3989-4.2524A2.9987,2.9987,0,1,0,27,2Zm0,4a1,1,0,1,1,1-1A1.0009,1.0009,0,0,1,27,6Z" /><path d="M18,6h2V4H18a3.9756,3.9756,0,0,0-3,1.3823A3.9756,3.9756,0,0,0,12,4H11a9.01,9.01,0,0,0-9,9v6a9.01,9.01,0,0,0,9,9h1a3.9756,3.9756,0,0,0,3-1.3823A3.9756,3.9756,0,0,0,18,28h2V26H18a2.0023,2.0023,0,0,1-2-2V8A2.0023,2.0023,0,0,1,18,6ZM12,26H11a7.0047,7.0047,0,0,1-6.92-6H6V18H4V14H7a3.0033,3.0033,0,0,0,3-3V9H8v2a1.0009,1.0009,0,0,1-1,1H4.08A7.0047,7.0047,0,0,1,11,6h1a2.0023,2.0023,0,0,1,2,2v4H12v2h2v4H12a3.0033,3.0033,0,0,0-3,3v2h2V21a1.0009,1.0009,0,0,1,1-1h2v4A2.0023,2.0023,0,0,1,12,26Z" /></svg>`,
@@ -427,4 +508,260 @@ document.addEventListener("DOMContentLoaded", () => {
     wrapper.appendChild(iconDiv);
     wrapper.appendChild(contentDiv);
   });
+
+  // ==========================================
+  // Cookie Consent Banner & GDPR Manager
+  // ==========================================
+  /**
+   * Initializes the Cookie Consent Banner & GDPR Manager. Handles default choices,
+   * customized cookies panels, saving consents to local storage, triggering analytical scripts,
+   * and providing smooth, modern, glowing toast notifications upon preference saving.
+   */
+  function initCookieBanner() {
+    const banner = document.getElementById("cookie-banner");
+    if (!banner) return;
+
+    const acceptAllBtn = document.getElementById("cookie-accept-all");
+    const customizeBtn = document.getElementById("cookie-customize");
+    const rejectAllBtn = document.getElementById("cookie-reject-all");
+    const saveSettingsBtn = document.getElementById("cookie-save-settings");
+    const footerLink = document.getElementById("open-cookie-settings");
+
+    const prefChk = document.getElementById("cookie-pref-chk");
+    const analyticsChk = document.getElementById("cookie-analytics-chk");
+
+    const localStorageKey = "portfolio_cookie_consent";
+
+    // Show banner if consent not yet given
+    const consent = localStorage.getItem(localStorageKey);
+    if (!consent) {
+      setTimeout(() => {
+        banner.classList.add("show");
+      }, 1000);
+    }
+
+    // Save consent helper
+    function saveConsent(preferences, analytics) {
+      const consentObj = {
+        necessary: true,
+        preferences: preferences,
+        analytics: analytics
+      };
+      localStorage.setItem(localStorageKey, JSON.stringify(consentObj));
+
+      // Handle Preference cookies de-persist
+      if (!preferences) {
+        localStorage.removeItem("portfolio_lang");
+        localStorage.removeItem("portfolio_dashboard_view");
+      } else {
+        if (typeof currentLang !== "undefined") {
+          localStorage.setItem("portfolio_lang", currentLang);
+        }
+      }
+
+
+      banner.classList.remove("show", "expanded");
+      
+      // Emit custom event in case other components need to react to consent changes
+      const event = new CustomEvent("cookieConsentChanged", { detail: consentObj });
+      document.dispatchEvent(event);
+
+      // Update analytics state and hide/show charts in real-time
+      updateAnalyticsState();
+
+      // Show dynamic toast notification stating exactly what occurred
+      const activeLang = typeof currentLang !== "undefined" ? currentLang : "en";
+      let toastMsg = "";
+
+      if (preferences && analytics) {
+        // Accept All
+        toastMsg = typeof translations !== "undefined" && translations[activeLang] && translations[activeLang]["cookie_toast_accept_all"]
+          ? translations[activeLang]["cookie_toast_accept_all"]
+          : (activeLang === "de" ? "Alle Cookies wurden erfolgreich akzeptiert!" : "All cookies have been successfully accepted!");
+        showCookieToast(toastMsg, "success");
+      } else if (!preferences && !analytics) {
+        // Reject All
+        toastMsg = typeof translations !== "undefined" && translations[activeLang] && translations[activeLang]["cookie_toast_reject_all"]
+          ? translations[activeLang]["cookie_toast_reject_all"]
+          : (activeLang === "de" ? "Optionale Cookies wurden erfolgreich abgelehnt." : "Optional cookies have been successfully declined.");
+        showCookieToast(toastMsg, "reject");
+      } else {
+        // Custom save settings
+        toastMsg = typeof translations !== "undefined" && translations[activeLang] && translations[activeLang]["cookie_toast_custom"]
+          ? translations[activeLang]["cookie_toast_custom"]
+          : (activeLang === "de" ? "Cookie-Einstellungen wurden erfolgreich gespeichert!" : "Cookie preferences have been successfully saved!");
+        showCookieToast(toastMsg, "success");
+      }
+    }
+
+    // Glassmorphic Toast Notification for cookie changes
+    function showCookieToast(message, type = "success") {
+      const existingToast = document.getElementById("cookie-toast");
+      if (existingToast) {
+        existingToast.remove();
+      }
+
+      const toast = document.createElement("div");
+      toast.id = "cookie-toast";
+      toast.className = `cookie-toast ${type}`;
+      toast.innerHTML = `
+        <div class="cookie-toast-content">
+          <svg class="cookie-toast-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2a10 10 0 0 0-7.07 17.07A10 10 0 0 0 19 19a10 10 0 0 0 3-7c0-2-1-3-2-4a3 3 0 0 1-3.5-3.5C16 3.5 15 2 12 2zm-4.5 11a1.5 1.5 0 1 1 1.5-1.5A1.5 1.5 0 0 1 7.5 13zm2-5a1.2 1.2 0 1 1 1.2-1.2A1.2 1.2 0 0 1 9.5 8zm3.5 8.5a1.8 1.8 0 1 1 1.8-1.8 1.8 1.8 0 0 1-1.8 1.8zm0-5.5a1.5 1.5 0 1 1 1.5-1.5 1.5 1.5 0 0 1-1.5 1.5zm3.5 3a1.2 1.2 0 1 1 1.2-1.2 1.2 1.2 0 0 1-1.2 1.2z" />
+            <circle cx="18.5" cy="3.5" r="0.8" />
+            <circle cx="21" cy="6.5" r="1.1" />
+          </svg>
+          <span class="cookie-toast-text">${message}</span>
+        </div>
+        <button class="cookie-toast-close" aria-label="Close Notification">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+        <div class="cookie-toast-progress"></div>
+      `;
+
+      document.body.appendChild(toast);
+
+      setTimeout(() => {
+        toast.classList.add("show");
+      }, 50);
+
+      const closeBtn = toast.querySelector(".cookie-toast-close");
+      if (closeBtn) {
+        closeBtn.addEventListener("click", () => {
+          dismissToast(toast);
+        });
+      }
+
+      setTimeout(() => {
+        if (toast.parentNode) {
+          dismissToast(toast);
+        }
+      }, 4000);
+    }
+
+    function dismissToast(toast) {
+      toast.classList.remove("show");
+      setTimeout(() => {
+        if (toast.parentNode) {
+          toast.remove();
+        }
+      }, 400);
+    }
+
+    // Dynamic overlay blocker checker for Analytics cookies
+    function updateAnalyticsState() {
+      const featured = document.querySelector(".skills-featured");
+      if (!featured) return;
+
+      const consent = localStorage.getItem(localStorageKey);
+      let allowAnalytics = true;
+      if (consent) {
+        try {
+          const consentObj = JSON.parse(consent);
+          allowAnalytics = !!consentObj.analytics;
+        } catch (e) {
+          console.error("Error parsing consent for analytics overlay", e);
+        }
+      }
+
+      if (allowAnalytics) {
+        featured.classList.remove("analytics-blocked");
+        // Re-run animation for standard charts
+        if (typeof animateFeaturedCharts === "function") {
+          animateFeaturedCharts();
+        }
+      } else {
+        featured.classList.add("analytics-blocked");
+      }
+    }
+
+    // Bind event listeners
+    if (acceptAllBtn) {
+      acceptAllBtn.addEventListener("click", () => {
+        saveConsent(true, true);
+      });
+    }
+
+    if (rejectAllBtn) {
+      rejectAllBtn.addEventListener("click", () => {
+        saveConsent(false, false);
+      });
+    }
+
+    if (customizeBtn) {
+      customizeBtn.addEventListener("click", () => {
+        banner.classList.toggle("expanded");
+      });
+    }
+
+    if (saveSettingsBtn) {
+      saveSettingsBtn.addEventListener("click", () => {
+        const isPref = prefChk ? prefChk.checked : false;
+        const isAnalytics = analyticsChk ? analyticsChk.checked : false;
+        saveConsent(isPref, isAnalytics);
+      });
+    }
+
+    // Bind enable button inside charts overlay
+    const overlayBtn = document.getElementById("enable-analytics-overlay-btn");
+    if (overlayBtn) {
+      overlayBtn.addEventListener("click", () => {
+        banner.classList.add("show", "expanded");
+        if (prefChk) {
+          const currentConsent = localStorage.getItem(localStorageKey);
+          if (currentConsent) {
+            try {
+              const consentObj = JSON.parse(currentConsent);
+              prefChk.checked = !!consentObj.preferences;
+              analyticsChk.checked = !!consentObj.analytics;
+            } catch (e) {}
+          } else {
+            prefChk.checked = true;
+            analyticsChk.checked = true;
+          }
+        }
+      });
+    }
+
+    if (footerLink) {
+      footerLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        // Restore checkbox states from saved consent, if any
+        const currentConsent = localStorage.getItem(localStorageKey);
+        if (currentConsent) {
+          try {
+            const consentObj = JSON.parse(currentConsent);
+            if (prefChk) prefChk.checked = !!consentObj.preferences;
+            if (analyticsChk) analyticsChk.checked = !!consentObj.analytics;
+          } catch (err) {
+            console.error("Error parsing saved cookie consent", err);
+          }
+        } else {
+          // If no consent exists, check by default
+          if (prefChk) prefChk.checked = true;
+          if (analyticsChk) analyticsChk.checked = true;
+        }
+
+        // Show banner and expand settings
+        banner.classList.add("show", "expanded");
+      });
+    }
+
+    // Bind close button ('X')
+    const closeBannerBtn = document.getElementById("cookie-close-btn");
+    if (closeBannerBtn) {
+      closeBannerBtn.addEventListener("click", () => {
+        banner.classList.remove("show", "expanded");
+      });
+    }
+
+    // Run active checkers on initial page load
+    updateAnalyticsState();
+
+  }
+
+  initCookieBanner();
 });
+

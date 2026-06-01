@@ -1,8 +1,18 @@
+"""
+Favicon Generation Script
+=========================
+Author: Amir Argani
+Description: This script downloads the user's current GitHub profile avatar, processes it 
+             with Pillow (PIL) to convert color channels to RGBA, resizes it usingLanczos 
+             resampling filters, and saves it into multiple standard formats (favicon.ico, 
+             favicon-32x32.png, favicon-16x16.png, apple-touch-icon.png) for deployment.
+"""
+
 import os
 import urllib.request
 from PIL import Image
 
-# Define paths relative to the script's location to ensure portability
+# Define paths relative to the script's location to ensure portability across environments
 script_dir = os.path.dirname(os.path.abspath(__file__))
 workspace_dir = os.path.abspath(os.path.join(script_dir, "../.."))
 out_dir = os.path.join(workspace_dir, "src/fav")

@@ -8,8 +8,8 @@ const chartDataConfig = {
     color: "#00f2fe",
     grad: "#cyanGrad",
     freq: 85,
-    nameEn: "Data Science",
-    nameDe: "Data Science",
+    nameEn: "Data Analysis & BI Tools",
+    nameDe: "Datenanalyse & BI Tools",
     skillsEn: ["Exploratory Data Analysis", "Machine Learning", "Streamlit", "Power BI", "Tableau", "Apache Spark", "Excel"],
     skillsDe: ["Exploratory Data Analysis", "Machine Learning", "Streamlit", "Power BI", "Tableau", "Apache Spark", "Excel"]
   },
@@ -78,7 +78,13 @@ const chartDataConfig = {
   }
 };
 
-// Utility function to extract current sub-skills and their actual progress percentages from DOM category cards
+/**
+ * Utility helper that scrapes the sub-skills and their actual evaluated progress percentages
+ * directly from the DOM category card grids, ensuring live data reflection.
+ * 
+ * @param {string} catKey - The database category key (e.g. 'cat_data_science').
+ * @returns {Array<{name: string, percentage: string}>} Array of scraped sub-skill details.
+ */
 function getSubSkillsFromDOM(catKey) {
   const bottomTitle = document.querySelector(`.skill-cat-card h3[data-i18n="${catKey}"]`);
   if (!bottomTitle) return [];
@@ -100,7 +106,11 @@ function getSubSkillsFromDOM(catKey) {
   return result;
 }
 
-// Generates and renders the Interactive Radar/Spider Chart in SVG
+/**
+ * Renders the Interactive SVG Radar/Spider Chart. Computes coordinates for octagon rings,
+ * draws radiating spoke lines, maps evaluated category values, renders the main glowing area
+ * polygon, and setups detailed interactive hover dots with dynamic multi-line HTML tooltips.
+ */
 function drawRadarChart() {
   const container = document.querySelector(".radar-chart-wrapper");
   if (!container || container.style.display === "none") return;
@@ -273,7 +283,12 @@ function drawRadarChart() {
   });
 }
 
-// Generates and renders the Interactive 2D Skill Scatter/Bubble Matrix in SVG
+/**
+ * Renders the Interactive 2D Skill Scatter/Bubble Matrix in SVG. Partitions the space
+ * into 4 quadrants (Core Focus, Niche Specialist, Emerging Skills, Supporting Tools),
+ * adds responsive double axis indicators (Expertise vs frequency of use), scales bubble radii
+ * to represent strength dynamically, and registers custom overlay mouse events with scale transformations.
+ */
 function drawScatterMatrix() {
   const container = document.querySelector(".scatter-matrix-wrapper");
   if (!container || container.style.display === "none") return;
@@ -493,7 +508,12 @@ function drawScatterMatrix() {
   });
 }
 
-// Generates and renders the Interactive Horizontal Bar Chart in SVG
+/**
+ * Renders the Interactive Horizontal Bar Chart in SVG. Draws vertical dashed grids
+ * at proportional intervals, draws category labels, builds rounded background tracks,
+ * renders color-gradient linear progress bars with smooth scale-up hovers, and injects
+ * detailed tooltips containing lists of specific sub-skills.
+ */
 function drawBarChart() {
   const container = document.querySelector(".bar-chart-wrapper");
   if (!container || container.style.display === "none") return;
@@ -679,7 +699,12 @@ function drawBarChart() {
   });
 }
 
-// Generates and renders the Interactive Line & Area Chart in SVG
+/**
+ * Renders the Interactive Line & Area Chart in SVG. Draws horizontal dashed gridlines
+ * and rotated bottom axis labels, maps and plots localized data points, generates
+ * continuous bezier-style/straight coordinate paths, fills in the underlying linear gradient area,
+ * and sets up interactive vertex overlay points with dynamic tooltips.
+ */
 function drawLineChart() {
   const container = document.querySelector(".line-chart-wrapper");
   if (!container || container.style.display === "none") return;
@@ -760,14 +785,14 @@ function drawLineChart() {
 
     // Rotated Label at bottom
     const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
-    label.setAttribute("x", x);
-    label.setAttribute("y", height - paddingBottom + 18);
+    label.setAttribute("x", x - 8);
+    label.setAttribute("y", height - paddingBottom + 15);
     label.setAttribute("fill", "var(--text-secondary)");
     label.setAttribute("font-size", "9px");
     label.setAttribute("font-weight", "600");
     label.setAttribute("font-family", "var(--font-heading)");
-    label.setAttribute("text-anchor", "middle");
-    label.setAttribute("transform", `rotate(20, ${x}, ${height - paddingBottom + 18})`);
+    label.setAttribute("text-anchor", "start");
+    label.setAttribute("transform", `rotate(25, ${x - 8}, ${height - paddingBottom + 15})`);
     
     const labelName = currentLang === "de" ? config.nameDe : config.nameEn;
     label.textContent = labelName;
@@ -1046,25 +1071,49 @@ document.addEventListener("DOMContentLoaded", () => {
     // Add default view class
     skillsFeatured.classList.add("view-radial");
 
-    // Auto-switch to radar on mobile during initialization
-    if (window.innerWidth <= 576) {
-      const radarBtn = document.querySelector('.toggle-btn[data-view="radar"]');
-      if (radarBtn) {
-        toggleButtons.forEach(b => b.classList.remove("active"));
-        radarBtn.classList.add("active");
-        skillsFeatured.classList.remove("view-radial");
-        skillsFeatured.classList.add("view-radar");
-        
-        // Hide gauges and show radar wrapper
-        const gaugesWrapper = skillsFeatured.querySelector(".gauges-grid-wrapper");
-        const radarWrapper = skillsFeatured.querySelector(".radar-chart-wrapper");
-        if (gaugesWrapper) gaugesWrapper.style.display = "none";
-        if (radarWrapper) radarWrapper.style.display = "block";
+    // Load saved view preference if present and preferences are allowed
+    const consent = localStorage.getItem("portfolio_cookie_consent");
+    let allowPreferences = true;
+    if (consent) {
+      try {
+        const consentObj = JSON.parse(consent);
+        allowPreferences = !!consentObj.preferences;
+      } catch (e) {}
+    }
+
+    let initialView = "radial";
+    if (allowPreferences) {
+      const savedView = localStorage.getItem("portfolio_dashboard_view");
+      if (savedView) {
+        initialView = savedView;
       }
     }
 
-    // Dynamic toggle slider update
-    const updateToggleSlider = () => {
+    // Auto-switch to radar on mobile during initialization
+    if (window.innerWidth <= 576) {
+      initialView = "radar";
+    }
+
+    if (initialView !== "radial") {
+      const targetBtn = document.querySelector(`.toggle-btn[data-view="${initialView}"]`);
+      if (targetBtn) {
+        toggleButtons.forEach(b => b.classList.remove("active"));
+        targetBtn.classList.add("active");
+        skillsFeatured.classList.remove("view-radial");
+        skillsFeatured.classList.add(`view-${initialView}`);
+
+        const gaugesWrapper = skillsFeatured.querySelector(".gauges-grid-wrapper");
+        const wrapperClass = initialView === "matrix" ? ".scatter-matrix-wrapper" : `.${initialView}-chart-wrapper`;
+        const wrapper = skillsFeatured.querySelector(wrapperClass);
+        
+        if (gaugesWrapper) gaugesWrapper.style.display = "none";
+        if (wrapper) wrapper.style.display = "block";
+      }
+    }
+
+
+    // Dynamic toggle slider update (exposed globally to align capsule highlight on language switches)
+    window.updateToggleSlider = () => {
       const slider = document.querySelector(".toggle-slider");
       const activeBtn = document.querySelector(".toggle-btn.active");
       if (slider && activeBtn) {
@@ -1074,7 +1123,11 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     // Initialize position
-    setTimeout(updateToggleSlider, 150);
+    setTimeout(() => {
+      if (typeof window.updateToggleSlider === "function") {
+        window.updateToggleSlider();
+      }
+    }, 150);
 
     // Re-align on window resize and handle mobile view transition
     window.addEventListener("resize", () => {
@@ -1087,7 +1140,9 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         }
       }
-      updateToggleSlider();
+      if (typeof window.updateToggleSlider === "function") {
+        window.updateToggleSlider();
+      }
     });
 
     toggleButtons.forEach(btn => {
@@ -1104,7 +1159,9 @@ document.addEventListener("DOMContentLoaded", () => {
         btn.classList.add("active");
 
         // Update slider position
-        updateToggleSlider();
+        if (typeof window.updateToggleSlider === "function") {
+          window.updateToggleSlider();
+        }
 
         // Toggle wrappers display
         const gaugesWrapper = skillsFeatured.querySelector(".gauges-grid-wrapper");
@@ -1123,8 +1180,25 @@ document.addEventListener("DOMContentLoaded", () => {
         skillsFeatured.classList.remove("view-radial", "view-radar", "view-matrix", "view-bar", "view-line");
         skillsFeatured.classList.add(`view-${view}`);
 
+        // Save selected view to localStorage if Preference Cookies are enabled
+        const consent = localStorage.getItem("portfolio_cookie_consent");
+        let allowPreferences = true;
+        if (consent) {
+          try {
+            const consentObj = JSON.parse(consent);
+            allowPreferences = !!consentObj.preferences;
+          } catch(e) {}
+        }
+
+        if (allowPreferences) {
+          localStorage.setItem("portfolio_dashboard_view", view);
+        } else {
+          localStorage.removeItem("portfolio_dashboard_view");
+        }
+
         // Trigger animation for the selected view
         animateFeaturedCharts();
+
       });
     });
   }
