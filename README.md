@@ -124,6 +124,22 @@ To run a quick local development server:
 
 All notable enhancements to this repository are documented below:
 
+### [v1.1.2]
+#### Added
+* **Interactive Chart Explanation Modal**: Integrated a beautiful, full-width glassmorphic popup modal (`#chart-info-modal` using shared `.cert-modal-overlay` and `.cert-modal-box` structures) that dynamically displays justified, bilingual (DE/EN) instructions for active charts. Supports all five visualization modes (Radial Gauges, Radar Chart, Skill Bubble Matrix, Bar Chart, and Line Chart).
+* **Mobile-Enabled Radial Gauges**: Unlocked and fully enabled the 8 circular progress gauges on mobile viewports (widths <= 576px) by removing the mobile-specific radar auto-override. Designed a highly responsive 4-column layout for tablets and a compact 3-column layout (82px gauge circles) for mobile devices, ensuring balanced grids and perfect readability.
+* **Stable Uniform Dashboard Sizing**: Upgraded the featured `.glow-card` container height to a perfectly stable and uniform height on all devices (`520px` desktop, `480px` tablet, `450px` mobile) to eliminate layout shift jumping when toggling between the 5 visualization modes.
+* **Micro-Scaled 3-Column Mobile KPI Layout**: Completely redesigned the `.skills-kpis` grid layout on viewports <= 768px and <= 480px to force a beautiful **3-column grid** (`repeat(3, 1fr) !important`) instead of standard stacked columns. Proportionally micro-scaled all font sizes (counter numbers, suffixes, labels) and icon boxes (down to 22px) so all 6 KPI cards fit cleanly in two rows of three items, cutting mobile scrolling distances.
+* **Futuristic Mascot Comet Glow Sweep**: Re-engineered the footer's giant Octocat brand logo SVG outline with dual classes (`.mascot-bg-outline` and `.mascot-glow-comet`) and a looping keyframe animation (`mascotCometRun`) that sends a neon cyan laser comet segment sweeping along the mascot's outer boundary. Implemented a gorgeous, pulsing cybernetic cyan/purple background glow sphere (`.footer-watermark-container::before` with `@keyframes footerGlowPulse` animation) and a layered radial-gradient footer backdrop to merge the branding watermark seamlessly into the footer frame.
+* **Professional Timeline CV Polish**: Optimized professional timeline CV layouts by tuning the `.timeline-title` font size to `1.12rem` and list items to `0.7rem` with clean justified text alignments (`text-align: justify`), providing an extremely premium, print-ready aesthetic.
+* **Tablet/Mobile Compact Navigation Toggles**: Compacted the dashboard view toggle buttons (`.toggle-btn`) on viewports <= 992px to display icons only (`display: none` for text spans), avoiding layout breakage or vertical wrapping.
+* **Refined Navigation & Language Bar Typography**: Scaled font sizes for global navigation menu items (`.nav-menu a`) and translation switches (`.lang-switcher button`) to a highly optimized `0.65rem` on mobile and desktop viewports, avoiding awkward line wrapping and overlapping issues on narrow screens.
+* **Standard SVG Browser Compatibility**: Added a standard `viewBox="0 0 120 120"` attribute to all 8 `.svg-gauge` elements in `index.html` to enforce pixel-perfect scaling and ensure responsive rendering in Safari and mobile web views.
+
+#### Fixed
+* **GDPR Spacing Mobile Collision**: Prevented collisions between the Cookie Consent close button and action buttons on narrow mobile viewports by introducing a robust `4.5rem` right-side safe-zone padding inside `.cookie-container`.
+* **Dynamic Translation Engine**: Fixed translation sync during view toggles and initial loads to ensure the explanation modal text is instantly updated when switching active visualizations or locales.
+
 ### [v1.1.1]
 #### Added
 * **Holographic Standalone Brand Watermark**: Integrated a massive background branding logo of the official standalone GitHub Octocat silhouette (completely circle-free, matching the premium reference illustration) behind the `AMIRARGANI` watermark text in the footer.

@@ -1071,6 +1071,12 @@ document.addEventListener("DOMContentLoaded", () => {
     // Add default view class
     skillsFeatured.classList.add("view-radial");
 
+    // Initialize chart explanation button display to flex so it is visible for the default radial view
+    const initInfoBtnContainer = document.getElementById("chart-info-btn-container");
+    if (initInfoBtnContainer) {
+      initInfoBtnContainer.style.display = "flex";
+    }
+
     // Load saved view preference if present and preferences are allowed
     const consent = localStorage.getItem("portfolio_cookie_consent");
     let allowPreferences = true;
@@ -1089,10 +1095,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
-    // Auto-switch to radar on mobile during initialization
-    if (window.innerWidth <= 576) {
-      initialView = "radar";
-    }
+
 
     if (initialView !== "radial") {
       const targetBtn = document.querySelector(`.toggle-btn[data-view="${initialView}"]`);
@@ -1108,6 +1111,11 @@ document.addEventListener("DOMContentLoaded", () => {
         
         if (gaugesWrapper) gaugesWrapper.style.display = "none";
         if (wrapper) wrapper.style.display = "block";
+
+        const infoBtnContainer = document.getElementById("chart-info-btn-container");
+        if (infoBtnContainer) {
+          infoBtnContainer.style.display = "flex";
+        }
       }
     }
 
@@ -1129,17 +1137,8 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }, 150);
 
-    // Re-align on window resize and handle mobile view transition
+    // Re-align on window resize
     window.addEventListener("resize", () => {
-      if (window.innerWidth <= 576) {
-        const activeBtn = document.querySelector(".toggle-btn.active");
-        if (activeBtn && activeBtn.getAttribute("data-view") === "radial") {
-          const radarBtn = document.querySelector('.toggle-btn[data-view="radar"]');
-          if (radarBtn) {
-            radarBtn.click();
-          }
-        }
-      }
       if (typeof window.updateToggleSlider === "function") {
         window.updateToggleSlider();
       }
@@ -1149,10 +1148,7 @@ document.addEventListener("DOMContentLoaded", () => {
       btn.addEventListener("click", () => {
         const view = btn.getAttribute("data-view");
 
-        // Prevent clicking radial on mobile
-        if (view === "radial" && window.innerWidth <= 576) {
-          return;
-        }
+
 
         // Update active class on buttons
         toggleButtons.forEach(b => b.classList.remove("active"));
@@ -1175,6 +1171,11 @@ document.addEventListener("DOMContentLoaded", () => {
         if (scatterWrapper) scatterWrapper.style.display = view === "matrix" ? "block" : "none";
         if (barWrapper) barWrapper.style.display = view === "bar" ? "block" : "none";
         if (lineWrapper) lineWrapper.style.display = view === "line" ? "block" : "none";
+
+        const infoBtnContainer = document.getElementById("chart-info-btn-container");
+        if (infoBtnContainer) {
+          infoBtnContainer.style.display = "flex";
+        }
 
         // Update view class on container
         skillsFeatured.classList.remove("view-radial", "view-radar", "view-matrix", "view-bar", "view-line");

@@ -263,7 +263,7 @@ var de = {
   cookie_cat_necessary_title: "Notwendige Cookies (Erforderlich)",
   cookie_cat_necessary_desc: "Diese Cookies sind für das Funktionieren der Website zwingend erforderlich (z. B. Speichern der Sprachauswahl und Cookie-Einstellungen) und können nicht deaktiviert werden.",
   cookie_cat_pref_title: "Präferenz-Cookies",
-  cookie_cat_pref_desc: "Ermöglichen der Website das Speichern von benutzerspezifischen Einstellungen, wie beispielsweise der ausgewählten Dashboard-Ansicht (Radial / Radar).",
+  cookie_cat_pref_desc: "Erlauben der Website das Speichern von benutzerspezifischen Einstellungen, wie beispielsweise der ausgewählten Dashboard-Ansicht (Radial / Radar).",
   cookie_cat_analytics_title: "Analyse-Cookies",
   cookie_cat_analytics_desc: "Ermöglichen die Simulation von statistischen Daten zur Visualisierung von Interaktionen auf meinem Tech-Stack-Dashboard.",
   charts_overlay_title: "Interaktive Diagramme deaktiviert",
@@ -273,6 +273,16 @@ var de = {
   cookie_toast_reject_all: "Optionale Cookies wurden erfolgreich abgelehnt.",
   cookie_toast_custom: "Cookie-Einstellungen wurden erfolgreich gespeichert!",
   timeline_show_details: "Details anzeigen",
-  timeline_hide_details: "Details ausblenden"
+  timeline_hide_details: "Details ausblenden",
+  btn_chart_info: "Diagramm-Erklärung",
+  radar_info_title: "Netzdiagramm-Erklärung",
+  radar_info_text: "Dieses Netzdiagramm stellt die Verteilung meiner technischen Kernkompetenzen über fünf Hauptbereiche dar. Je näher ein Eckpunkt der äußeren Grenze (100 %) ist, desto ausgeprägter ist meine Expertise in diesem Bereich. Es veranschaulicht das Zusammenspiel zwischen Software-Engineering, Data Science und Datenbanksystemen.",
+  matrix_info_title: "Blasenmatrix-Erklärung",
+  matrix_info_text: "Die Skill-Bubble-Matrix stellt einzelne Technologien auf einem zweidimensionalen Raster dar: <strong>Expertise</strong> (Y-Achse) im Verhältnis zur <strong>Nutzungshäufigkeit</strong> (X-Achse). Die Blasengröße spiegelt mein relatives Vertrauen wider. Dies unterscheidet zwischen täglichen Werkzeugen (oben rechts) und spezialisierten Technologien für gezielte Systemanforderungen.",
+  bar_info_title: "Balkendiagramm-Erklärung",
+  bar_info_text: "Dieses Balkendiagramm veranschaulicht meine praktische Erfahrung in Jahren für jede Kerntechnologie. Die Länge der Balken spiegelt die kumulierte Projekterfahrung wider, während die farbliche Codierung die jeweiligen technologischen Domänen kennzeichnet. Es bietet einen schnellen, quantitativen Überblick über die zeitliche Tiefe meiner Toolset-Anwendung.",
+  line_info_title: "Liniendiagramm-Erklärung",
+  line_info_text: "Dieses Liniendiagramm visualisiert meine professionelle Entwicklungskurve und den Kompetenzzuwachs über die letzten Jahre. Es zeigt den kontinuierlichen Lernfortschritt, die Anpassung an neue Industriestandards sowie die Vertiefung meiner Kernkompetenzen im Zeitverlauf. Die Aufwärtskurve steht für stetige Weiterbildung und technologische Evolution.",
+  radial_info_title: "Kreisdiagramm-Erklärung",
+  radial_info_text: "Die Kreisanzeigen (Circular Gauges) visualisieren meinen aktuellen Kenntnisstand in den verschiedenen technologischen Domänen. Jede Anzeige zeigt den prozentualen Erreichungsgrad meiner Expertise in einem bestimmten Bereich, basierend auf meinen Projekten, praktischer Anwendung und kontinuierlicher Weiterbildung. Die farbliche Codierung entspricht den jeweiligen Technologiekategorien."
 };
-

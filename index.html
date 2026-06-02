@@ -42,7 +42,7 @@
             <img src="https://github.com/amirargani.png" alt="Amir Argani" class="logo-avatar" />
           </div>
         </a>
-        <div class="project-version">v1.1.1</div>
+        <div class="project-version">v1.1.2</div>
       </div>
 
       <nav>
@@ -762,7 +762,7 @@
                 <!-- Category 1: Data Analysis & BI Tools -->
                 <div class="radial-progress gauge-cyan" data-category="cat_data_science" data-progress="0">
                   <div class="gauge-wrapper">
-                    <svg class="svg-gauge">
+                    <svg class="svg-gauge" viewBox="0 0 120 120">
                       <circle class="progress-circle-bg" cx="60" cy="60" r="45" />
                       <circle class="progress-circle-fill" cx="60" cy="60" r="45" />
                     </svg>
@@ -775,7 +775,7 @@
                 <!-- Category 2: Programming -->
                 <div class="radial-progress gauge-purple" data-category="cat_programming" data-progress="0">
                   <div class="gauge-wrapper">
-                    <svg class="svg-gauge">
+                    <svg class="svg-gauge" viewBox="0 0 120 120">
                       <circle class="progress-circle-bg" cx="60" cy="60" r="45" />
                       <circle class="progress-circle-fill" cx="60" cy="60" r="45" />
                     </svg>
@@ -788,7 +788,7 @@
                 <!-- Category 3: Web Development -->
                 <div class="radial-progress gauge-blue" data-category="cat_web_dev" data-progress="0">
                   <div class="gauge-wrapper">
-                    <svg class="svg-gauge">
+                    <svg class="svg-gauge" viewBox="0 0 120 120">
                       <circle class="progress-circle-bg" cx="60" cy="60" r="45" />
                       <circle class="progress-circle-fill" cx="60" cy="60" r="45" />
                     </svg>
@@ -801,7 +801,7 @@
                 <!-- Category 4: App Development -->
                 <div class="radial-progress gauge-pink" data-category="cat_app_dev" data-progress="0">
                   <div class="gauge-wrapper">
-                    <svg class="svg-gauge">
+                    <svg class="svg-gauge" viewBox="0 0 120 120">
                       <circle class="progress-circle-bg" cx="60" cy="60" r="45" />
                       <circle class="progress-circle-fill" cx="60" cy="60" r="45" />
                     </svg>
@@ -814,7 +814,7 @@
                 <!-- Category 5: Cloud & DevOps -->
                 <div class="radial-progress gauge-orange" data-category="cat_cloud_devops" data-progress="0">
                   <div class="gauge-wrapper">
-                    <svg class="svg-gauge">
+                    <svg class="svg-gauge" viewBox="0 0 120 120">
                       <circle class="progress-circle-bg" cx="60" cy="60" r="45" />
                       <circle class="progress-circle-fill" cx="60" cy="60" r="45" />
                     </svg>
@@ -827,7 +827,7 @@
                 <!-- Category 6: Databases -->
                 <div class="radial-progress gauge-emerald" data-category="cat_databases" data-progress="0">
                   <div class="gauge-wrapper">
-                    <svg class="svg-gauge">
+                    <svg class="svg-gauge" viewBox="0 0 120 120">
                       <circle class="progress-circle-bg" cx="60" cy="60" r="45" />
                       <circle class="progress-circle-fill" cx="60" cy="60" r="45" />
                     </svg>
@@ -840,7 +840,7 @@
                 <!-- Category 7: Automation & ETL -->
                 <div class="radial-progress gauge-indigo" data-category="cat_automation_etl" data-progress="0">
                   <div class="gauge-wrapper">
-                    <svg class="svg-gauge">
+                    <svg class="svg-gauge" viewBox="0 0 120 120">
                       <circle class="progress-circle-bg" cx="60" cy="60" r="45" />
                       <circle class="progress-circle-fill" cx="60" cy="60" r="45" />
                     </svg>
@@ -853,7 +853,7 @@
                 <!-- Category 8: Tools & Platforms -->
                 <div class="radial-progress gauge-amber" data-category="cat_tools" data-progress="0">
                   <div class="gauge-wrapper">
-                    <svg class="svg-gauge">
+                    <svg class="svg-gauge" viewBox="0 0 120 120">
                       <circle class="progress-circle-bg" cx="60" cy="60" r="45" />
                       <circle class="progress-circle-fill" cx="60" cy="60" r="45" />
                     </svg>
@@ -931,6 +931,18 @@
                   <button class="btn btn-primary" id="enable-analytics-overlay-btn"
                     data-i18n="cookie_btn_customize">Customize Settings</button>
                 </div>
+              </div>
+
+              <!-- Chart Description Trigger Button (Only visible for Radar & Matrix) -->
+              <div id="chart-info-btn-container" style="display: flex;">
+                <button id="chart-info-btn" class="btn btn-secondary chart-info-btn">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="chart-info-btn-icon" style="flex-shrink:0;">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                  </svg>
+                  <span data-i18n="btn_chart_info">Chart Explanation</span>
+                </button>
               </div>
 
             </div>
@@ -1633,6 +1645,25 @@
     </div>
   </div>
 
+  <!-- Chart Info Modal -->
+  <div id="chart-info-modal" class="cert-modal-overlay" role="dialog" aria-modal="true" aria-label="Chart Explanation">
+    <div class="cert-modal-box glow-card" style="width: min(960px, 100%); min-height: auto; height: auto; max-height: 85vh; display: flex; flex-direction: column;">
+      <div class="cert-modal-header" style="border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding: 1rem 1.5rem;">
+        <h3 id="chart-info-title" class="cert-modal-title" data-i18n="radar_info_title">Chart Guide</h3>
+        <button id="chart-info-close" class="cert-close-btn" aria-label="Close">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="22" height="22">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div id="chart-info-body" style="padding: 1.5rem; font-family: var(--font-body); font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; overflow-y: auto; text-align: justify;">
+        <!-- Localized chart explanation loads dynamically -->
+      </div>
+    </div>
+  </div>
+
+
   <!-- GitHub Repositories Section -->
   <section id="repositories">
     <div class="container reveal">
@@ -2281,8 +2312,9 @@
       </div>
     </div>
     <div class="footer-watermark-container">
-      <svg class="footer-watermark-bg-icon" viewBox="0 0 480 512" fill="currentColor">
-        <path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/>
+      <svg class="footer-watermark-bg-icon" viewBox="0 0 480 512" fill="none">
+        <path class="mascot-bg-outline" d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/>
+        <path class="mascot-glow-comet" d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/>
       </svg>
       <div class="footer-watermark">AMIRARGANI</div>
     </div>

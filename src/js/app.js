@@ -762,6 +762,91 @@ document.addEventListener("DOMContentLoaded", () => {
 
   }
 
+  // --- Chart Info Modal Controller ---
+  function initChartInfoModal() {
+    const infoBtn = document.getElementById("chart-info-btn");
+    const modal = document.getElementById("chart-info-modal");
+    const closeBtn = document.getElementById("chart-info-close");
+    const modalTitle = document.getElementById("chart-info-title");
+    const modalBody = document.getElementById("chart-info-body");
+
+    if (!infoBtn || !modal || !modalBody || !modalTitle) return;
+
+    function openModal() {
+      // Find which chart view is currently active
+      const activeBtn = document.querySelector(".toggle-btn.active");
+      if (!activeBtn) return;
+      const currentView = activeBtn.getAttribute("data-view");
+
+      // Load translations based on current language
+      const lang = (typeof currentLang !== "undefined") ? currentLang : "en";
+      const translationsDict = (typeof translations !== "undefined") ? translations : null;
+
+      if (currentView === "radial") {
+        modalTitle.textContent = (translationsDict && translationsDict[lang]) 
+          ? translationsDict[lang]["radial_info_title"] 
+          : "Circular Gauges Guide";
+        modalBody.innerHTML = (translationsDict && translationsDict[lang])
+          ? `<p>${translationsDict[lang]["radial_info_text"]}</p>`
+          : "<p>The circular gauges visualize my current level of knowledge across various technological domains.</p>";
+      } else if (currentView === "radar") {
+        modalTitle.textContent = (translationsDict && translationsDict[lang]) 
+          ? translationsDict[lang]["radar_info_title"] 
+          : "Radar Chart Guide";
+        modalBody.innerHTML = (translationsDict && translationsDict[lang])
+          ? `<p>${translationsDict[lang]["radar_info_text"]}</p>`
+          : "<p>This radar chart maps the distribution of my technical competencies across five major domains.</p>";
+      } else if (currentView === "matrix") {
+        modalTitle.textContent = (translationsDict && translationsDict[lang])
+          ? translationsDict[lang]["matrix_info_title"]
+          : "Skill Bubble Matrix Guide";
+        modalBody.innerHTML = (translationsDict && translationsDict[lang])
+          ? `<p>${translationsDict[lang]["matrix_info_text"]}</p>`
+          : "<p>The Skill Bubble Matrix maps individual technologies on a two-dimensional grid.</p>";
+      } else if (currentView === "bar") {
+        modalTitle.textContent = (translationsDict && translationsDict[lang])
+          ? translationsDict[lang]["bar_info_title"]
+          : "Bar Chart Guide";
+        modalBody.innerHTML = (translationsDict && translationsDict[lang])
+          ? `<p>${translationsDict[lang]["bar_info_text"]}</p>`
+          : "<p>This bar chart illustrates my practical experience in years for each core technology.</p>";
+      } else if (currentView === "line") {
+        modalTitle.textContent = (translationsDict && translationsDict[lang])
+          ? translationsDict[lang]["line_info_title"]
+          : "Line Chart Guide";
+        modalBody.innerHTML = (translationsDict && translationsDict[lang])
+          ? `<p>${translationsDict[lang]["line_info_text"]}</p>`
+          : "<p>This line chart visualizes my professional learning curve and skill growth over the past years.</p>";
+      }
+
+      modal.classList.add("open");
+      document.body.style.overflow = "hidden"; // Prevent background scroll
+    }
+
+    function closeModal() {
+      modal.classList.remove("open");
+      document.body.style.overflow = ""; // Restore background scroll
+    }
+
+    infoBtn.addEventListener("click", openModal);
+    if (closeBtn) closeBtn.addEventListener("click", closeModal);
+
+    // Close modal when clicking outside the box (directly on the overlay)
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+
+    // Close modal on Escape key
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && modal.classList.contains("open")) {
+        closeModal();
+      }
+    });
+  }
+
+  initChartInfoModal();
   initCookieBanner();
 });
 

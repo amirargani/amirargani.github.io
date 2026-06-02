@@ -273,6 +273,18 @@ var en = {
   cookie_toast_reject_all: "Optional cookies have been successfully declined.",
   cookie_toast_custom: "Cookie preferences have been successfully saved!",
   timeline_show_details: "Show Details",
-  timeline_hide_details: "Hide Details"
+  timeline_hide_details: "Hide Details",
+  btn_chart_info: "Chart Explanation",
+  radar_info_title: "Radar Chart Guide",
+  radar_info_text: "This radar chart maps the distribution of my technical competencies across five major domains. The closer the vertex is to the outer boundary (100%), the deeper my expertise in that domain. It visualizes high-level synergy across software engineering, data science, and database systems.",
+  matrix_info_title: "Skill Bubble Matrix Guide",
+  matrix_info_text: "The Skill Bubble Matrix maps individual technologies on a two-dimensional grid: <strong>Expertise</strong> (Y-axis) versus <strong>Frequency of Use</strong> (X-axis). The bubble size represents relative confidence. This visualization distinguishes between core day-to-day production tools (top-right) and specialized tools used for specific architectural needs.",
+  bar_info_title: "Bar Chart Guide",
+  bar_info_text: "This bar chart illustrates my practical experience in years for each core technology. The length of the bars reflects the cumulative project experience, while the color coding indicates the respective technological domains. It provides a quick, quantitative overview of the depth of my toolset application over time.",
+  line_info_title: "Line Chart Guide",
+  line_info_text: "This line chart visualizes my professional learning curve and skill growth over the past years. It demonstrates continuous learning progress, adaptation to new industry standards, and the deepening of my core competencies over time. The upward trajectory represents ongoing education and technological evolution.",
+  radial_info_title: "Circular Gauges Guide",
+  radial_info_text: "The circular gauges visualize my current level of knowledge across various technological domains. Each gauge represents the percentage level of my expertise in a specific area, based on practical project applications, development experience, and continuous training. The color coding maps directly to each technology category."
 };
+
 
