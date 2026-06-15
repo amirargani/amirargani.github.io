@@ -3,7 +3,6 @@
 * It is loaded in index.html.
 * core.css contains global styles and resets.
 * app.css contains component and page styles.
-* styles.css contains styles for the AI assistant (OrbiAI).
 */
 
 @import url('./core.css');
