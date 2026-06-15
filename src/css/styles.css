@@ -8,7 +8,6 @@
 
 @import url('./core.css');
 @import url('./app.css');
-@import url('../ai/css/ai-styles.css');
 
 /* Prevent visual flash of English translation templates during language initialization */
 .lang-loading body {
