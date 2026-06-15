@@ -40,9 +40,26 @@ document.addEventListener("DOMContentLoaded", () => {
       const wrapper = document.createElement("div");
       wrapper.className = "timeline-list-wrapper";
       
-      // Move the list inside the wrapper
+      // Create a single inner container to hold all collapsible content (for CSS grid 0fr->1fr transition compatibility)
+      const inner = document.createElement("div");
+      inner.className = "timeline-list-inner";
+      
+      // Move the list inside the inner container
       list.parentNode.insertBefore(wrapper, list);
-      wrapper.appendChild(list);
+      wrapper.appendChild(inner);
+      inner.appendChild(list);
+
+      // Move the intro paragraphs inside the inner container after the list
+      const intro = item.querySelector(".timeline-intro");
+      if (intro) {
+        inner.appendChild(intro);
+      }
+
+      // Move the learned section inside the inner container if it exists
+      const learned = item.querySelector(".timeline-learned");
+      if (learned) {
+        inner.appendChild(learned);
+      }
 
       // Get current language to set initial button text
       const activeLang = typeof currentLang !== "undefined" ? currentLang : "en";
@@ -413,7 +430,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // ==========================================
   // Dynamic Skill Icons Injection
   // ==========================================
-      const skillIcons = {
+        const skillIcons = {
     // Data Analysis & BI Tools
     "Exploratory Data Analysis": `<svg viewBox="0 0 1024 1024" fill="currentColor" width="18" height="18"><path fill="currentColor" d="m665.216 768 110.848 192h-73.856L591.36 768H433.024L322.176 960H248.32l110.848-192H160a32 32 0 0 1-32-32V192H64a32 32 0 0 1 0-64h896a32 32 0 1 1 0 64h-64v544a32 32 0 0 1-32 32H665.216zM832 192H192v512h640V192zM352 448a32 32 0 0 1 32 32v64a32 32 0 0 1-64 0v-64a32 32 0 0 1 32-32zm160-64a32 32 0 0 1 32 32v128a32 32 0 0 1-64 0V416a32 32 0 0 1 32-32zm160-64a32 32 0 0 1 32 32v192a32 32 0 1 1-64 0V352a32 32 0 0 1 32-32z" /></svg>`,
     "Machine Learning": `<svg viewBox="0 0 32 32" fill="currentColor" width="18" height="18"><path d="M27,24a2.9609,2.9609,0,0,0-1.2854.3008L21.4141,20H18v2h2.5859l3.7146,3.7148A2.9665,2.9665,0,0,0,24,27a3,3,0,1,0,3-3Zm0,4a1,1,0,1,1,1-1A1.0009,1.0009,0,0,1,27,28Z" /><path d="M27,13a2.9948,2.9948,0,0,0-2.8157,2H18v2h6.1843A2.9947,2.9947,0,1,0,27,13Zm0,4a1,1,0,1,1,1-1A1.0009,1.0009,0,0,1,27,17Z" /><path d="M27,2a3.0033,3.0033,0,0,0-3,3,2.9657,2.9657,0,0,0,.3481,1.373L20.5957,10H18v2h3.4043l4.3989-4.2524A2.9987,2.9987,0,1,0,27,2Zm0,4a1,1,0,1,1,1-1A1.0009,1.0009,0,0,1,27,6Z" /><path d="M18,6h2V4H18a3.9756,3.9756,0,0,0-3,1.3823A3.9756,3.9756,0,0,0,12,4H11a9.01,9.01,0,0,0-9,9v6a9.01,9.01,0,0,0,9,9h1a3.9756,3.9756,0,0,0,3-1.3823A3.9756,3.9756,0,0,0,18,28h2V26H18a2.0023,2.0023,0,0,1-2-2V8A2.0023,2.0023,0,0,1,18,6ZM12,26H11a7.0047,7.0047,0,0,1-6.92-6H6V18H4V14H7a3.0033,3.0033,0,0,0,3-3V9H8v2a1.0009,1.0009,0,0,1-1,1H4.08A7.0047,7.0047,0,0,1,11,6h1a2.0023,2.0023,0,0,1,2,2v4H12v2h2v4H12a3.0033,3.0033,0,0,0-3,3v2h2V21a1.0009,1.0009,0,0,1,1-1h2v4A2.0023,2.0023,0,0,1,12,26Z" /></svg>`,
@@ -423,7 +440,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "Apache Spark": `<svg viewBox="0 0 32 32" fill="currentColor" width="18" height="18"><path d="M14.417 0c-0.568 0.016-1.125 0.286-1.594 0.807-0.26 0.292-0.479 0.615-0.661 0.964-0.469 0.885-0.563 1.885-0.74 2.854-0.328 1.818-0.651 3.635-0.969 5.453-0.036 0.214-0.125 0.302-0.323 0.359-2.359 0.745-4.719 1.484-7.063 2.25-0.516 0.167-1.031 0.385-1.484 0.672-1.391 0.885-1.599 2.339-0.557 3.615 0.464 0.563 1.057 0.953 1.714 1.245 1.469 0.656 2.938 1.302 4.401 1.964 0.026 0.010 0.047 0.016 0.068 0.026h-0.005l1.745 0.714c0 0.031 0 0.057 0 0.094-0.266 2.708-0.521 5.417-0.776 8.13-0.052 0.557-0.016 1.104 0.182 1.641 0.422 1.156 1.417 1.526 2.505 0.932 0.495-0.271 0.891-0.661 1.25-1.089 1.828-2.167 3.661-4.328 5.484-6.5 0.146-0.177 0.271-0.198 0.484-0.13 0.464 0.156 0.927 0.307 1.391 0.464h0.005c0.026 0.016 0.057 0.026 0.094 0.042l0.193 0.057c1.661 0.552 3.573 1.031 5.234 1.583 0.536 0.177 0.833 0.219 1.396 0.13 0.417-0.063 0.792-0.083 1.104-0.313 0.802-0.443 1.328-1.276 1.318-2.245-0.005-0.568-0.208-1.083-0.469-1.578-1.094-2.078-2.182-4.151-3.281-6.224-0.104-0.198-0.099-0.323 0.052-0.5 1.839-2.151 3.672-4.313 5.51-6.474 0.359-0.427 0.682-0.875 0.87-1.411 0.411-1.167-0.12-2.094-1.333-2.318-0.547-0.094-1.109-0.063-1.646 0.089-2.635 0.698-5.266 1.391-7.891 2.094-0.234 0.063-0.349 0.021-0.474-0.193-1.063-1.792-2.141-3.578-3.229-5.354-0.245-0.411-0.536-0.792-0.87-1.135-0.495-0.49-1.068-0.729-1.635-0.714zM14.646 4.938c0.104 0.073 0.193 0.167 0.25 0.281 1.161 1.927 2.323 3.854 3.479 5.786 0.094 0.156 0.182 0.208 0.37 0.156 2.036-0.542 4.068-1.083 6.104-1.62 0.49-0.13 0.979-0.255 1.474-0.385-0.021 0.099-0.068 0.193-0.135 0.266-1.677 1.974-3.354 3.948-5.036 5.917-0.146 0.177-0.161 0.297-0.057 0.495 1.25 2.406 2.359 4.411 3.333 6.349l-4.927-1.359c-0.719-0.24-1.438-0.479-2.156-0.719-0.214-0.073-0.333-0.042-0.479 0.13-1.661 1.984-3.339 3.964-5.010 5.943-0.063 0.078-0.146 0.141-0.24 0.172 0.047-0.5 0.089-1.005 0.135-1.51 0.203-2.099 0.396-4.193 0.604-6.292-0.042-0.422 0.156-0.536-0.432-0.724-1.99-0.792-4.458-1.76-6.417-2.542 0.089-0.083 0.198-0.146 0.318-0.177 2.396-0.76 4.792-1.521 7.193-2.276 0.167-0.052 0.266-0.12 0.281-0.307 0.016-0.198 0.068-0.396 0.099-0.589 0.323-1.818 0.646-3.635 0.969-5.453 0.094-0.516 0.188-1.026 0.281-1.542z" /></svg>`,
 
     // Programming
-    "C#/.NET Core": `<svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zM9.426 7.12a5.55 5.55 0 0 1 1.985.38v1.181a4.5 4.5 0 0 0-2.25-.566 3.439 3.439 0 0 0-2.625 1.087 4.099 4.099 0 0 0-1.012 2.906 3.9 3.9 0 0 0 .945 2.754 3.217 3.217 0 0 0 2.482 1.023 4.657 4.657 0 0 0 2.464-.634l-.004 1.08a5.543 5.543 0 0 1-2.625.555 4.211 4.211 0 0 1-3.228-1.297 4.793 4.793 0 0 1-1.212-3.409 5.021 5.021 0 0 1 1.365-3.663 4.631 4.631 0 0 1 3.473-1.392 5.55 5.55 0 0 1 .12-.004 5.55 5.55 0 0 1 .122 0zm5.863.155h.836l-.555 2.652h1.661l.567-2.652h.81l-.555 2.652 1.732-.004-.15.697H17.91l-.412 1.98h1.852l-.176.698h-1.816l-.58 2.625h-.83l.567-2.625h-1.65l-.555 2.625h-.81l.555-2.625h-1.74l.131-.698h1.748l.401-1.976h-1.826l.138-.697h1.826zm.142 3.345L15 12.6h1.673l.423-1.98z" /></svg>`,
+    "C#": `<svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zM9.426 7.12a5.55 5.55 0 0 1 1.985.38v1.181a4.5 4.5 0 0 0-2.25-.566 3.439 3.439 0 0 0-2.625 1.087 4.099 4.099 0 0 0-1.012 2.906 3.9 3.9 0 0 0 .945 2.754 3.217 3.217 0 0 0 2.482 1.023 4.657 4.657 0 0 0 2.464-.634l-.004 1.08a5.543 5.543 0 0 1-2.625.555 4.211 4.211 0 0 1-3.228-1.297 4.793 4.793 0 0 1-1.212-3.409 5.021 5.021 0 0 1 1.365-3.663 4.631 4.631 0 0 1 3.473-1.392 5.55 5.55 0 0 1 .12-.004 5.55 5.55 0 0 1 .122 0zm5.863.155h.836l-.555 2.652h1.661l.567-2.652h.81l-.555 2.652 1.732-.004-.15.697H17.91l-.412 1.98h1.852l-.176.698h-1.816l-.58 2.625h-.83l.567-2.625h-1.65l-.555 2.625h-.81l.555-2.625h-1.74l.131-.698h1.748l.401-1.976h-1.826l.138-.697h1.826zm.142 3.345L15 12.6h1.673l.423-1.98z" /></svg>`,
     "AL Programming Language": `<svg viewBox="0 0 32 32" fill="currentColor" width="18" height="18"><g id="SVGRepo_bgCarrier" stroke-width="0" /><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" /><g id="SVGRepo_iconCarrier"><path d="M11.616,7.986A1.559,1.559,0,0,0,10.16,7H10.1a1.558,1.558,0,0,0-1.456.986L2,25H5.806l1.015-2.834h6.621L14.457,25h3.8ZM7.944,18.956l2.188-6.111,2.188,6.116Z" style="fill:currentColor" /><path d="M23.829,21.671V7.129H20.3V22.747A2.346,2.346,0,0,0,22.57,25H30V21.672Z" style="fill:currentColor" /></g></svg>`,
     "Visual Basic": `<svg viewBox="0 0 32 32" fill="currentColor" width="18" height="18"><g id="SVGRepo_bgCarrier" stroke-width="0" /><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" /><g id="SVGRepo_iconCarrier"><path d="M6.67,7.836,9,18.915,11.336,7.836H16L11.336,24.164H6.672L2,7.836Z" style="fill:currentColor" /><path d="M18.331,7.836h7.6a4.08,4.08,0,0,1,2.9,1.749,3.78,3.78,0,0,1,.571,2.04,3.985,3.985,0,0,1-.571,2.034,4.108,4.108,0,0,1-2.341,1.763,4.1,4.1,0,0,1,2.929,1.756,3.8,3.8,0,0,1,.58,2.1,4.663,4.663,0,0,1-.579,2.546,5.047,5.047,0,0,1-3.5,2.338H18.331ZM23,14.252h1.166a1.754,1.754,0,0,0,0-3.5H23Zm0,7H24.39a2.047,2.047,0,0,0,0-4.089H23Z" style="fill:currentColor" /></g></svg>`,
     "C++": `<svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12.207 16.278C11.1241 17.343 9.63879 18 8 18C4.68629 18 2 15.3137 2 12C2 8.68629 4.68629 6 8 6C9.67492 6 11.1896 6.6863 12.278 7.79303L13.6923 6.37878C12.2418 4.91014 10.2272 4 8 4C3.58172 4 0 7.58172 0 12C0 16.4183 3.58172 20 8 20C10.1911 20 12.1764 19.1192 13.6212 17.6923L12.207 16.278Z" fill="currentColor" /><path d="M15 9H13V11H11V13H13V15H15V13H17V11H15V9Z" fill="currentColor" /><path d="M20 9H22V11H24V13H22V15H20V13H18V11H20V9Z" fill="currentColor" /></svg>`,
@@ -433,7 +450,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "TypeScript": `<svg viewBox="0 0 15 15" fill="currentColor" width="18" height="18"><path fill-rule="evenodd" clip-rule="evenodd" d="M0 0H15V15H0V0ZM10 6C8.89543 6 8 6.89543 8 8C8 9.10457 8.89543 10 10 10H11C11.5523 10 12 10.4477 12 11C12 11.5523 11.5523 12 11 12H10C9.44772 12 9 11.5523 9 11H8C8 12.1046 8.89543 13 10 13H11C12.1046 13 13 12.1046 13 11C13 9.89543 12.1046 9 11 9H10C9.44772 9 9 8.55228 9 8C9 7.44772 9.44772 7 10 7H11.1667C11.6269 7 12 7.3731 12 7.83333V8H13V7.83333C13 6.82081 12.1792 6 11.1667 6H10ZM3 6H8V7H6V13H5V7H3V6Z" fill="currentColor" /></svg>`,
     "Node.js": `<svg viewBox="0 0 32 32" fill="currentColor" width="18" height="18"><g id="SVGRepo_bgCarrier" stroke-width="0" /><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" /><g id="SVGRepo_iconCarrier"><path d="M17.1725 2.29872C16.4627 1.89953 15.5373 1.90132 14.8269 2.29872C11.2689 4.26227 7.71082 6.22641 4.15216 8.18906C3.45969 8.55335 2.99264 9.29698 3.00009 10.0688V21.9328C2.99509 22.7197 3.48622 23.4705 4.19655 23.8298C5.21871 24.3736 6.2118 24.9726 7.25244 25.4802C8.45451 26.0709 9.95843 26.2015 11.1752 25.5855C12.1629 25.075 12.6016 23.9395 12.6003 22.896C12.6083 18.9806 12.6016 15.0651 12.6034 11.1496C12.6269 10.9756 12.4962 10.7896 12.3064 10.7938C11.8517 10.7866 11.3964 10.7896 10.9417 10.7926C10.7699 10.7764 10.6022 10.9191 10.6152 11.0918C10.6091 14.982 10.6164 18.8734 10.6115 22.7642C10.6214 23.3024 10.2578 23.8196 9.73913 24.0014C8.5412 24.4213 5.12198 22.2012 5.12198 22.2012C4.9965 22.1431 4.91682 22.007 4.92912 21.8718C4.92912 17.9576 4.92973 14.0433 4.92912 10.1297C4.91187 9.97191 5.00912 9.8298 5.15402 9.76538C8.70033 7.8134 12.2448 5.85654 15.7911 3.90336C15.9143 3.82115 16.086 3.8214 16.2089 3.90396C19.7552 5.85654 23.3003 7.81161 26.8472 9.76368C26.9926 9.828 27.0857 9.9725 27.0709 10.1297C27.0703 14.0433 27.0721 17.9576 27.0697 21.8713C27.0802 22.0098 27.0086 22.144 26.8793 22.2048C23.3661 24.1462 19.8129 26.025 16.3315 28.0228C16.1796 28.1099 16.0075 28.2086 15.8373 28.1126C14.9218 27.6062 14.0174 27.0801 13.1049 26.5688C13.0057 26.5069 12.8794 26.4803 12.7759 26.5496C12.3668 26.7652 11.982 26.9398 11.5122 27.1258C10.8524 27.387 10.9578 27.4938 11.5529 27.8405C12.62 28.4444 13.6889 29.0459 14.756 29.6504C15.4585 30.0888 16.4024 30.12 17.1275 29.7149C20.6861 27.7538 24.2436 25.7904 27.8029 23.8293C28.5113 23.468 29.0049 22.7202 28.9999 21.9327V10.0688C29.0068 9.31264 28.5576 8.58227 27.886 8.21259C24.3156 6.23947 20.7435 4.27064 17.1725 2.29872Z" fill="currentColor" /><path d="M22.5419 11.2062C21.1452 10.459 19.4836 10.4192 17.9315 10.5169C16.8102 10.6277 15.6309 10.9371 14.814 11.7409C13.9761 12.5489 13.7937 13.8537 14.1917 14.9085C14.4769 15.6539 15.1948 16.1386 15.9372 16.395C16.8935 16.7326 17.8979 16.837 18.9026 16.9414C19.819 17.0366 20.7357 17.1319 21.6165 17.4042C21.9763 17.5234 22.3953 17.7058 22.5055 18.0973C22.6073 18.5609 22.4957 19.0998 22.1193 19.4219C20.9237 20.3682 17.5979 20.2232 16.4166 19.4784C15.939 19.1611 15.7332 18.5994 15.6495 18.0641C15.6402 17.8973 15.5059 17.7443 15.3248 17.757C14.8713 17.7516 14.4178 17.7528 13.9643 17.7564C13.8061 17.7431 13.6416 17.8557 13.6329 18.0172C13.5397 20.4689 15.7914 21.5377 17.9039 21.773C19.1108 21.888 20.3442 21.8814 21.5327 21.6224C22.4261 21.419 23.3219 21.0444 23.9369 20.3563C24.6953 19.52 24.8444 18.2749 24.5043 17.2332C24.2443 16.4559 23.5012 15.9573 22.7416 15.7008C21.7086 15.3466 20.4844 15.1562 19.5488 15.0671C18.1889 14.9376 16.5729 14.9905 16.188 14.0969C16.0345 13.629 16.1651 13.048 16.5951 12.7602C17.7328 11.9885 20.0483 12.091 21.2265 12.6675C21.7675 12.9384 22.081 13.4948 22.2104 14.0565C22.2344 14.2215 22.3454 14.3937 22.5364 14.3865C22.9868 14.3955 23.4372 14.3889 23.8875 14.3895C24.0422 14.4003 24.2116 14.313 24.2418 14.1546C24.2227 12.9806 23.6232 11.7788 22.5419 11.2062Z" fill="currentColor" /></g></svg>`,
     "React": `<svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><rect width="24" height="24" fill="none" /><path d="M12,10.11A1.87,1.87,0,1,1,10.13,12,1.88,1.88,0,0,1,12,10.11M7.37,20c.63.38,2-.2,3.6-1.7a24.22,24.22,0,0,1-1.51-1.9A22.7,22.7,0,0,1,7.06,16c-.51,2.14-.32,3.61.31,4m.71-5.74-.29-.51a7.91,7.91,0,0,0-.29.86c.27.06.57.11.88.16l-.3-.51m6.54-.76.81-1.5-.81-1.5c-.3-.53-.62-1-.91-1.47C13.17,9,12.6,9,12,9s-1.17,0-1.71,0c-.29.47-.61.94-.91,1.47L8.57,12l.81,1.5c.3.53.62,1,.91,1.47.54,0,1.11,0,1.71,0s1.17,0,1.71,0c.29-.47.61-.94.91-1.47M12,6.78c-.19.22-.39.45-.59.72h1.18c-.2-.27-.4-.5-.59-.72m0,10.44c.19-.22.39-.45.59-.72H11.41c.2.27.4.5.59.72M16.62,4c-.62-.38-2,.2-3.59,1.7a24.22,24.22,0,0,1,1.51,1.9,22.7,22.7,0,0,1,2.4.36c.51-2.14.32-3.61-.32-4m-.7,5.74.29.51a7.91,7.91,0,0,0,.29-.86c-.27-.06-.57-.11-.88-.16l.3.51m1.45-7c1.47.84,1.63,3.05,1,5.63,2.54.75,4.37,2,4.37,3.68s-1.83,2.93-4.37,3.68c.62,2.58.46,4.79-1,5.63s-3.45-.12-5.37-1.95c-1.92,1.83-3.91,2.79-5.38,1.95s-1.62-3-1-5.63c-2.54-.75-4.37-2-4.37-3.68S3.08,9.07,5.62,8.32c-.62-2.58-.46-4.79,1-5.63s3.46.12,5.38,1.95c1.92-1.83,3.91-2.79,5.37-1.95M17.08,12A22.51,22.51,0,0,1,18,14.26c2.1-.63,3.28-1.53,3.28-2.26S20.07,10.37,18,9.74A22.51,22.51,0,0,1,17.08,12M6.92,12A22.51,22.51,0,0,1,6,9.74c-2.1.63-3.28,1.53-3.28,2.26S3.93,13.63,6,14.26A22.51,22.51,0,0,1,6.92,12m9,2.26-.3.51c.31,0,.61-.1.88-.16a7.91,7.91,0,0,0-.29-.86l-.29.51M13,18.3c1.59,1.5,3,2.08,3.59,1.7s.83-1.82.32-4a22.7,22.7,0,0,1-2.4.36A24.22,24.22,0,0,1,13,18.3M8.08,9.74l.3-.51c-.31,0-.61.1-.88.16a7.91,7.91,0,0,0,.29.86l.29-.51M11,5.7C9.38,4.2,8,3.62,7.37,4s-.82,1.82-.31,4a22.7,22.7,0,0,1,2.4-.36A24.22,24.22,0,0,1,11,5.7Z" /></svg>`,
-    "ASP.NET CORE/MVC": `<svg viewBox="0 0 512 512" fill="currentColor" width="18" height="18"><g id="5151e0c8492e5103c096af88a51eafb7"><path display="inline" d="M295.474,319.537c0.826,4.135,1.24,11.37,1.24,21.707v80.997h-22.327v-80.129   c0-9.097-0.868-15.894-2.604-20.404c-1.737-4.507-4.817-8.104-9.241-10.792c-4.424-2.683-9.613-4.031-15.567-4.031   c-9.51,0-17.717,3.019-24.622,9.055c-6.905,6.037-10.357,17.49-10.357,34.359v71.942h-22.327V290.512h20.094v18.73   c9.675-14.472,23.65-21.707,41.925-21.707c7.938,0,15.236,1.426,21.893,4.279c6.657,2.853,11.64,6.595,14.947,11.226   S294.15,313.17,295.474,319.537z M511.5,423.052c-6.284,1.323-11.908,1.984-16.869,1.984c-8.104,0-14.389-1.281-18.854-3.845   c-4.465-2.563-7.607-5.934-9.427-10.109c-1.819-4.172-2.729-12.962-2.729-26.358v-79.542h-48.475   c0.111,0.12,0.235,0.219,0.347,0.339c11.164,11.99,16.746,28.859,16.746,50.608c0,1.322-0.042,3.308-0.124,5.953h-98.239   c0.827,14.472,4.92,25.553,12.279,33.243c7.36,7.69,16.539,11.535,27.537,11.535c8.187,0,15.174-2.149,20.963-6.45   c5.788-4.3,10.378-11.163,13.769-20.59l23.071,2.853c-3.639,13.479-10.378,23.939-20.219,31.382s-22.41,11.164-37.708,11.164   c-19.268,0-34.545-5.934-45.832-17.8c-11.288-11.862-16.932-28.509-16.932-49.926c0-22.162,5.706-39.362,17.117-51.601   c11.412-12.238,26.214-18.357,44.406-18.357c2.199,0,4.354,0.095,6.454,0.281h84.839v-28.579h22.203v28.579h22.451v17.365h-22.451   v80.782c0,6.367,0.393,10.461,1.178,12.28c0.786,1.819,2.067,3.267,3.846,4.341c1.777,1.075,4.32,1.613,7.628,1.613   c2.481,0,5.747-0.29,9.8-0.869L511.5,423.052z M408.672,343.725c-0.993-11.081-3.805-19.392-8.435-24.932   c-7.112-8.601-16.332-12.9-27.661-12.9c-10.254,0-18.875,3.432-25.862,10.295c-6.987,6.864-10.854,16.043-11.598,27.537H408.672z    M157.881,395.42c-4.035,0-7.459,1.435-10.279,4.354c-2.82,2.898-4.217,6.405-4.217,10.548c0,4.035,1.397,7.529,4.217,10.473   c2.82,2.944,6.244,4.425,10.279,4.425c4.139,0,7.662-1.48,10.56-4.425c2.906-2.943,4.35-6.438,4.35-10.473   c0-4.044-1.443-7.55-4.35-10.489C165.542,396.875,162.02,395.42,157.881,395.42z M301.047,267.196   c-11.577,5.086-26.172,7.629-43.785,7.629c-30.928,0-52.345-5.954-64.253-17.862c-0.05-0.05-0.096-0.103-0.146-0.152l5.604,14.913   h-58.84l-9.101-30.018H66.737l-8.865,30.018H0.5L68.846,89.883h61.292l45.653,121.494l50.461-3.161   c1.158,8.683,3.514,15.3,7.07,19.847c5.789,7.361,14.058,11.039,24.808,11.039c8.021,0,14.203-1.879,18.544-5.644   c4.342-3.763,6.513-8.125,6.513-13.086c0-4.714-2.067-8.932-6.202-12.652c-4.135-3.722-13.728-7.235-28.777-10.544   c-24.642-5.538-42.214-12.899-52.716-22.078c-10.585-9.18-15.877-20.88-15.877-35.104c0-9.344,2.708-18.172,8.125-26.482   c5.416-8.311,13.562-14.841,24.436-19.598c10.874-4.755,25.779-7.133,44.716-7.133c23.237,0,40.954,4.323,53.151,12.962   c12.197,8.642,19.453,22.39,21.769,41.243l-52.965,3.102c-1.405-8.187-4.362-14.141-8.869-17.862   c-4.506-3.721-10.729-5.581-18.667-5.581c-6.533,0-11.453,1.385-14.761,4.155c-3.308,2.771-4.961,6.14-4.961,10.108   c0,2.896,1.364,5.502,4.093,7.814c2.646,2.4,8.931,4.633,18.854,6.698c24.56,5.293,42.152,10.649,52.778,16.063   c10.626,5.416,18.358,12.137,23.195,20.156c2.479,4.109,4.312,8.472,5.521,13.079V89.883h93.401   c20.342,0,35.578,4.837,45.708,14.512c10.13,9.676,15.195,23.443,15.195,41.306c0,18.357-5.521,32.705-16.56,43.041   c-11.04,10.339-27.889,15.505-50.546,15.505h-30.762v67.478h-56.438v-44.868c-1.574,6.286-4.216,12.271-7.939,17.952   C321.638,254.649,312.624,262.111,301.047,267.196z M392.464,167.407h13.769c10.832,0,18.44-1.88,22.823-5.645   c4.383-3.762,6.573-8.577,6.573-14.45c0-5.706-1.901-10.543-5.705-14.513c-3.804-3.969-10.957-5.954-21.459-5.954h-16.001V167.407z    M118.871,202.386l-20.07-65.368l-19.863,65.368H118.871z" /></g></svg>`,
+    "ASP.NET CORE MVC": `<svg viewBox="0 0 512 512" fill="currentColor" width="18" height="18"><g id="5151e0c8492e5103c096af88a51eafb7"><path display="inline" d="M295.474,319.537c0.826,4.135,1.24,11.37,1.24,21.707v80.997h-22.327v-80.129   c0-9.097-0.868-15.894-2.604-20.404c-1.737-4.507-4.817-8.104-9.241-10.792c-4.424-2.683-9.613-4.031-15.567-4.031   c-9.51,0-17.717,3.019-24.622,9.055c-6.905,6.037-10.357,17.49-10.357,34.359v71.942h-22.327V290.512h20.094v18.73   c9.675-14.472,23.65-21.707,41.925-21.707c7.938,0,15.236,1.426,21.893,4.279c6.657,2.853,11.64,6.595,14.947,11.226   S294.15,313.17,295.474,319.537z M511.5,423.052c-6.284,1.323-11.908,1.984-16.869,1.984c-8.104,0-14.389-1.281-18.854-3.845   c-4.465-2.563-7.607-5.934-9.427-10.109c-1.819-4.172-2.729-12.962-2.729-26.358v-79.542h-48.475   c0.111,0.12,0.235,0.219,0.347,0.339c11.164,11.99,16.746,28.859,16.746,50.608c0,1.322-0.042,3.308-0.124,5.953h-98.239   c0.827,14.472,4.92,25.553,12.279,33.243c7.36,7.69,16.539,11.535,27.537,11.535c8.187,0,15.174-2.149,20.963-6.45   c5.788-4.3,10.378-11.163,13.769-20.59l23.071,2.853c-3.639,13.479-10.378,23.939-20.219,31.382s-22.41,11.164-37.708,11.164   c-19.268,0-34.545-5.934-45.832-17.8c-11.288-11.862-16.932-28.509-16.932-49.926c0-22.162,5.706-39.362,17.117-51.601   c11.412-12.238,26.214-18.357,44.406-18.357c2.199,0,4.354,0.095,6.454,0.281h84.839v-28.579h22.203v28.579h22.451v17.365h-22.451   v80.782c0,6.367,0.393,10.461,1.178,12.28c0.786,1.819,2.067,3.267,3.846,4.341c1.777,1.075,4.32,1.613,7.628,1.613   c2.481,0,5.747-0.29,9.8-0.869L511.5,423.052z M408.672,343.725c-0.993-11.081-3.805-19.392-8.435-24.932   c-7.112-8.601-16.332-12.9-27.661-12.9c-10.254,0-18.875,3.432-25.862,10.295c-6.987,6.864-10.854,16.043-11.598,27.537H408.672z    M157.881,395.42c-4.035,0-7.459,1.435-10.279,4.354c-2.82,2.898-4.217,6.405-4.217,10.548c0,4.035,1.397,7.529,4.217,10.473   c2.82,2.944,6.244,4.425,10.279,4.425c4.139,0,7.662-1.48,10.56-4.425c2.906-2.943,4.35-6.438,4.35-10.473   c0-4.044-1.443-7.55-4.35-10.489C165.542,396.875,162.02,395.42,157.881,395.42z M301.047,267.196   c-11.577,5.086-26.172,7.629-43.785,7.629c-30.928,0-52.345-5.954-64.253-17.862c-0.05-0.05-0.096-0.103-0.146-0.152l5.604,14.913   h-58.84l-9.101-30.018H66.737l-8.865,30.018H0.5L68.846,89.883h61.292l45.653,121.494l50.461-3.161   c1.158,8.683,3.514,15.3,7.07,19.847c5.789,7.361,14.058,11.039,24.808,11.039c8.021,0,14.203-1.879,18.544-5.644   c4.342-3.763,6.513-8.125,6.513-13.086c0-4.714-2.067-8.932-6.202-12.652c-4.135-3.722-13.728-7.235-28.777-10.544   c-24.642-5.538-42.214-12.899-52.716-22.078c-10.585-9.18-15.877-20.88-15.877-35.104c0-9.344,2.708-18.172,8.125-26.482   c5.416-8.311,13.562-14.841,24.436-19.598c10.874-4.755,25.779-7.133,44.716-7.133c23.237,0,40.954,4.323,53.151,12.962   c12.197,8.642,19.453,22.39,21.769,41.243l-52.965,3.102c-1.405-8.187-4.362-14.141-8.869-17.862   c-4.506-3.721-10.729-5.581-18.667-5.581c-6.533,0-11.453,1.385-14.761,4.155c-3.308,2.771-4.961,6.14-4.961,10.108   c0,2.896,1.364,5.502,4.093,7.814c2.646,2.4,8.931,4.633,18.854,6.698c24.56,5.293,42.152,10.649,52.778,16.063   c10.626,5.416,18.358,12.137,23.195,20.156c2.479,4.109,4.312,8.472,5.521,13.079V89.883h93.401   c20.342,0,35.578,4.837,45.708,14.512c10.13,9.676,15.195,23.443,15.195,41.306c0,18.357-5.521,32.705-16.56,43.041   c-11.04,10.339-27.889,15.505-50.546,15.505h-30.762v67.478h-56.438v-44.868c-1.574,6.286-4.216,12.271-7.939,17.952   C321.638,254.649,312.624,262.111,301.047,267.196z M392.464,167.407h13.769c10.832,0,18.44-1.88,22.823-5.645   c4.383-3.762,6.573-8.577,6.573-14.45c0-5.706-1.901-10.543-5.705-14.513c-3.804-3.969-10.957-5.954-21.459-5.954h-16.001V167.407z    M118.871,202.386l-20.07-65.368l-19.863,65.368H118.871z" /></g></svg>`,
 
     // App Development
     "Swift": `<svg viewBox="0 -1 20 20" fill="currentColor" width="18" height="18"><desc>Created with Sketch.</desc><g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Dribbble-Light-Preview" transform="translate(-380.000000, -7520.000000)" fill="currentColor"><g id="icons" transform="translate(56.000000, 160.000000)"><path d="M336.322,7360 C345.113,7366.02452 342.27,7372.66771 342.27,7372.66771 C342.27,7372.66771 344.77,7375.5122 343.759,7378 C343.759,7378 342.728,7376.25784 340.999,7376.25784 C339.332,7376.25784 338.353,7378 334.999,7378 C327.531,7378 324,7371.71249 324,7371.71249 C330.728,7376.1732 335.322,7373.01433 335.322,7373.01433 C332.291,7371.24093 325.843,7362.75985 325.843,7362.75985 C331.458,7367.57725 333.885,7368.84785 333.885,7368.84785 C332.437,7367.64073 328.374,7361.74216 328.374,7361.74216 C331.624,7365.05923 338.082,7369.68719 338.082,7369.68719 C339.916,7364.56549 336.322,7360 336.322,7360" id="swift-[#146]" /></g></g></g></svg>`,
@@ -529,6 +546,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const prefChk = document.getElementById("cookie-pref-chk");
     const analyticsChk = document.getElementById("cookie-analytics-chk");
+    const fontsChk = document.getElementById("cookie-fonts-chk");
+    const chatbotChk = document.getElementById("cookie-chatbot-chk");
 
     const localStorageKey = "portfolio_cookie_consent";
 
@@ -540,12 +559,21 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 1000);
     }
 
-    // Save consent helper
-    function saveConsent(preferences, analytics) {
+    /**
+     * Saves user cookie preferences in local storage and triggers custom event/state updates.
+     * @param {boolean} preferences - Consent for preference-based features.
+     * @param {boolean} analytics - Consent for analytical tracking.
+     * @param {boolean} fonts - Consent for loading external fonts from Google.
+     * @param {boolean} chatbot - Consent for showing the OrbiAI chatbot.
+     * @param {string} source - The trigger source ('accept_all', 'reject_all', or 'save_settings').
+     */
+    function saveConsent(preferences, analytics, fonts, chatbot, source) {
       const consentObj = {
         necessary: true,
         preferences: preferences,
-        analytics: analytics
+        analytics: analytics,
+        fonts: fonts,
+        chatbot: chatbot !== undefined ? chatbot : true
       };
       localStorage.setItem(localStorageKey, JSON.stringify(consentObj));
 
@@ -573,28 +601,47 @@ document.addEventListener("DOMContentLoaded", () => {
       const activeLang = typeof currentLang !== "undefined" ? currentLang : "en";
       let toastMsg = "";
 
-      if (preferences && analytics) {
-        // Accept All
+      if (source === "accept_all") {
         toastMsg = typeof translations !== "undefined" && translations[activeLang] && translations[activeLang]["cookie_toast_accept_all"]
           ? translations[activeLang]["cookie_toast_accept_all"]
           : (activeLang === "de" ? "Alle Cookies wurden erfolgreich akzeptiert!" : "All cookies have been successfully accepted!");
         showCookieToast(toastMsg, "success");
-      } else if (!preferences && !analytics) {
-        // Reject All
+      } else if (source === "reject_all") {
         toastMsg = typeof translations !== "undefined" && translations[activeLang] && translations[activeLang]["cookie_toast_reject_all"]
           ? translations[activeLang]["cookie_toast_reject_all"]
           : (activeLang === "de" ? "Optionale Cookies wurden erfolgreich abgelehnt." : "Optional cookies have been successfully declined.");
         showCookieToast(toastMsg, "reject");
-      } else {
-        // Custom save settings
-        toastMsg = typeof translations !== "undefined" && translations[activeLang] && translations[activeLang]["cookie_toast_custom"]
-          ? translations[activeLang]["cookie_toast_custom"]
-          : (activeLang === "de" ? "Cookie-Einstellungen wurden erfolgreich gespeichert!" : "Cookie preferences have been successfully saved!");
+      } else if (source === "save_settings") {
+        toastMsg = typeof translations !== "undefined" && translations[activeLang] && translations[activeLang]["cookie_toast_accepted"]
+          ? translations[activeLang]["cookie_toast_accepted"]
+          : (activeLang === "de" ? "Cookies wurden erfolgreich akzeptiert" : "Cookies have been successfully accepted!");
         showCookieToast(toastMsg, "success");
+      } else {
+        // Fallback matching original logic
+        if (preferences && analytics) {
+          toastMsg = typeof translations !== "undefined" && translations[activeLang] && translations[activeLang]["cookie_toast_accept_all"]
+            ? translations[activeLang]["cookie_toast_accept_all"]
+            : (activeLang === "de" ? "Alle Cookies wurden erfolgreich akzeptiert!" : "All cookies have been successfully accepted!");
+          showCookieToast(toastMsg, "success");
+        } else if (!preferences && !analytics) {
+          toastMsg = typeof translations !== "undefined" && translations[activeLang] && translations[activeLang]["cookie_toast_reject_all"]
+            ? translations[activeLang]["cookie_toast_reject_all"]
+            : (activeLang === "de" ? "Optionale Cookies wurden erfolgreich abgelehnt." : "Optional cookies have been successfully declined.");
+          showCookieToast(toastMsg, "reject");
+        } else {
+          toastMsg = typeof translations !== "undefined" && translations[activeLang] && translations[activeLang]["cookie_toast_custom"]
+            ? translations[activeLang]["cookie_toast_custom"]
+            : (activeLang === "de" ? "Cookie-Einstellungen wurden erfolgreich gespeichert!" : "Cookie preferences have been successfully saved!");
+          showCookieToast(toastMsg, "success");
+        }
       }
     }
 
-    // Glassmorphic Toast Notification for cookie changes
+    /**
+     * Spawns a sleek glassmorphic toast notification indicating the status of cookie settings.
+     * @param {string} message - The message text to display.
+     * @param {string} [type="success"] - The display mode style type ("success" or "reject").
+     */
     function showCookieToast(message, type = "success") {
       const existingToast = document.getElementById("cookie-toast");
       if (existingToast) {
@@ -639,6 +686,10 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 4000);
     }
 
+    /**
+     * Safely dismisses and removes a cookie notification toast element from the DOM with a transition.
+     * @param {HTMLElement} toast - The toast element to remove.
+     */
     function dismissToast(toast) {
       toast.classList.remove("show");
       setTimeout(() => {
@@ -648,7 +699,9 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 400);
     }
 
-    // Dynamic overlay blocker checker for Analytics cookies
+    /**
+     * Toggles visibility of analytics visualizations depending on the user's cookie consent level.
+     */
     function updateAnalyticsState() {
       const featured = document.querySelector(".skills-featured");
       if (!featured) return;
@@ -678,13 +731,13 @@ document.addEventListener("DOMContentLoaded", () => {
     // Bind event listeners
     if (acceptAllBtn) {
       acceptAllBtn.addEventListener("click", () => {
-        saveConsent(true, true);
+        saveConsent(true, true, true, true, "accept_all");
       });
     }
 
     if (rejectAllBtn) {
       rejectAllBtn.addEventListener("click", () => {
-        saveConsent(false, false);
+        saveConsent(false, false, false, false, "reject_all");
       });
     }
 
@@ -698,7 +751,9 @@ document.addEventListener("DOMContentLoaded", () => {
       saveSettingsBtn.addEventListener("click", () => {
         const isPref = prefChk ? prefChk.checked : false;
         const isAnalytics = analyticsChk ? analyticsChk.checked : false;
-        saveConsent(isPref, isAnalytics);
+        const isFonts = fontsChk ? fontsChk.checked : false;
+        const isChatbot = chatbotChk ? chatbotChk.checked : true;
+        saveConsent(isPref, isAnalytics, isFonts, isChatbot, "save_settings");
       });
     }
 
@@ -714,10 +769,14 @@ document.addEventListener("DOMContentLoaded", () => {
               const consentObj = JSON.parse(currentConsent);
               prefChk.checked = !!consentObj.preferences;
               analyticsChk.checked = !!consentObj.analytics;
+              if (fontsChk) fontsChk.checked = !!consentObj.fonts;
+              if (chatbotChk) chatbotChk.checked = consentObj.chatbot !== undefined ? !!consentObj.chatbot : true;
             } catch (e) {}
           } else {
             prefChk.checked = true;
             analyticsChk.checked = true;
+            if (fontsChk) fontsChk.checked = true;
+            if (chatbotChk) chatbotChk.checked = true;
           }
         }
       });
@@ -735,6 +794,8 @@ document.addEventListener("DOMContentLoaded", () => {
             const consentObj = JSON.parse(currentConsent);
             if (prefChk) prefChk.checked = !!consentObj.preferences;
             if (analyticsChk) analyticsChk.checked = !!consentObj.analytics;
+            if (fontsChk) fontsChk.checked = !!consentObj.fonts;
+            if (chatbotChk) chatbotChk.checked = consentObj.chatbot !== undefined ? !!consentObj.chatbot : true;
           } catch (err) {
             console.error("Error parsing saved cookie consent", err);
           }
@@ -742,6 +803,8 @@ document.addEventListener("DOMContentLoaded", () => {
           // If no consent exists, check by default
           if (prefChk) prefChk.checked = true;
           if (analyticsChk) analyticsChk.checked = true;
+          if (fontsChk) fontsChk.checked = true;
+          if (chatbotChk) chatbotChk.checked = true;
         }
 
         // Show banner and expand settings
@@ -762,7 +825,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   }
 
-  // --- Chart Info Modal Controller ---
+  /**
+   * Initializes and registers event listeners for the interactive chart information guide modal.
+   */
   function initChartInfoModal() {
     const infoBtn = document.getElementById("chart-info-btn");
     const modal = document.getElementById("chart-info-modal");
@@ -772,6 +837,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!infoBtn || !modal || !modalBody || !modalTitle) return;
 
+    /**
+     * Opens the chart guide information modal, populated with translations matching the currently active chart view.
+     */
     function openModal() {
       // Find which chart view is currently active
       const activeBtn = document.querySelector(".toggle-btn.active");
@@ -823,6 +891,9 @@ document.addEventListener("DOMContentLoaded", () => {
       document.body.style.overflow = "hidden"; // Prevent background scroll
     }
 
+    /**
+     * Closes the chart guide information modal and restores background scrolling.
+     */
     function closeModal() {
       modal.classList.remove("open");
       document.body.style.overflow = ""; // Restore background scroll

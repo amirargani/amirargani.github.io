@@ -124,6 +124,21 @@ To run a quick local development server:
 
 All notable enhancements to this repository are documented below:
 
+### [v1.1.3]
+#### Added
+* **GDPR-Compliant Dynamic Font Loader**: Integrated a dynamic, privacy-friendly font loading module (`src/js/fonts.js`) that automatically fetches Google Fonts from CDN when consent is given, or falls back to self-hosted local WOFF2 font files (`src/font/`) defined in `src/css/font.css` when consent is declined. Added `download_fonts.py` to automate local font asset downloading.
+* **OrbiAI Chatbot Integration**: Integrated the OrbiAI Chatbot (`chatbot.js` and localized i18n mappings) with strict GDPR controls. The chatbot displays and saves chat history only upon active user consent, and is automatically hidden and purged from local storage if consent is withdrawn.
+* **GDPR Banner & Cookie Manager Expansion**: Expanded the Cookie Consent settings panel to include granular switches for "Google Fonts" and "OrbiAI Chatbot", updating the consent persistence logic and layout states.
+* **Interactive CV Timeline & Tech Tags**: Expanded the Resume timeline with new professional and educational milestones. Enriched all timeline entries with detailed project cards (including descriptions, feature lists, and links) and structured technology badge sections categorized by technology stack (languages, databases, cloud infrastructure, backend, frontend, automation).
+* **Translation Consolidation & Duplicate Analyzers**: Built a suite of translation tools (`consolidate_translations.py`, `find_duplicates.py`, `find_duplicate_values.py`) to systematically identify and clean up duplicate translation keys, unifying them into shared global tags (`shared_tag_...`) and updating `index.html` references automatically.
+* **FOUT Prevention & Production Console Logs Disabling**: Added inline `<head>` scripts to dynamically hide content during language initialization (preventing FOUT) and globally mute `console.*` logging in non-localhost production environments.
+* **Removed Hardcoded CDNs**: Decoupled the remote Google Fonts import from `src/css/core.css`, delegating it fully to the dynamic loader script.
+* **Language Switcher Flicker Fix**: Implemented CSS overrides in `src/css/app.css` targeting active language state layout buttons on page load to eliminate visual flashing/flickering of states.
+* **Updated Technical Skill Progress**: Increased progress/expertise ratings for multiple key technical skills to match current proficiency (including DevOps, databases, automation, ETL, and Office tools).
+
+#### Fixed
+* **Chart Tooltip Placement**: Relocated the shared tooltip DOM element (`.chart-tooltip`) from inside the featured chart card to the body root (`<body>`) to resolve viewport clipping and offset calculations when the tooltip is rendered inside CSS-transformed parent containers.
+
 ### [v1.1.2]
 #### Added
 * **Interactive Chart Explanation Modal**: Integrated a beautiful, full-width glassmorphic popup modal (`#chart-info-modal` using shared `.cert-modal-overlay` and `.cert-modal-box` structures) that dynamically displays justified, bilingual (DE/EN) instructions for active charts. Supports all five visualization modes (Radial Gauges, Radar Chart, Skill Bubble Matrix, Bar Chart, and Line Chart).

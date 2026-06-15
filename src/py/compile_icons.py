@@ -23,11 +23,11 @@ svg_to_skill = {
     "al.svg": "AL Programming Language",
     "apacheairflow.svg": "Apache Airflow",
     "apachespark.svg": "Apache Spark",
-    "aspnet.svg": "ASP.NET CORE/MVC",
+    "aspnet.svg": "ASP.NET CORE MVC",
     "aws.svg": "AWS",
     "azure-devops.svg": "Azure DevOps",
     "c-plus-plus.svg": "C++",
-    "csharp.svg": "C#/.NET Core",
+    "csharp.svg": "C#",
     "css3.svg": "CSS3",
     "docker.svg": "Docker",
     "eda.svg": "Exploratory Data Analysis",
@@ -82,8 +82,11 @@ def clean_svg_content(svg_path):
     # We want to extract the inner tags as strings
     inner_parts = []
     
-    # Helper function to recursively serialize elements with cleanups
     def serialize_element(elem):
+        """
+        Recursively serializes an XML element to an SVG string, stripping namespaces,
+        handling black fill transformations, and ignoring transparent Illustrator backgrounds.
+        """
         # We strip namespaces from tag names
         tag = elem.tag.split('}')[-1]
         
@@ -140,6 +143,10 @@ def clean_svg_content(svg_path):
     return f'<svg viewBox="{viewbox}" fill="currentColor" width="18" height="18">{inner_svg}</svg>'
 
 def main():
+    """
+    Main function that orchestrates reading all SVG icons, cleaning them up,
+    grouping them into categories, and compiling them into `src/js/app.js`.
+    """
     print("Compiling SVG icons from workspace...")
     
     # Read current app.js
@@ -177,7 +184,7 @@ def main():
     # Group items logically to match original visual order
     categories = [
         ("Data Analysis & BI Tools", ["Exploratory Data Analysis", "Machine Learning", "Streamlit", "Power BI", "Tableau", "Apache Spark"]),
-        ("Programming", ["Python", "C#/.NET Core", "AL Programming Language", "Visual Basic", "C++", "HTML5", "CSS3", "JavaScript", "TypeScript", "Node.js", "React", "ASP.NET CORE/MVC"]),
+        ("Programming", ["Python", "C#", "AL Programming Language", "Visual Basic", "C++", "HTML5", "CSS3", "React", "Node.js", "JavaScript", "TypeScript", "ASP.NET CORE MVC"]),
         ("App Development", ["Swift", "Java", "Flutter & Dart"]),
         ("Cloud & DevOps", ["AWS", "Docker", "Azure DevOps"]),
         ("Databases", ["SQL Server", "MySQL", "PostgreSQL", "SQLite", "MongoDB"]),

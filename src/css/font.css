@@ -1,0 +1,84 @@
+/*
+ * Local Font Face Definitions (Fallback when Google Fonts cookies are not allowed)
+ */
+
+/* Inter 300 (Light) */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('../font/Inter-Light.woff2') format('woff2');
+}
+
+/* Inter 400 (Regular) */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../font/Inter-Regular.woff2') format('woff2');
+}
+
+/* Inter 500 (Medium) */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../font/Inter-Medium.woff2') format('woff2');
+}
+
+/* Inter 600 (SemiBold) */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../font/Inter-SemiBold.woff2') format('woff2');
+}
+
+/* Outfit 400 (Regular) */
+@font-face {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../font/Outfit-Regular.woff2') format('woff2');
+}
+
+/* Outfit 500 (Medium) */
+@font-face {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../font/Outfit-Medium.woff2') format('woff2');
+}
+
+/* Outfit 600 (SemiBold) */
+@font-face {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../font/Outfit-SemiBold.woff2') format('woff2');
+}
+
+/* Outfit 700 (Bold) */
+@font-face {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../font/Outfit-Bold.woff2') format('woff2');
+}
+
+/* Outfit 800 (ExtraBold) */
+@font-face {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('../font/Outfit-ExtraBold.woff2') format('woff2');
+}

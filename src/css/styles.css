@@ -1,9 +1,16 @@
 /*
-* Diese Datei importiert alle CSS-Dateien des Projekts.
-* Sie wird in der index.html geladen.
-* core.css enthält die globalen Styles und Resets.
-* app.css enthält die Komponenten- und Seitenstile.
+* This file imports all the CSS files of the project.
+* It is loaded in index.html.
+* core.css contains global styles and resets.
+* app.css contains component and page styles.
+* styles.css contains styles for the AI assistant (OrbiAI).
 */
 
 @import url('./core.css');
 @import url('./app.css');
+@import url('../ai/css/ai-styles.css');
+
+/* Prevent visual flash of English translation templates during language initialization */
+.lang-loading body {
+  opacity: 0;
+}

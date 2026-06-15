@@ -193,7 +193,7 @@ function calculateCategoryPercentages() {
     }
   }
 
-  // Calculate dynamic Earned Certificates count from ZERTIFIKATE
+  // Calculate dynamic Earned Certificates count from the certificates section
   let certificateCount = 0;
   const certHeader = Array.from(document.querySelectorAll('.resume-header h3')).find(h3 => h3.getAttribute('data-i18n') === 'resume_cert_title');
   if (certHeader) {
@@ -303,6 +303,9 @@ function updateLanguage(lang) {
       window.updateToggleSlider();
     }, 50);
   }
+
+  // Remove the initialization loader class to reveal page contents
+  document.documentElement.classList.remove("lang-loading");
 }
 
 /**
@@ -491,7 +494,9 @@ function animateBarsInCard(card) {
   });
 }
 
-// Compatibility wrapper
+/**
+ * Compatibility wrapper to trigger radial and linear animations for all skill cards.
+ */
 function animateSkillBars() {
   animateRadialCircles();
   document.querySelectorAll(".skill-cat-card").forEach(card => animateBarsInCard(card));
