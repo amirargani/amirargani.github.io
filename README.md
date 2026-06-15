@@ -79,20 +79,29 @@ amirargani.github.io/
     ├── css/               # Stylesheets directory
     │   ├── styles.css     # Global style tokens, custom scrollbar, and navigation frame
     │   ├── core.css       # Modular styling system utilities and layout frames
-    │   └── app.css        # Thematic progress card fills, certificate modals, and togglers
+    │   ├── app.css        # Thematic progress card fills, certificate modals, and togglers
+    │   └── font.css       # Local self-hosted font-face declarations
     ├── fav/               # Local optimized favicon and app icon files
     │   ├── favicon.ico    # Legacy fallback multi-resolution browser icon
     │   ├── favicon-16x16.png  # Standard 16x16 browser tab favicon
     │   ├── favicon-32x32.png  # Standard 32x32 browser tab favicon
     │   └── apple-touch-icon.png  # Apple iOS homescreen bookmark touch icon
+    ├── font/              # Local self-hosted Web Open Font Format (WOFF2) font files
+    │   ├── Inter-*.woff2  # Inter font weights (Light, Regular, Medium, SemiBold)
+    │   └── Outfit-*.woff2 # Outfit font weights (Regular, Medium, SemiBold, Bold, ExtraBold)
     ├── icon/              # Static vector icon assets directory
     ├── js/                # Client-side JavaScript modules directory
     │   ├── core.js        # Core bilingual translation hooks, counters, and smooth scrolling
     │   ├── charts.js      # Skills dashboard visualizer (Radar, Matrix, Line, Bar charts)
+    │   ├── fonts.js       # Dynamic fonts loader module (Google Fonts CDN vs local fallback)
     │   └── app.js         # Modal retry mechanics, repository filters, and animations
     ├── py/                # Auxiliary Python utility scripts directory
     │   ├── compile_icons.py # Optimizes and compiles static SVGs into inline skillIcons JS module
-    │   └── generate_favicons.py # Downloads user GitHub avatar and generates local multi-res favicon files
+    │   ├── generate_favicons.py # Downloads user GitHub avatar and generates local multi-res favicon files
+    │   ├── download_fonts.py # Automates downloading and staging of local font assets
+    │   ├── consolidate_translations.py # Consolidates duplicate translation values in locale mappings
+    │   ├── find_duplicates.py # Scans and reports duplicate translation keys
+    │   └── find_duplicate_values.py # Identifies identical translation values across keys
     └── translations/      # Localization language directory
         ├── de.js          # German locale translation mappings
         └── en.js          # English locale translation mappings
