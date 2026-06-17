@@ -1,0 +1,157 @@
+# Changelog
+
+All notable enhancements to this repository are documented below:
+
+## [v1.1.3]
+#### Added
+* **GDPR-Compliant Dynamic Font Loader**: Integrated a dynamic, privacy-friendly font loading module (`src/js/fonts.js`) that automatically fetches Google Fonts from CDN when consent is given, or falls back to self-hosted local WOFF2 font files (`src/font/`) defined in `src/css/font.css` when consent is declined. Added `download_fonts.py` to automate local font asset downloading.
+* **OrbiAI Chatbot Integration**: Integrated the OrbiAI Chatbot (`chatbot.js` and localized i18n mappings) with strict GDPR controls. The chatbot displays and saves chat history only upon active user consent, and is automatically hidden and purged from local storage if consent is withdrawn.
+* **GDPR Banner & Cookie Manager Expansion**: Expanded the Cookie Consent settings panel to include granular switches for "Google Fonts" and "OrbiAI Chatbot", updating the consent persistence logic and layout states.
+* **Interactive CV Timeline & Tech Tags**: Expanded the Resume timeline with new professional and educational milestones. Enriched all timeline entries with detailed project cards (including descriptions, feature lists, and links) and structured technology badge sections categorized by technology stack (languages, databases, cloud infrastructure, backend, frontend, automation).
+* **Translation Consolidation & Duplicate Analyzers**: Built a suite of translation tools (`consolidate_translations.py`, `find_duplicates.py`, `find_duplicate_values.py`) to systematically identify and clean up duplicate translation keys, unifying them into shared global tags (`shared_tag_...`) and updating `index.html` references automatically.
+* **FOUT Prevention & Production Console Logs Disabling**: Added inline `<head>` scripts to dynamically hide content during language initialization (preventing FOUT) and globally mute `console.*` logging in non-localhost production environments.
+* **Removed Hardcoded CDNs**: Decoupled the remote Google Fonts import from `src/css/core.css`, delegating it fully to the dynamic loader script.
+* **Language Switcher Flicker Fix**: Implemented CSS overrides in `src/css/app.css` targeting active language state layout buttons on page load to eliminate visual flashing/flickering of states.
+* **Updated Technical Skill Progress**: Increased progress/expertise ratings for multiple key technical skills to match current proficiency (including DevOps, databases, automation, ETL, and Office tools).
+* **Cleaned Translation Assets**: Removed deprecated and unused chatbot translation keys from `src/translations/de.js` and `src/translations/en.js` to optimize dictionary size.
+* **Refined CV Experience Wording**: Polished English CV descriptions in `src/translations/en.js` to showcase backend systems design, automated Python image processing workflows, and cross-platform development.
+* **Refactored Style Sheets**: Cleaned up `src/css/styles.css` by removing deprecated OrbiAI header references and unused AI stylesheet imports.
+
+#### Fixed
+* **Chart Tooltip Placement**: Relocated the shared tooltip DOM element (`.chart-tooltip`) from inside the featured chart card to the body root (`<body>`) to resolve viewport clipping and offset calculations when the tooltip is rendered inside CSS-transformed parent containers.
+
+## [v1.1.2]
+#### Added
+* **Interactive Chart Explanation Modal**: Integrated a beautiful, full-width glassmorphic popup modal (`#chart-info-modal` using shared `.cert-modal-overlay` and `.cert-modal-box` structures) that dynamically displays justified, bilingual (DE/EN) instructions for active charts. Supports all five visualization modes (Radial Gauges, Radar Chart, Skill Bubble Matrix, Bar Chart, and Line Chart).
+* **Mobile-Enabled Radial Gauges**: Unlocked and fully enabled the 8 circular progress gauges on mobile viewports (widths <= 576px) by removing the mobile-specific radar auto-override. Designed a highly responsive 4-column layout for tablets and a compact 3-column layout (82px gauge circles) for mobile devices, ensuring balanced grids and perfect readability.
+* **Stable Uniform Dashboard Sizing**: Upgraded the featured `.glow-card` container height to a perfectly stable and uniform height on all devices (`520px` desktop, `480px` tablet, `450px` mobile) to eliminate layout shift jumping when toggling between the 5 visualization modes.
+* **Micro-Scaled 3-Column Mobile KPI Layout**: Completely redesigned the `.skills-kpis` grid layout on viewports <= 768px and <= 480px to force a beautiful **3-column grid** (`repeat(3, 1fr) !important`) instead of standard stacked columns. Proportionally micro-scaled all font sizes (counter numbers, suffixes, labels) and icon boxes (down to 22px) so all 6 KPI cards fit cleanly in two rows of three items, cutting mobile scrolling distances.
+* **Futuristic Mascot Comet Glow Sweep**: Re-engineered the footer's giant Octocat brand logo SVG outline with dual classes (`.mascot-bg-outline` and `.mascot-glow-comet`) and a looping keyframe animation (`mascotCometRun`) that sends a neon cyan laser comet segment sweeping along the mascot's outer boundary. Implemented a gorgeous, pulsing cybernetic cyan/purple background glow sphere (`.footer-watermark-container::before` with `@keyframes footerGlowPulse` animation) and a layered radial-gradient footer backdrop to merge the branding watermark seamlessly into the footer frame.
+* **Professional Timeline CV Polish**: Optimized professional timeline CV layouts by tuning the `.timeline-title` font size to `1.12rem` and list items to `0.7rem` with clean justified text alignments (`text-align: justify`), providing an extremely premium, print-ready aesthetic.
+* **Tablet/Mobile Compact Navigation Toggles**: Compacted the dashboard view toggle buttons (`.toggle-btn`) on viewports <= 992px to display icons only (`display: none` for text spans), avoiding layout breakage or vertical wrapping.
+* **Refined Navigation & Language Bar Typography**: Scaled font sizes for global navigation menu items (`.nav-menu a`) and translation switches (`.lang-switcher button`) to a highly optimized `0.65rem` on mobile and desktop viewports, avoiding awkward line wrapping and overlapping issues on narrow screens.
+* **Standard SVG Browser Compatibility**: Added a standard `viewBox="0 0 120 120"` attribute to all 8 `.svg-gauge` elements in `index.html` to enforce pixel-perfect scaling and ensure responsive rendering in Safari and mobile web views.
+
+#### Fixed
+* **GDPR Spacing Mobile Collision**: Prevented collisions between the Cookie Consent close button and action buttons on narrow mobile viewports by introducing a robust `4.5rem` right-side safe-zone padding inside `.cookie-container`.
+* **Dynamic Translation Engine**: Fixed translation sync during view toggles and initial loads to ensure the explanation modal text is instantly updated when switching active visualizations or locales.
+
+## [v1.1.1]
+#### Added
+* **Holographic Standalone Brand Watermark**: Integrated a massive background branding logo of the official standalone GitHub Octocat silhouette (completely circle-free, matching the premium reference illustration) behind the `AMIRARGANI` watermark text in the footer.
+* **Responsive Watermark Spacing**: Fine-tuned `.footer-divider` margin-bottom and `.footer-watermark-bg-icon` sizes and offset transforms across all device viewports: Desktop (`12rem` margin, `48rem` size), Tablet (`6rem` margin, `32rem` size), and Mobile (`2rem` margin, `22rem` size) to prevent overlapping with social media links and keep layout symmetry.
+* **6th KPI Card (GitHub Repositories)**: Introduced a dynamic 6th KPI card that automatically scrapes and calculates the total repository count from the portfolio's active repository showcase nodes, animated with stagger count-up scripts and styled with an orange gradient and float animations.
+* **Dynamic CSS Border & Micro-Animations**: Introduced highly premium, custom-designed CSS border animations utilizing conic gradients, custom CSS variables (`--border-angle-slider`), and advanced dual linear-gradient masks (`mask-composite: exclude`) to create neon sweeping outlines around **active language switcher buttons (DE/EN)**, active filters, sliding view switchers, back-to-top status edges, and badges. Added customized, looping micro-animations for all 6 dashboard KPI metrics SVGs (heartbeat pulses, medal swings, code pulse, bounces, maps floating). Added a spectacular **Futuristic Footer Divider Comet Sweep** (`flyDividerComet`), sending a 30vw wide glowing cyan-to-transparent laser comet segment dynamically sweeping back and forth across the full-bleed divider line.
+* **Automated KPI Calculations**: Programmed automated calculations for "Earned Certificates" (derived from the timeline elements length in the resume section) and "GitHub Repositories" to update runtime numbers in real-time.
+* **Interactive Resume / CV Showcase & Timeline**: Designed and implemented a completely new, premium timeline-based Resume/CV showcase. Built using clean responsive CSS layout structures, it features custom vertical timeline connector lines, neon glowing interactive timeline dots, collapsible professional experience and education list items with animated expand/collapse details triggers ("Show Details" / "Hide Details"), and complete dynamic bilingual translation integration (DE/EN).
+* **Bilingual CV Reordering**: Reordered CV milestones in both locales and `index.html` markup to strategically emphasize and highlight core competencies in Analytics, Data Engineering, and Fullstack systems integration.
+* **Cookie Consent Banner & GDPR Manager**: Designed and implemented a fully-compliant, premium glassmorphic Cookie Consent Banner from scratch. Features a customized accordion settings panel (Essential, Preference, and Analytics), a dedicated footer trigger link to restore preferences, a glassmorphic Close "X" button with spin-and-scale hover transitions, and a fully responsive layout that wraps to full-width stacked columns on smaller viewports.
+* **Glassmorphic Toast Notifications**: Created a premium feedback alert system with sliding progress bars, cookie SVGs, and automated timeouts to notify the user upon accepting, declining, or modifying cookie choices.
+* **Interactive Chart Overlay Blocker**: Built a premium blurred backdrop filter over the interactive skills dashboard when analytics cookies are disabled, prompting users to easily customize and enable analytics via a direct activation link.
+* **Granular Cookie Storage Controls**: Tied client storage mechanisms directly to GDPR choices, ensuring `localStorage` states (e.g. language code, active dashboard view) are immediately cleared if preference cookies are declined.
+* **English Codebase Documentation**: Fully documented all modules and algorithms across Python scripts (`compile_icons.py`, `generate_favicons.py`), controllers (`core.js`, `app.js`), dashboard charts (`charts.js`), and dictionary translations using professional English JSDoc blocks and comments.
+
+#### Fixed
+* **Standard CSS Browser Compatibility**: Added standard `mask` properties alongside vendor-prefixed `-webkit-mask` declarations across all 4 custom animated dynamic borders to resolve all compiler/linter compatibility warnings.
+* **JavaScript Syntax Integrity**: Fixed a syntax bug caused by a duplicate dangling closing curly brace in `core.js` that caused visual page freezes.
+* **Mobile Tap Highlights Reset**: Added a global `-webkit-tap-highlight-color: transparent` reset inside `core.css` to prevent standard grey highlighted background flashes on tap actions on mobile web views.
+
+## [v1.1.0]
+#### Added
+* **Manual Reload Option**: Integrated a custom-styled, bilingual SVG Reload button with an active glowing cyan hover state directly in the PDF modal header.
+* **Bilingual Tooltips**: Implemented runtime translation hooks in `core.js` to dynamically localize the tooltips and accessibility tags ("Reload PDF" / "PDF neu laden") depending on the active locale.
+* **Dark Loading Backdrop Overlay**: Re-engineered the PDF loader overlay (`#pdf-loader`) with a full-screen glassmorphic backdrop (`rgba(10, 11, 18, 0.95)` with a `4px` blur), eliminating browser-specific iframe white flashes for seamless dark-mode transitions.
+* **Interactive Retry Fallback Overlay**: Added a fail-safe interactive recovery overlay (`#pdf-loader-error`) that prompts the user with a bilingual warning if the proxy connection times out after 3 loading attempts (approx. 16.5 seconds), offering a manual reload click trigger.
+* **New Technical Skill**: Added Apache Spark (62%) to the *Data Analysis & BI Tools* category with complete bilingual translation mappings and automated average score recalculations.
+* **Full-Width Skill Cards Layout**: Redesigned the Skills Dashboard category cards to utilize a sleek full-width single-column layout, ensuring clean grid symmetry and maximum text and progress bar readability.
+* **Custom SVG Icons Compilation**: Compiled and optimized 34 high-fidelity, single-color SVG assets from the `src/icon/` directory directly into `app.js`, stripping redundant metadata and mapping dark fills to `currentColor` for dynamic theme integrations.
+* **Dynamic SVG Chart Label Translation**: Hooked the global `animateFeaturedCharts()` routine directly into `updateLanguage()` in `core.js` to automatically translate and refresh all interactive SVG chart labels (Radar, Scatter Matrix, Line, Bar) dynamically upon toggling language modes.
+* **Local Favicon Integration**: Migrated the remote avatar references to robust local resources in the new `src/fav/` directory (`favicon.ico`, `favicon-32x32.png`, `favicon-16x16.png`, and `apple-touch-icon.png`) for offline reliability and clean localized asset management.
+
+#### Fixed
+* **Flickering & Abort Errors**: Eliminated transient "PDF was not displayed" proxy errors by removing an aggressive 1.2-second unconditional iframe reload timer.
+* **Auto-Retry & Safety Loop**: Structured a robust auto-retry connection loop in `app.js` (up to 3 attempts, waiting 5.5 seconds each) utilizing query timestamps to force a fresh proxy load.
+* **Thread Cleanup**: Introduced modal lifecycle cleanup bindings (`activePdfCancelFn`) to instantly cancel all pending retry timeouts on close, preventing background network memory leaks.
+* **Mobile Skills Viewport Optimization**: Disabled and hid the complex circular gauge switcher on mobile viewports (widths <= 576px), automatically routing the default dashboard view to the highly responsive Radar chart.
+* **Mobile PDF Modal Viewport Height**: Rescaled the certificate modal dialog box on mobile screens to `min(78vh, 540px)` to perfectly match the aspect ratio of standard A4 documents and eliminate the empty black void below the iframe.
+* **Mobile & Tablet Repository Filter Optimization**: Compacted all repository category filters into sleek circular icon badges on viewport widths <= 1024px, ensuring all five filters align cleanly in a single row without awkward text wraps.
+* **Machine Learning Icon Background Fix**: Fixed the solid square rendering blockage on the *Machine Learning* icon by removing a redundant transparent Illustrator bounding-box rect which lost its `fill: none` styling after tag cleanups.
+* **Theme-specific Row Hover Highlights**: Replaced rigid, alternating row hover highlights with dynamic `:has()` parent card selectors, ensuring the glowing border and icon highlight perfectly match the specific category's brand color (solving the purple hover clash on the green Databases card).
+
+## [v1.0.9]
+#### Fixed
+* **PDF Viewer Stability**: Resolved the intermittent first-load blank PDF startup in Safari/Chrome/Edge by resetting the iframe to `about:blank`, then reloading with a cache-busting Google Docs Viewer URL and keeping the loader visible until actual load completion.
+* **Bilingual PDF Viewer**: Added translation support for the certificate loading text via the new `cert_loader_text` key, so the modal shows the correct language in both English and German.
+* **Safari Right-Click Protection**: Reverted the Safari-native PDF embed path introduced in commit `af8cb55` because it bypassed our right-click blocker. The viewer now uses the stable shared Google Docs Viewer path again to reliably disable context-menu actions while the modal is open.
+* **JavaScript Bugfix**: Corrected the missing closing brace in `openPdfModal()` and restored a clean modal open/close flow.
+
+## [v1.0.8]
+#### Added
+* **Dynamic Interactive Charts Expansion**: Upgraded the Skills Dashboard to feature five specialized, interactive data visualization views:
+  * **Radial Gauges (Default)**: Visual circular progress gauges mapping technical categories.
+  * **Interactive Radar Chart**: A premium polygonal spider-chart visualization.
+  * **Skill Bubble Matrix**: An interactive 2D bubble scatter plot showing category Expertise vs. Frequency of Use.
+  * **Horizontal Bar Chart**: Clean linear comparator rows with custom animations.
+  * **Line & Area Chart**: A continuous visual trend chart with custom glowing gradient areas.
+* **Stable Layout Dimensioning**: Standardized the glassmorphic Skills featured `.glow-card` container height to a perfectly stable `520px` (with standard uniform `3rem 2rem` padding) on desktop to guarantee zero jumpiness or layout shifting when toggling between the five views.
+* **High-Performance Modular Script Split**: Separated the single, large JavaScript file into three specialized modules loaded sequentially in `index.html` to optimize execution speeds:
+  * `src/js/core.js`: Framework core (multilingual translations engine, dynamic counter/average maths, scroll reveal observers, mobile menus, and back-to-top buttons).
+  * `src/js/charts.js`: Dashboard visualizer (Data configurations, dynamic SVG path builders, vertex animations, and view togglers).
+  * `src/js/app.js`: Interactive components (Mouse glows, Base64 PDF viewer modal triggers, repo filters, and hashless smooth scrolls).
+* **Dynamic DOM-Based Tooltip Extraction**: Designed a utility function `getSubSkillsFromDOM(catKey)` that dynamically traverses the DOM, extracting localized sub-skill name strings and progress percentages from the bottom skill category cards. Hooked this extractor into the Radar, Bar, and Line charts to show live translated details on hover.
+* **Pulsing Green Status Dot**: Added a highly premium, glowing Apple-style status indicator dot next to the **LIVE** dashboard title inside the header of the glassmorphic IDE frame. Powered by a custom infinite CSS keyframe breath animation (`live-pulse-glow`).
+* **Sliding Capsule Highlight Backdrop**: Engineered a sliding capsule highlight background (`.toggle-slider`) behind the dashboard buttons with a custom elastic ease transition (`transition: left 0.35s cubic-bezier(0.25, 1, 0.5, 1)`) and high-performance Javascript positioning.
+* **Branding Suffix Cleanups & Version Placement**:
+  * Removed unnecessary verbose suffixes like `(Scikit-Learn, Regression, etc.)`, `(Business Central)`, and `(S3, IAM, EC2, RDS, Lambda, etc.)` from technical skill labels for a cleaner, modern look.
+  * Positioned the project release version `v1.0.8` elegantly below the logo in the header with mobile media query alignment.
+
+## [v1.0.7]
+#### Added
+* **Fluid Fullwidth Footer Watermark**: Implemented an ultra-premium fluid typography system using CSS `clamp(3.2rem, 16vw, 20rem)` and proportional `em` letter spacing (`-0.04em`). The giant `AMIRARGANI` watermark now scales fluidly and seamlessly to span the full screen width (**Fullwidth**) across all resolutions without any jumps, overlaps, or horizontal scrollbar overflows.
+* **Balanced 2-Column Skills Grid**: Optimized `.skills-grid-wrapper` to display the 10 Skill Category Cards in a stunning 2-column grid on desktop viewports (`> 992px`), cutting vertical scrolling distance in half and creating perfect layout symmetry.
+* **Adaptive Card Paddings**: Dynamically scaled card paddings (`.glow-card`, `.skill-cat-card`, `.cert-card`) from `2.5rem` down to `1.25rem` (20px) on mobile viewports to maximize readable screen space.
+* **Typography Scaling**: Adjusted heading size of `.project-details h3` and overall padding balances under smaller viewports to prevent awkward line breaks and guarantee premium readability.
+
+## [v1.0.6]
+#### Added
+* **Interactive Watermark Logo**: Integrated a giant, semi-transparent watermark logo `AMIRARGANI` at the absolute bottom of the footer, beautifully bleeding off the page.
+* **AI Scan Line Animation**: Added a looping background scan line animation (`aiLaserScan`) that sweeps a glowing cyan laser back and forth across the watermark using `background-clip: text`.
+* **Pixel-Perfect Responsive Spacing**: Optimized vertical spacing on all viewports using fluid, mathematically proportional viewport sizing to ensure consistent spacing between copyright text and the footer watermark.
+* **Branded GitHub Icon Integration**: Replaced generic external-link arrow icons with the official GitHub logo SVG on both the main repositories button and all individual project links for a cohesive brand identity.
+* **Refined Accordion Hover Physics**: Aligned all accordion project button hovers with the site's default lift animation (`translateY(-3px)`) while keeping inline icons static relative to the text.
+* **Custom SVG Icons in Hero Section**: Integrated modern line-art SVG icons (briefcase for career roles and map-pin for preferences) inside translation-safe containers to prevent icon loss during language switches.
+* **English-First Default Localization**: Translated all remaining hardcoded German elements, meta tags, and ARIA labels in `index.html` to establish English as the professional default language while maintaining full toggle support.
+
+## [v1.0.5]
+#### Added
+* **Dynamic Footer Year**: Upgraded the footer copyright text to utilize a dynamic JavaScript date function (`new Date().getFullYear()`), ensuring the displayed year automatically updates to the current year.
+
+## [v1.0.4]
+#### Fixed
+* **Google Docs Viewer Initialization**: Resolved a known Google Docs Viewer iframe bug where the PDF would load as a blank screen on the first click. Implemented a forced layout computation delay (`100ms`) and dynamic timestamp query parameters (`&t=...`) to aggressively bypass proxy caching and ensure reliable rendering.
+
+## [v1.0.3]
+#### Added
+* **Clean URL Navigation**: Intercepted anchor links via JavaScript to enable buttery smooth scrolling to sections while completely suppressing the `#hash` from appearing in the browser's address bar, maintaining a pristine `https://amirargani.github.io/` base URL at all times.
+
+## [v1.0.2]
+#### Added
+* **Link Obfuscation**: Upgraded security by internally Base64-encoding all PDF source URLs in the HTML so that raw asset links cannot be scraped or seen in plain text by inspecting the source code.
+* **Safari Scroll Performance**: Restructured the Google Docs Viewer iframe to utilize internal viewport optimization, completely eliminating load delay and scroll lag on iOS and macOS Safari.
+
+## [v1.0.1]
+#### Added
+* **Certificates Showcase**: Integrated a new section to display official Data Science certificates.
+* **Secure PDF Viewer**: Engineered a custom modal using Google Docs Viewer to display PDFs natively on all browsers while forcefully preventing native downloads (especially overriding Safari's un-removable HUD) and fully blocking right-click/context menus.
+* **Consistent Button Styling**: Standardized global button CSS so all action buttons mirror the premium LinkedIn button aesthetic perfectly.
+
+## [v1.0.0]
+#### Added
+* **Premium Portfolio Core**: Implemented a responsive single-page portfolio with glassmorphism layout, fluid animations, and customized circular progress gauges.
+* **Bilingual Switcher**: Integrated immediate translation support between German (`DE`) and English (`EN`) across all pages.
+* **GitHub Repository Accordion**: Dynamic, interactive accordions showcasing 10 open-source repositories, categorised and filterable via modern SVG vector icons.
+* **Mobile Screen Language Switcher**: Repositioned the `DE`/`EN` buttons next to the mobile menu hamburger button for perfect, responsive vertical alignment.
+* **LinkedIn Connection CTA**: Upgraded the main contact button to point directly to LinkedIn (*"Auf LinkedIn vernetzen"* / *"Connect on LinkedIn"*) with safe blank targets.
+* **Apache License 2.0**: Added the official `LICENSE` file for open-source compliance and copyright protection.
+* **Automated Publishing Script**: Created the interactive `publish.sh` shell helper to automate local commits, remote links, and secure HTTPS pushes to GitHub Pages.
+* **Repository Configurations**: Configured professional `.gitignore` and `.gitattributes` filters to normalize line endings (`eol=lf`), protect binary media assets, and keep public stats pure.
