@@ -605,34 +605,34 @@ document.addEventListener("DOMContentLoaded", () => {
         toastMsg = typeof translations !== "undefined" && translations[activeLang] && translations[activeLang]["cookie_toast_accept_all"]
           ? translations[activeLang]["cookie_toast_accept_all"]
           : (activeLang === "de" ? "Alle Cookies wurden erfolgreich akzeptiert!" : "All cookies have been successfully accepted!");
-        showCookieToast(toastMsg, "success");
+        showCookieToast(toastMsg, "success", "cookie_toast_accept_all");
       } else if (source === "reject_all") {
         toastMsg = typeof translations !== "undefined" && translations[activeLang] && translations[activeLang]["cookie_toast_reject_all"]
           ? translations[activeLang]["cookie_toast_reject_all"]
           : (activeLang === "de" ? "Optionale Cookies wurden erfolgreich abgelehnt." : "Optional cookies have been successfully declined.");
-        showCookieToast(toastMsg, "reject");
+        showCookieToast(toastMsg, "reject", "cookie_toast_reject_all");
       } else if (source === "save_settings") {
         toastMsg = typeof translations !== "undefined" && translations[activeLang] && translations[activeLang]["cookie_toast_accepted"]
           ? translations[activeLang]["cookie_toast_accepted"]
           : (activeLang === "de" ? "Cookies wurden erfolgreich akzeptiert" : "Cookies have been successfully accepted!");
-        showCookieToast(toastMsg, "success");
+        showCookieToast(toastMsg, "success", "cookie_toast_accepted");
       } else {
         // Fallback matching original logic
         if (preferences && analytics) {
           toastMsg = typeof translations !== "undefined" && translations[activeLang] && translations[activeLang]["cookie_toast_accept_all"]
             ? translations[activeLang]["cookie_toast_accept_all"]
             : (activeLang === "de" ? "Alle Cookies wurden erfolgreich akzeptiert!" : "All cookies have been successfully accepted!");
-          showCookieToast(toastMsg, "success");
+          showCookieToast(toastMsg, "success", "cookie_toast_accept_all");
         } else if (!preferences && !analytics) {
           toastMsg = typeof translations !== "undefined" && translations[activeLang] && translations[activeLang]["cookie_toast_reject_all"]
             ? translations[activeLang]["cookie_toast_reject_all"]
             : (activeLang === "de" ? "Optionale Cookies wurden erfolgreich abgelehnt." : "Optional cookies have been successfully declined.");
-          showCookieToast(toastMsg, "reject");
+          showCookieToast(toastMsg, "reject", "cookie_toast_reject_all");
         } else {
           toastMsg = typeof translations !== "undefined" && translations[activeLang] && translations[activeLang]["cookie_toast_custom"]
             ? translations[activeLang]["cookie_toast_custom"]
             : (activeLang === "de" ? "Cookie-Einstellungen wurden erfolgreich gespeichert!" : "Cookie preferences have been successfully saved!");
-          showCookieToast(toastMsg, "success");
+          showCookieToast(toastMsg, "success", "cookie_toast_custom");
         }
       }
     }
@@ -641,8 +641,9 @@ document.addEventListener("DOMContentLoaded", () => {
      * Spawns a sleek glassmorphic toast notification indicating the status of cookie settings.
      * @param {string} message - The message text to display.
      * @param {string} [type="success"] - The display mode style type ("success" or "reject").
+     * @param {string} [key=""] - The translation key for the message.
      */
-    function showCookieToast(message, type = "success") {
+    function showCookieToast(message, type = "success", key = "") {
       const existingToast = document.getElementById("cookie-toast");
       if (existingToast) {
         existingToast.remove();
@@ -651,6 +652,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const toast = document.createElement("div");
       toast.id = "cookie-toast";
       toast.className = `cookie-toast ${type}`;
+      const dataAttr = key ? ` data-i18n="${key}"` : "";
       toast.innerHTML = `
         <div class="cookie-toast-content">
           <svg class="cookie-toast-icon" viewBox="0 0 24 24" fill="currentColor">
@@ -658,7 +660,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <circle cx="18.5" cy="3.5" r="0.8" />
             <circle cx="21" cy="6.5" r="1.1" />
           </svg>
-          <span class="cookie-toast-text">${message}</span>
+          <span class="cookie-toast-text"${dataAttr}>${message}</span>
         </div>
         <button class="cookie-toast-close" aria-label="Close Notification">
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>

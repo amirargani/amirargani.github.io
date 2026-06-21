@@ -378,7 +378,7 @@ var de = {
   cookie_toast_saved: "Cookie-Einstellungen wurden erfolgreich gespeichert!",
   cookie_toast_accept_all: "Alle Cookies wurden erfolgreich akzeptiert!",
   cookie_toast_reject_all: "Optionale Cookies wurden erfolgreich abgelehnt.",
-  cookie_toast_accepted: "Cookies wurden erfolgreich akzeptiert",
+  cookie_toast_accepted: "Cookies wurden erfolgreich akzeptiert!",
   cookie_toast_custom: "Cookie-Einstellungen wurden erfolgreich gespeichert!",
   timeline_show_details: "Details anzeigen",
   timeline_hide_details: "Details ausblenden",
