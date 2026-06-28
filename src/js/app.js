@@ -129,7 +129,8 @@ document.addEventListener("DOMContentLoaded", () => {
             item.removeAttribute("open");
           }
 
-          if (filterValue === "all" || item.getAttribute("data-category") === filterValue) {
+          const itemCategories = (item.getAttribute("data-category") || "").split(/\s+/);
+          if (filterValue === "all" || itemCategories.includes(filterValue)) {
             item.style.display = "block";
             item.style.opacity = "0";
             item.style.transform = "translateY(10px)";
