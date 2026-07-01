@@ -157,7 +157,7 @@ var de = {
   lang_english: "Englisch (Konversationssicher)",
   lang_persian_level: "100%",
   lang_german_level: "70%",
-  lang_english_level: "47%",
+  lang_english_level: "60%",
 
   // GitHub Repositories Section
   section_repos_title: "GitHub Repositories",
