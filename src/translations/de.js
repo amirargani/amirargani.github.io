@@ -76,7 +76,7 @@ var de = {
   hero_greeting: "Hallo, ich bin",
   hero_title: "Amir Argani",
   hero_subtitle: "Data meets Software Engineering",
-  hero_desc: "Ich baue die Brücke zwischen Code, KI und Business Value. Seit 2014 entwickle ich digitale Lösungen und kombiniere Computer Engineering mit praxisnaher Weiterbildung in Data Science & KI (DSI Berlin).",
+  hero_desc: "Ich baue die Brücke zwischen Code, KI und Business Value. Seit 2014 entwickle ich digitale Lösungen und unterstütze Unternehmen dabei, Daten und moderne Technologien in messbaren Mehrwert zu verwandeln. Mein Hintergrund im Software Engineering wird durch eine praxisnahe Weiterbildung in Data Science & KI (DSI Berlin) ergänzt.<br><br>Als Software Developer konzipiere und realisiere ich skalierbare Anwendungen, moderne Datenplattformen und End-to-End-Datenpipelines. Dabei vereine ich Softwareentwicklung mit Datenintegration, Datenmodellierung, ETL-/ELT-Prozessen, API-Integrationen und Cloud-Technologien. So entstehen Lösungen, die Daten automatisieren, Prozesse optimieren und fundierte Geschäftsentscheidungen ermöglichen. Mein Fokus liegt auf robusten Softwarelösungen und leistungsfähigen Datenarchitekturen, die technische Exzellenz in messbaren Business Value übersetzen.",
   hero_roles_title: "Ich suche neue Herausforderungen als:",
   hero_roles: "Data Scientist • Analytics Engineer • Data Engineer",
   hero_pref_title: "Bevorzugt:",
