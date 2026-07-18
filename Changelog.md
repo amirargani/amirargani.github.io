@@ -2,6 +2,24 @@
 
 All notable enhancements to this repository are documented below:
 
+## [v1.1.4]
+#### Added
+* **Interactive Honeycomb Tech Hub Section**: Added a new, responsive honeycomb (hexagonal) layout section displaying all 40 technology logos. It features floating micro-animations, customizable glowing hover effects tailored to each brand's colors, custom tooltips displaying names and expertise progress percentages, and staggered fade-and-zoom reveal scroll entrance animations.
+* **Dynamic Layout Randomization**: Integrated a Fisher-Yates shuffle algorithm to randomly rearrange the honeycomb cells on each page load/refresh, maintaining a fresh and playful presentation.
+* **Python SVG Icon Integration**: Downloaded the official vector logo for Python to replace the generic code tag icon and updated the Python compiler script (`src/py/compile_icons.py`) to bundle it into compiled assets.
+* **Custom Tooltip Translation & Browser Tooltip Suppression**: Built a dynamic tooltip localization watcher in `core.js` mapping `data-i18n-tooltip` attributes to active language dictionaries, and added `pointer-events: none` to SVG content elements to suppress native browser tooltips.
+* **Enhanced Hero & CV Descriptions**: Enriched the Hero section with detailed, professional experience narratives in both English and German translations.
+* **Language Proficiency Updates**: Increased the English language proficiency metric from 47% to 60% across all site translations and pages.
+* **Cookie Consent Toast Translations**: Added localization key support to cookie consent toast notifications, matching them with the German language dictionaries.
+
+#### Changed & Refactored
+* **Skill Category & CV Reorganization**: Reorganized overall skill categories, integrated dedicated cloud provider icons, and updated CV experience descriptors.
+* **Multi-Category Repository Filtering**: Refactored the repository filter modules to support multi-category tags and decoupled them from dashboard views.
+* **Changelog Relocation**: Relocated the changelog list into a dedicated `Changelog.md` file.
+
+#### Fixed
+* **OrbiAI Chatbot Scripts**: Fixed the script source path pointing to the correct plugin directory and corrected the script URLs.
+
 ## [v1.1.3]
 #### Added
 * **GDPR-Compliant Dynamic Font Loader**: Integrated a dynamic, privacy-friendly font loading module (`src/js/fonts.js`) that automatically fetches Google Fonts from CDN when consent is given, or falls back to self-hosted local WOFF2 font files (`src/font/`) defined in `src/css/font.css` when consent is declined. Added `download_fonts.py` to automate local font asset downloading.

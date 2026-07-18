@@ -271,6 +271,20 @@ function updateLanguage(lang) {
     }
   });
 
+  // Find all elements with data-i18n-tooltip attribute
+  document.querySelectorAll("[data-i18n-tooltip]").forEach(element => {
+    const key = element.getAttribute("data-i18n-tooltip");
+    if (translations[lang] && translations[lang][key]) {
+      const baseText = translations[lang][key];
+      const progress = element.getAttribute("data-progress");
+      if (progress) {
+        element.setAttribute("data-tooltip", `${baseText} (${progress}%)`);
+      } else {
+        element.setAttribute("data-tooltip", baseText);
+      }
+    }
+  });
+
   // Translate Reload button tooltip dynamically
   const reloadBtn = document.getElementById("cert-modal-reload");
   if (reloadBtn) {

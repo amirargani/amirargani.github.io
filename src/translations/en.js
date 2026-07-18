@@ -384,5 +384,8 @@ var en = {
   line_info_title: "Line Chart Guide",
   line_info_text: "This line chart visualizes my professional learning curve and skill growth over the past years. It demonstrates continuous learning progress, adaptation to new industry standards, and the deepening of my core competencies over time. The upward trajectory represents ongoing education and technological evolution.",
   radial_info_title: "Circular Gauges Guide",
-  radial_info_text: "The circular gauges visualize my current level of knowledge across various technological domains. Each gauge represents the percentage level of my expertise in a specific area, based on practical project applications, development experience, and continuous training. The color coding maps directly to each technology category."
+  radial_info_text: "The circular gauges visualize my current level of knowledge across various technological domains. Each gauge represents the percentage level of my expertise in a specific area, based on practical project applications, development experience, and continuous training. The color coding maps directly to each technology category.",
+  nav_tech_hub: "Tech Hub",
+  section_honeycomb_title: "Tech Hub",
+  section_honeycomb_subtitle: "An interactive honeycomb overview of all tools and technologies I use"
 };

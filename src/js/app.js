@@ -431,7 +431,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // ==========================================
   // Dynamic Skill Icons Injection
   // ==========================================
-                        const skillIcons = {
+                          const skillIcons = {
     // Data Analysis & BI Tools
     "Exploratory Data Analysis": `<svg viewBox="0 0 1024 1024" fill="currentColor" width="18" height="18"><path fill="currentColor" d="m665.216 768 110.848 192h-73.856L591.36 768H433.024L322.176 960H248.32l110.848-192H160a32 32 0 0 1-32-32V192H64a32 32 0 0 1 0-64h896a32 32 0 1 1 0 64h-64v544a32 32 0 0 1-32 32H665.216zM832 192H192v512h640V192zM352 448a32 32 0 0 1 32 32v64a32 32 0 0 1-64 0v-64a32 32 0 0 1 32-32zm160-64a32 32 0 0 1 32 32v128a32 32 0 0 1-64 0V416a32 32 0 0 1 32-32zm160-64a32 32 0 0 1 32 32v192a32 32 0 1 1-64 0V352a32 32 0 0 1 32-32z" /></svg>`,
     "Machine Learning": `<svg viewBox="0 0 32 32" fill="currentColor" width="18" height="18"><defs /><path d="M27,24a2.9609,2.9609,0,0,0-1.2854.3008L21.4141,20H18v2h2.5859l3.7146,3.7148A2.9665,2.9665,0,0,0,24,27a3,3,0,1,0,3-3Zm0,4a1,1,0,1,1,1-1A1.0009,1.0009,0,0,1,27,28Z" /><path d="M27,13a2.9948,2.9948,0,0,0-2.8157,2H18v2h6.1843A2.9947,2.9947,0,1,0,27,13Zm0,4a1,1,0,1,1,1-1A1.0009,1.0009,0,0,1,27,17Z" /><path d="M27,2a3.0033,3.0033,0,0,0-3,3,2.9657,2.9657,0,0,0,.3481,1.373L20.5957,10H18v2h3.4043l4.3989-4.2524A2.9987,2.9987,0,1,0,27,2Zm0,4a1,1,0,1,1,1-1A1.0009,1.0009,0,0,1,27,6Z" /><path d="M18,6h2V4H18a3.9756,3.9756,0,0,0-3,1.3823A3.9756,3.9756,0,0,0,12,4H11a9.01,9.01,0,0,0-9,9v6a9.01,9.01,0,0,0,9,9h1a3.9756,3.9756,0,0,0,3-1.3823A3.9756,3.9756,0,0,0,18,28h2V26H18a2.0023,2.0023,0,0,1-2-2V8A2.0023,2.0023,0,0,1,18,6ZM12,26H11a7.0047,7.0047,0,0,1-6.92-6H6V18H4V14H7a3.0033,3.0033,0,0,0,3-3V9H8v2a1.0009,1.0009,0,0,1-1,1H4.08A7.0047,7.0047,0,0,1,11,6h1a2.0023,2.0023,0,0,1,2,2v4H12v2h2v4H12a3.0033,3.0033,0,0,0-3,3v2h2V21a1.0009,1.0009,0,0,1,1-1h2v4A2.0023,2.0023,0,0,1,12,26Z" /></svg>`,
@@ -441,6 +441,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "Apache Spark": `<svg viewBox="0 0 32 32" fill="currentColor" width="18" height="18"><path d="M14.417 0c-0.568 0.016-1.125 0.286-1.594 0.807-0.26 0.292-0.479 0.615-0.661 0.964-0.469 0.885-0.563 1.885-0.74 2.854-0.328 1.818-0.651 3.635-0.969 5.453-0.036 0.214-0.125 0.302-0.323 0.359-2.359 0.745-4.719 1.484-7.063 2.25-0.516 0.167-1.031 0.385-1.484 0.672-1.391 0.885-1.599 2.339-0.557 3.615 0.464 0.563 1.057 0.953 1.714 1.245 1.469 0.656 2.938 1.302 4.401 1.964 0.026 0.010 0.047 0.016 0.068 0.026h-0.005l1.745 0.714c0 0.031 0 0.057 0 0.094-0.266 2.708-0.521 5.417-0.776 8.13-0.052 0.557-0.016 1.104 0.182 1.641 0.422 1.156 1.417 1.526 2.505 0.932 0.495-0.271 0.891-0.661 1.25-1.089 1.828-2.167 3.661-4.328 5.484-6.5 0.146-0.177 0.271-0.198 0.484-0.13 0.464 0.156 0.927 0.307 1.391 0.464h0.005c0.026 0.016 0.057 0.026 0.094 0.042l0.193 0.057c1.661 0.552 3.573 1.031 5.234 1.583 0.536 0.177 0.833 0.219 1.396 0.13 0.417-0.063 0.792-0.083 1.104-0.313 0.802-0.443 1.328-1.276 1.318-2.245-0.005-0.568-0.208-1.083-0.469-1.578-1.094-2.078-2.182-4.151-3.281-6.224-0.104-0.198-0.099-0.323 0.052-0.5 1.839-2.151 3.672-4.313 5.51-6.474 0.359-0.427 0.682-0.875 0.87-1.411 0.411-1.167-0.12-2.094-1.333-2.318-0.547-0.094-1.109-0.063-1.646 0.089-2.635 0.698-5.266 1.391-7.891 2.094-0.234 0.063-0.349 0.021-0.474-0.193-1.063-1.792-2.141-3.578-3.229-5.354-0.245-0.411-0.536-0.792-0.87-1.135-0.495-0.49-1.068-0.729-1.635-0.714zM14.646 4.938c0.104 0.073 0.193 0.167 0.25 0.281 1.161 1.927 2.323 3.854 3.479 5.786 0.094 0.156 0.182 0.208 0.37 0.156 2.036-0.542 4.068-1.083 6.104-1.62 0.49-0.13 0.979-0.255 1.474-0.385-0.021 0.099-0.068 0.193-0.135 0.266-1.677 1.974-3.354 3.948-5.036 5.917-0.146 0.177-0.161 0.297-0.057 0.495 1.25 2.406 2.359 4.411 3.333 6.349l-4.927-1.359c-0.719-0.24-1.438-0.479-2.156-0.719-0.214-0.073-0.333-0.042-0.479 0.13-1.661 1.984-3.339 3.964-5.010 5.943-0.063 0.078-0.146 0.141-0.24 0.172 0.047-0.5 0.089-1.005 0.135-1.51 0.203-2.099 0.396-4.193 0.604-6.292-0.042-0.422 0.156-0.536-0.432-0.724-1.99-0.792-4.458-1.76-6.417-2.542 0.089-0.083 0.198-0.146 0.318-0.177 2.396-0.76 4.792-1.521 7.193-2.276 0.167-0.052 0.266-0.12 0.281-0.307 0.016-0.198 0.068-0.396 0.099-0.589 0.323-1.818 0.646-3.635 0.969-5.453 0.094-0.516 0.188-1.026 0.281-1.542z" /></svg>`,
 
     // Programming
+    "Python": `<svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.18l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02 1.27.05zm-6.3 1.98l-.23.33-.08.41.08.41.23.34.33.22.41.09.41-.09.33-.22.23-.34.08-.41-.08-.41-.23-.33-.33-.22-.41-.09-.41.09zm13.09 3.95l.28.06.32.12.35.18.36.27.36.35.35.47.32.59.28.73.21.88.14 1.04.05 1.23-.06 1.23-.16 1.04-.24.86-.32.71-.36.57-.4.45-.42.33-.42.24-.4.16-.36.09-.32.05-.24.02-.16-.01h-8.22v.82h5.84l.01 2.76.02.36-.05.34-.11.31-.17.29-.25.25-.31.24-.38.2-.44.17-.51.15-.58.13-.64.09-.71.07-.77.04-.84.01-1.27-.04-1.07-.14-.9-.2-.73-.25-.59-.3-.45-.33-.34-.34-.25-.34-.16-.33-.1-.3-.04-.25-.02-.2.01-.13v-5.34l.05-.64.13-.54.21-.46.26-.38.3-.32.33-.24.35-.2.35-.14.33-.1.3-.06.26-.04.21-.02.13-.01h5.84l.69-.05.59-.14.5-.21.41-.28.33-.32.27-.35.2-.36.15-.36.1-.35.07-.32.04-.28.02-.21V6.07h2.09l.14.01zm-6.47 14.25l-.23.33-.08.41.08.41.23.33.33.23.41.08.41-.08.33-.23.23-.33.08-.41-.08-.41-.23-.33-.33-.23-.41-.08-.41.08z" /></svg>`,
     "C#": `<svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zM9.426 7.12a5.55 5.55 0 0 1 1.985.38v1.181a4.5 4.5 0 0 0-2.25-.566 3.439 3.439 0 0 0-2.625 1.087 4.099 4.099 0 0 0-1.012 2.906 3.9 3.9 0 0 0 .945 2.754 3.217 3.217 0 0 0 2.482 1.023 4.657 4.657 0 0 0 2.464-.634l-.004 1.08a5.543 5.543 0 0 1-2.625.555 4.211 4.211 0 0 1-3.228-1.297 4.793 4.793 0 0 1-1.212-3.409 5.021 5.021 0 0 1 1.365-3.663 4.631 4.631 0 0 1 3.473-1.392 5.55 5.55 0 0 1 .12-.004 5.55 5.55 0 0 1 .122 0zm5.863.155h.836l-.555 2.652h1.661l.567-2.652h.81l-.555 2.652 1.732-.004-.15.697H17.91l-.412 1.98h1.852l-.176.698h-1.816l-.58 2.625h-.83l.567-2.625h-1.65l-.555 2.625h-.81l.555-2.625h-1.74l.131-.698h1.748l.401-1.976h-1.826l.138-.697h1.826zm.142 3.345L15 12.6h1.673l.423-1.98z" /></svg>`,
     "AL Programming Language": `<svg viewBox="0 0 32 32" fill="currentColor" width="18" height="18"><g id="SVGRepo_bgCarrier" stroke-width="0" /><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" /><g id="SVGRepo_iconCarrier"><path d="M11.616,7.986A1.559,1.559,0,0,0,10.16,7H10.1a1.558,1.558,0,0,0-1.456.986L2,25H5.806l1.015-2.834h6.621L14.457,25h3.8ZM7.944,18.956l2.188-6.111,2.188,6.116Z" style="fill:currentColor" /><path d="M23.829,21.671V7.129H20.3V22.747A2.346,2.346,0,0,0,22.57,25H30V21.672Z" style="fill:currentColor" /></g></svg>`,
     "Visual Basic": `<svg viewBox="0 0 32 32" fill="currentColor" width="18" height="18"><g id="SVGRepo_bgCarrier" stroke-width="0" /><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" /><g id="SVGRepo_iconCarrier"><path d="M6.67,7.836,9,18.915,11.336,7.836H16L11.336,24.164H6.672L2,7.836Z" style="fill:currentColor" /><path d="M18.331,7.836h7.6a4.08,4.08,0,0,1,2.9,1.749,3.78,3.78,0,0,1,.571,2.04,3.985,3.985,0,0,1-.571,2.034,4.108,4.108,0,0,1-2.341,1.763,4.1,4.1,0,0,1,2.929,1.756,3.8,3.8,0,0,1,.58,2.1,4.663,4.663,0,0,1-.579,2.546,5.047,5.047,0,0,1-3.5,2.338H18.331ZM23,14.252h1.166a1.754,1.754,0,0,0,0-3.5H23Zm0,7H24.39a2.047,2.047,0,0,0,0-4.089H23Z" style="fill:currentColor" /></g></svg>`,
@@ -922,7 +923,220 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // ==========================================
+  // Tech Hub Honeycomb Grid Generator
+  // ==========================================
+  function initHoneycomb() {
+    const gridContainer = document.getElementById("honeycomb-grid");
+    if (!gridContainer) return;
+
+    const brandColors = {
+      "Exploratory Data Analysis": "#00f2fe",
+      "Machine Learning": "#e100ff",
+      "Python": "#3776ab",
+      "Streamlit": "#ff4b4b",
+      "Power BI": "#f2c811",
+      "Tableau": "#e97627",
+      "Apache Spark": "#e25a1b",
+      "SQL Server": "#cc292b",
+      "PostgreSQL": "#336791",
+      "MySQL": "#00758f",
+      "SQLite": "#003b57",
+      "MongoDB": "#47a248",
+      "Node.js": "#339933",
+      "Java": "#ea2d2e",
+      "C#": "#239120",
+      "C++": "#00599c",
+      "JavaScript": "#f7df1e",
+      "TypeScript": "#3178c6",
+      "React": "#61dafb",
+      "HTML5": "#e34f26",
+      "CSS3": "#1572b6",
+      "ASP.NET CORE MVC": "#512bd4",
+      "Swift": "#f05138",
+      "Flutter & Dart": "#02569b",
+      "AWS": "#ff9900",
+      "Azure": "#0078d4",
+      "GCP": "#4285f4",
+      "Make": "#7b2cbf",
+      "n8n": "#ff6d5a",
+      "Apache Airflow": "#017a86",
+      "Git": "#f05032",
+      "GitHub": "#ffffff",
+      "Docker": "#2496ed",
+      "hasura.io": "#1eb4d4",
+      "Azure DevOps": "#0078d4",
+      "AL Programming Language": "#00f2fe",
+      "Visual Basic": "#7b2cbf",
+      "Excel": "#107c41",
+      "Word": "#1b5e20",
+      "PowerPoint": "#b71c1c"
+    };
+
+    const allTools = [
+      "Exploratory Data Analysis", "Machine Learning", "Python", "Streamlit", "Power BI",
+      "Tableau", "Apache Spark", "SQL Server", "PostgreSQL", "MySQL", "SQLite",
+      "MongoDB", "Node.js", "Java", "C#", "C++",
+      "JavaScript", "TypeScript", "React", "HTML5", "CSS3", "ASP.NET CORE MVC",
+      "Swift", "Flutter & Dart", "AWS", "Azure", "GCP",
+      "Make", "n8n", "Apache Airflow", "Git", "GitHub", "Docker",
+      "hasura.io", "Azure DevOps", "AL Programming Language", "Visual Basic", "Excel", "Word", "PowerPoint"
+    ];
+
+    // Fisher-Yates Shuffle Algorithm to randomize layout on each page load
+    for (let i = allTools.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [allTools[i], allTools[j]] = [allTools[j], allTools[i]];
+    }
+
+    const rowSizes = [5, 6, 5, 6, 5, 6, 7];
+    const honeycombLayout = [];
+    let sliceIndex = 0;
+    rowSizes.forEach(size => {
+      honeycombLayout.push(allTools.slice(sliceIndex, sliceIndex + size));
+      sliceIndex += size;
+    });
+
+    const toolInfo = {
+      "Exploratory Data Analysis": { i18n: "skill_eda" },
+      "Machine Learning": { i18n: "skill_ml" },
+      "AL Programming Language": { i18n: "skill_al" }
+    };
+
+    const shortNames = {
+      "Exploratory Data Analysis": "EDA",
+      "Machine Learning": "ML",
+      "AL Programming Language": "AL",
+      "ASP.NET CORE MVC": "ASP.NET",
+      "Visual Basic": "VB",
+      "Apache Airflow": "Airflow",
+      "Apache Spark": "Spark",
+      "Azure DevOps": "DevOps",
+      "Flutter & Dart": "Flutter",
+      "hasura.io": "Hasura"
+    };
+
+    const activeLang = (typeof currentLang !== "undefined") ? currentLang : "en";
+    const translationsDict = (typeof translations !== "undefined") ? translations : null;
+
+    function getSkillProgress(toolName) {
+      const skillItems = document.querySelectorAll(".skill-item");
+      for (let item of skillItems) {
+        const nameSpan = item.querySelector(".skill-name");
+        if (!nameSpan) continue;
+        
+        const nameText = nameSpan.textContent.trim();
+        if (nameText === toolName) {
+          return item.getAttribute("data-progress") || "";
+        }
+        
+        const i18nKey = nameSpan.getAttribute("data-i18n");
+        if (i18nKey && translationsDict) {
+          const enVal = translationsDict.en && translationsDict.en[i18nKey];
+          const deVal = translationsDict.de && translationsDict.de[i18nKey];
+          if (enVal === toolName || deVal === toolName) {
+            return item.getAttribute("data-progress") || "";
+          }
+        }
+      }
+      return "";
+    }
+
+    let totalIndex = 0;
+
+    honeycombLayout.forEach((rowTools) => {
+      const rowDiv = document.createElement("div");
+      rowDiv.className = "honeycomb-row";
+
+      rowTools.forEach((toolName) => {
+        let svgIcon = skillIcons[toolName];
+        if (!svgIcon) {
+          // If fallback is needed (e.g. Word, PowerPoint, Excel)
+          if (toolName === "Excel") svgIcon = skillIcons["Excel"];
+          else if (toolName === "Word") svgIcon = skillIcons["Word"];
+          else if (toolName === "PowerPoint") svgIcon = skillIcons["PowerPoint"];
+          else svgIcon = skillIcons[toolName] || `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>`;
+        }
+
+        const info = toolInfo[toolName] || {};
+        const color = brandColors[toolName] || "#00f2fe";
+
+        const cellWrapper = document.createElement("div");
+        cellWrapper.className = "honeycomb-cell-wrapper";
+        cellWrapper.style.setProperty("--hover-color", color);
+
+        // Fetch progress percentage dynamically
+        const progress = getSkillProgress(toolName);
+        if (progress) {
+          cellWrapper.setAttribute("data-progress", progress);
+        }
+
+        const baseName = (translationsDict && translationsDict[activeLang] && translationsDict[activeLang][info.i18n]) || toolName;
+        const tooltipText = progress ? `${baseName} (${progress}%)` : baseName;
+
+        // Tooltip localization
+        if (info.i18n) {
+          cellWrapper.setAttribute("data-i18n-tooltip", info.i18n);
+        }
+        cellWrapper.setAttribute("data-tooltip", tooltipText);
+
+        // Float delay & cascading entrance animation delay
+        const floatDelay = (totalIndex * 0.08) - (Math.random() * 2);
+        cellWrapper.style.animationDelay = `${floatDelay}s`;
+        cellWrapper.style.transitionDelay = `${totalIndex * 0.035}s`;
+
+        const cellBg = document.createElement("div");
+        cellBg.className = "honeycomb-cell";
+
+        const content = document.createElement("div");
+        content.className = "honeycomb-content";
+
+        const iconContainer = document.createElement("div");
+        iconContainer.className = "honeycomb-icon";
+        iconContainer.innerHTML = svgIcon;
+
+        const nameSpan = document.createElement("span");
+        nameSpan.className = "honeycomb-name";
+        const shortName = shortNames[toolName];
+        if (shortName) {
+          nameSpan.textContent = shortName;
+        } else if (info.i18n) {
+          nameSpan.setAttribute("data-i18n", info.i18n);
+          nameSpan.textContent = (translationsDict && translationsDict[activeLang] && translationsDict[activeLang][info.i18n]) || toolName;
+        } else {
+          nameSpan.textContent = toolName;
+        }
+
+        content.appendChild(iconContainer);
+        content.appendChild(nameSpan);
+        cellWrapper.appendChild(cellBg);
+        cellWrapper.appendChild(content);
+        rowDiv.appendChild(cellWrapper);
+        totalIndex++;
+      });
+
+      gridContainer.appendChild(rowDiv);
+    });
+
+    // Custom observer to trigger entrance and floating animation state
+    const honeycombWrapper = document.querySelector(".honeycomb-wrapper");
+    if (honeycombWrapper) {
+      const hexObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+            setTimeout(() => {
+              entry.target.classList.add("floating");
+            }, 1500);
+            hexObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      hexObserver.observe(honeycombWrapper);
+    }
+  }
+
+  initHoneycomb();
   initChartInfoModal();
   initCookieBanner();
 });
-

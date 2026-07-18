@@ -385,6 +385,9 @@ var de = {
   line_info_title: "Liniendiagramm-Erklärung",
   line_info_text: "Dieses Liniendiagramm visualisiert meine professionelle Entwicklungskurve und den Kompetenzzuwachs über die letzten Jahre. Es zeigt den kontinuierlichen Lernfortschritt, die Anpassung an neue Industriestandards sowie die Vertiefung meiner Kernkompetenzen im Zeitverlauf. Die Aufwärtskurve steht für stetige Weiterbildung und technologische Evolution.",
   radial_info_title: "Kreisdiagramm-Erklärung",
-  radial_info_text: "Die Kreisanzeigen (Circular Gauges) visualisieren meinen aktuellen Kenntstand in den verschiedenen technologischen Domänen. Jede Anzeige zeigt den prozentualen Erreichungsgrad meiner Expertise in einem bestimmten Bereich, basierend auf meinen Projekten, praktischer Anwendung und kontinuierlicher Weiterbildung. Die farbliche Codierung entspricht den jeweiligen Technologiekategorien."
+  radial_info_text: "Die Kreisanzeigen (Circular Gauges) visualisieren meinen aktuellen Kenntstand in den verschiedenen technologischen Domänen. Jede Anzeige zeigt den prozentualen Erreichungsgrad meiner Expertise in einem bestimmten Bereich, basierend auf meinen Projekten, praktischer Anwendung und kontinuierlicher Weiterbildung. Die farbliche Codierung entspricht den jeweiligen Technologiekategorien.",
+  nav_tech_hub: "Tech Hub",
+  section_honeycomb_title: "Technologie-Wabe",
+  section_honeycomb_subtitle: "Eine interaktive Waben-Übersicht aller von mir genutzten Tools und Technologien"
 };
 

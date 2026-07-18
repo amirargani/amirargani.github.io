@@ -47,6 +47,7 @@ svg_to_skill = {
     "n8n.svg": "n8n",
     "node-js.svg": "Node.js",
     "postgresql.svg": "PostgreSQL",
+    "python.svg": "Python",
     "powerbi.svg": "Power BI",
     "react.svg": "React",
     "sqlite.svg": "SQLite",
