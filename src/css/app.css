@@ -1585,6 +1585,18 @@ html[lang="de"] .lang-switcher .lang-btn[data-lang="en"]::after {
   transform: scale(1.08);
 }
 
+.radial-progress.not-clickable {
+  cursor: default;
+}
+
+.radial-progress.not-clickable:hover {
+  transform: none;
+}
+
+.server-hidden {
+  display: none !important;
+}
+
 /* Pulsing highlight effect when targeted by circle click */
 .pulsing-glow {
   animation: pulseCardHighlight 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
@@ -4845,25 +4857,25 @@ summary:focus:not(:focus-visible) {
 
 @media (max-width: 768px) {
   :root {
-    --hex-width: 70px;
-    --hex-gap: 5px;
+    --hex-width: clamp(45px, 9vw, 68px);
+    --hex-gap: clamp(3.5px, 0.7vw, 5px);
   }
   .honeycomb-name {
     display: none;
   }
   .honeycomb-content svg {
-    width: 26px;
-    height: 26px;
+    width: clamp(20px, 4vw, 26px);
+    height: clamp(20px, 4vw, 26px);
   }
 }
 
 @media (max-width: 480px) {
   :root {
-    --hex-width: 50px;
-    --hex-gap: 4px;
+    --hex-width: clamp(38px, 11vw, 45px);
+    --hex-gap: clamp(3px, 0.8vw, 4px);
   }
   .honeycomb-content svg {
-    width: 22px;
-    height: 22px;
+    width: clamp(16px, 5vw, 20px);
+    height: clamp(16px, 5vw, 20px);
   }
 }

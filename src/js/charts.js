@@ -1206,7 +1206,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Dynamic smooth scroll-to-card for circular gauges
   document.querySelectorAll(".radial-progress[data-category]").forEach(gauge => {
+    const isServer = window.location.hostname.includes("amirargani.github.io");
+    if (isServer) {
+      gauge.classList.add("not-clickable");
+    }
+
     gauge.addEventListener("click", () => {
+      if (isServer) return; // Exit early if on the production server
+      
       const catKey = gauge.getAttribute("data-category");
       const bottomTitle = document.querySelector(`.skill-cat-card h3[data-i18n="${catKey}"]`);
       if (bottomTitle) {

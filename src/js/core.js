@@ -516,6 +516,37 @@ function animateSkillBars() {
   document.querySelectorAll(".skill-cat-card").forEach(card => animateBarsInCard(card));
 }
 
+/**
+ * Configures the visibility of specific elements based on whether the page is running
+ * on the production server (amirargani.github.io) or in a local environment.
+ */
+function initializeServerVisibility() {
+  const isServer = window.location.hostname.includes("amirargani.github.io");
+  if (isServer) {
+    const localOnlyCategories = [
+      "cat_data_science",
+      "cat_programming",
+      "cat_web_dev",
+      "cat_app_dev",
+      "cat_cloud_devops",
+      "cat_databases",
+      "cat_automation_etl",
+      "cat_tools",
+      "cat_office_365"
+    ];
+    localOnlyCategories.forEach(catKey => {
+      const titleElem = document.querySelector(`.skill-cat-card h3[data-i18n="${catKey}"]`);
+      if (titleElem) {
+        const card = titleElem.closest(".skill-cat-card");
+        if (card) {
+          card.classList.add("server-hidden");
+          card.classList.remove("reveal");
+        }
+      }
+    });
+  }
+}
+
 // Core setup triggers inside DOMContentLoaded
 document.addEventListener("DOMContentLoaded", () => {
   loadHtmlIncludes().then(() => {
@@ -550,8 +581,12 @@ document.addEventListener("DOMContentLoaded", () => {
   // Set initial language
   updateLanguage(currentLang);
 
+  // Configure visibility of categories on server vs local
+  initializeServerVisibility();
+
   // Setup visual scroll animations
   setupScrollAnimations();
+
 
   // Back to Top Button logic
   const backToTopBtn = document.getElementById("back-to-top");

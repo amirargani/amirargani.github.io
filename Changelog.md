@@ -2,6 +2,14 @@
 
 All notable enhancements to this repository are documented below:
 
+## [v1.1.5]
+#### Added
+* **Conditional Server-Side Visibility for Skill Cards**: Implemented dynamic environment detection to hide 9 local-only skill category cards (*Datenanalyse & BI Tools*, *Programmierung*, *Web-Entwicklung*, *App-Entwicklung*, *Cloud Computing*, *Datenbanken*, *Automatisierung & ETL*, *Tools & DevOps*, *Office 365*) via a new CSS class `.server-hidden` when hosted on the production server (`amirargani.github.io`), while keeping them visible in local environments. The *Languages* card remains visible everywhere.
+* **Interactive Controls for Circular Gauges**: Added conditional state handling on the 8 circular dashboard gauges to attach a `.not-clickable` class on the production server (disabling pointer cursors and scale hover animations) and intercepting gauge click events to prevent scrolling/glow pulsing on the server, while preserving full interactivity locally.
+
+#### Changed & Refactored
+* **Mobile Honeycomb Grid Responsiveness**: Refactored responsive media queries (`max-width: 768px` and `max-width: 480px`) in `app.css` using fluid `clamp()` values for cell sizes (`--hex-width`, `--hex-gap`) and SVG icon dimensions. This dynamically scales down the grid on smaller screens to ensure that the 7-item bottom row (including `C++` and `TS`) fits cleanly within the viewport without horizontal overflow.
+
 ## [v1.1.4]
 #### Added
 * **Interactive Honeycomb Tech Hub Section**: Added a new, responsive honeycomb (hexagonal) layout section displaying all 40 technology logos. It features floating micro-animations, customizable glowing hover effects tailored to each brand's colors, custom tooltips displaying names and expertise progress percentages, and staggered fade-and-zoom reveal scroll entrance animations.
