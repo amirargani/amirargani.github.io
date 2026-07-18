@@ -25,6 +25,7 @@ svg_to_skill = {
     "apachespark.svg": "Apache Spark",
     "aspnet.svg": "ASP.NET CORE MVC",
     "aws.svg": "AWS",
+    "azure.svg": "Azure",
     "azure-devops.svg": "Azure DevOps",
     "c-plus-plus.svg": "C++",
     "csharp.svg": "C#",
@@ -34,6 +35,7 @@ svg_to_skill = {
     "flutter.svg": "Flutter & Dart",
     "git.svg": "Git",
     "github.svg": "GitHub",
+    "google-cloud.svg": "GCP",
     "hasura.svg": "hasura.io",
     "html5.svg": "HTML5",
     "java.svg": "Java",
@@ -90,8 +92,8 @@ def clean_svg_content(svg_path):
         # We strip namespaces from tag names
         tag = elem.tag.split('}')[-1]
         
-        # Skip defs, style, title
-        if tag in ('defs', 'style', 'title', 'metadata'):
+        # Skip style, title, metadata
+        if tag in ('style', 'title', 'metadata'):
             return
             
         # For Machine Learning icon: ignore illustrator transparent bounding box rect
@@ -186,10 +188,10 @@ def main():
         ("Data Analysis & BI Tools", ["Exploratory Data Analysis", "Machine Learning", "Streamlit", "Power BI", "Tableau", "Apache Spark"]),
         ("Programming", ["Python", "C#", "AL Programming Language", "Visual Basic", "C++", "HTML5", "CSS3", "React", "Node.js", "JavaScript", "TypeScript", "ASP.NET CORE MVC"]),
         ("App Development", ["Swift", "Java", "Flutter & Dart"]),
-        ("Cloud & DevOps", ["AWS", "Docker", "Azure DevOps"]),
+        ("Cloud Computing", ["AWS", "Azure", "GCP"]),
         ("Databases", ["SQL Server", "MySQL", "PostgreSQL", "SQLite", "MongoDB"]),
         ("Automation & ETL", ["Make", "n8n", "Apache Airflow"]),
-        ("Tools & Platforms", ["Git", "GitHub", "hasura.io"]),
+        ("Tools & DevOps", ["Git", "GitHub", "hasura.io", "Docker", "Azure DevOps"]),
         ("Office 365", ["Excel", "Word", "PowerPoint"])
     ]
     

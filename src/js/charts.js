@@ -44,10 +44,10 @@ const chartDataConfig = {
     color: "#ff7b00",
     grad: "#orangeGrad",
     freq: 70,
-    nameEn: "Cloud & DevOps",
-    nameDe: "Cloud & DevOps",
-    skillsEn: ["Microsoft Azure Cloud", "IIS Server Admin", "Git Version Control"],
-    skillsDe: ["Microsoft Azure Cloud", "IIS Server-Administration", "Git-Versionsverwaltung"]
+    nameEn: "Cloud Computing",
+    nameDe: "Cloud Computing",
+    skillsEn: ["AWS", "Azure", "GCP"],
+    skillsDe: ["AWS", "Azure", "GCP"]
   },
   cat_databases: {
     color: "#00ff87",
@@ -71,10 +71,10 @@ const chartDataConfig = {
     color: "#FFE259",
     grad: "#amberGrad",
     freq: 90,
-    nameEn: "Tools & Platforms",
-    nameDe: "Tools & Plattformen",
-    skillsEn: ["Visual Studio / VS Code", "SQL Server Management Studio (SSMS)", "Postman (API Testing)", "GitHub Desktop"],
-    skillsDe: ["Visual Studio / VS Code", "SQL Server Management Studio (SSMS)", "Postman (API Testing)", "GitHub Desktop"]
+    nameEn: "Tools & DevOps",
+    nameDe: "Tools & DevOps",
+    skillsEn: ["Git", "GitHub", "hasura.io", "Docker", "Azure DevOps"],
+    skillsDe: ["Git", "GitHub", "hasura.io", "Docker", "Azure DevOps"]
   }
 };
 
